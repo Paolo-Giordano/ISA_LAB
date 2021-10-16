@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1634028879 source:c:\users\paolo\desktop\isa\project\lab 1\fir_filter\myfilter.c
+	<stdio.h>
+	<stdlib.h>
+
+1634293410 source:c:\users\paolo\desktop\isa\project\lab 1\model\myfilter.c
+	<stdio.h>
+	<stdlib.h>
+
+1634293377 source:c:\users\paolo\desktop\isa\project\lab 1\model\prova_parallelism.c
+	<stdio.h>
+	<stdlib.h>
+
+1634407138 source:c:\users\paolo\desktop\isa\lab_isa\lab_1\paolo\lab1_c\prova_parallelism.c
+	<stdio.h>
+	<stdlib.h>
+
+1634407051 source:c:\users\paolo\desktop\isa\lab_isa\lab_1\paolo\lab1_c\myfilter.c
+	<stdio.h>
+	<stdlib.h>
+
