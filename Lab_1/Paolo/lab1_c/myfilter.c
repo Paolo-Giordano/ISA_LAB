@@ -3,7 +3,7 @@
 
 #define NT 10 /// number of coeffs
 #define NB 9 /// number of bits
-#define N_SHIFT 4
+#define N_SHIFT 0
 
 const int b[NT+1]= {-1, -4, -7, 16, 70, 101, 70, 16, -7, -4, -1}; /// b array
 
@@ -38,7 +38,7 @@ int myfilter(int x)
     y = 0;
     for (i=0; i<NT; i++)
     {
-        y += (sx[i]*b[i]) >> (NB-3) ;      ///shift the mult result to work with less bit
+        y += (sx[i]*b[i]) >> (NB+1) ;      ///shift the mult result to work with less bit
     }
 
     y = y << 2;         ///bring back the fixed point at the correct position
