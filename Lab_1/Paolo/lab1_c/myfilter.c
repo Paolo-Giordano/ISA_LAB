@@ -3,11 +3,11 @@
 #include<math.h>
 #include<string.h>
 
-#define NT 10 /// number of coeffs
+#define NT 11 /// number of coeffs
 #define NB 9 /// number of bits
 #define N_SHIFT 0
 
-const int b[NT+1]= {-1, -4, -7, 16, 70, 101, 70, 16, -7, -4, -1}; /// b array
+const int b[NT]= {-1, -4, -7, 16, 70, 101, 70, 16, -7, -4, -1}; /// b array
 
 /// Perform fixed point filtering assuming direct form I
 ///\param x is the new input sample
@@ -18,7 +18,7 @@ int myfilter(int x)
     static int first_run = 0; /// for cleaning shift registers
     int i; /// index
     int y; /// output sample
-    i
+    
 
     /// clean the buffers
     if (first_run == 0)
@@ -38,7 +38,7 @@ int myfilter(int x)
     y = 0;
     for (i=0; i<NT; i++)
     {
-        tmp = (sx[i]*b[i]) >> (NB+1) ;      ///shift the mult result to work with less bit
+        y += (sx[i]*b[i]) >> (NB+1) ;      ///shift the mult result to work with less bit
 		
     }
 
