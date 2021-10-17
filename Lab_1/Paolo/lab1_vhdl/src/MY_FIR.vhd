@@ -51,6 +51,7 @@ architecture structural of MYFIR is
     port (
       SHIFT_REG_IN_CLK    : in std_logic;
       SHIFT_REG_IN_RST_N  : in std_logic;
+      SHIFT_REG_IN_EN     : in std_logic;
       SHIFT_REG_IN        : in std_logic;
       SHIFT_REG_OUT       : out std_logic
     );
@@ -148,11 +149,13 @@ architecture structural of MYFIR is
     -- shift the input signal = don't take the LSB's
     shifted_data_in <= delay_myfir_data_in(8 downto shift_input_c);
 
+
     ---------------   SHIFT REGISTER TO DELAY VIN AND BRING TO VOUT   -------------
     -- 10 is the depth of shifter, because thereare 10 stages
     i_delay_vin: SHIFT_REG_1bit generic map (10) port map(
     SHIFT_REG_IN_CLK    => MYFIR_IN_CLK,
     SHIFT_REG_IN_RST_N  => MYFIR_IN_RST_n,
+    SHIFT_REG_IN_EN     => delayed_myfir_vin,
     SHIFT_REG_IN        => delayed_myfir_vin,
     SHIFT_REG_OUT       => final_delay_myfir_vin
     );

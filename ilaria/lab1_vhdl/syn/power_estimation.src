@@ -1,7 +1,0 @@
-variable period_str "12_64"
-
-read_verilog -netlist ../netlist/MYFIR.v
-read_saif -input ../saif/MYFIR_syn.saif -instance tb_fir/UUT -unit ns -scale 1
-create_clock -name clk MYFIR_IN_CLK
-
-report_power > report_power${period_str}.txt

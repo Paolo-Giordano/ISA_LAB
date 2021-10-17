@@ -55,6 +55,8 @@ begin  -- beh
     file fp_in : text open READ_MODE is "../../lab1_matlab/samples.txt";
     variable line_in : line;
     variable x : integer;
+    variable vin : std_logic;
+    variable space : character;
   begin  -- process
     if RST_n = '0' then                 -- asynchronous reset (active low)
       DOUT <= (others => '0') after tco;
@@ -64,11 +66,13 @@ begin  -- beh
       if not endfile(fp_in) then
         readline(fp_in, line_in);
         read(line_in, x);
+        read(line_in, space);
+        read(line_in, vin);
         DOUT <= std_logic_vector(to_signed(x, N_g)) after tco;
-        VOUT <= '1' after tco;
+        VOUT <= vin after tco;
         sEndSim <= '0' after tco;
       else
-        VOUT <= '0' after tco;
+        VOUT <= vin after tco;
         sEndSim <= '1' after tco;
       end if;
     end if;
