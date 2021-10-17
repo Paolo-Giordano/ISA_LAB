@@ -58,10 +58,10 @@ module tb_fir ();
        .MYFIR_IN_b8(H8_i),
 	     .MYFIR_IN_b9(H9_i),
 	     .MYFIR_IN_b10(H10_i),
-	     .VIN(VIN_i),
-       .DIN(DIN_i),
-       .VOUT(VOUT_i),
-       .DOUT(DOUT_i));
+	     .MYFIR_IN_VIN(VIN_i),
+       .MYFIR_IN_DIN(DIN_i),
+       .MYFIR_OUT_VOUT(VOUT_i),
+       .MYFIR_OUT_DOUT(DOUT_i));
 
    data_sink DS(.CLK(CLK_i),
 		.RST_n(RST_n_i),

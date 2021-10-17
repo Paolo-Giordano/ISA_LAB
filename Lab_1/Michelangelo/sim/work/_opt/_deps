@@ -1,0 +1,16 @@
+H 2141964 11 3 0 8 4 0 0 0 0
+L 4 ieee 19 $MODEL_TECH/../ieee
+L 3 std 18 $MODEL_TECH/../std
+L 4 work 6 ./work
+D 17 ./work.adder(beh) Gi<L[2bD8o;]eU7F^BX?[2 3 1
+D 19 ./work.clk_gen(beh) QgBCdOZ4G?QS36Z>ozmfA0 0 1
+D 22 ./work.data_maker(beh) U>KlK8i5L^DBDV8feH8053 1 1
+D 21 ./work.data_sink(beh) DiO`gccEA28fbonACXhJn3 6 1
+D 22 ./work.multiplier(beh) 7G<lkGRkIIo?4XIA1@5_e2 2 1
+D 17 ./work.myfir(rtl) Pm4QE9?AUZJ7z?zn?GeRd1 5 1
+D 27 ./work.saturation_unit(beh) =iDQ;ERa29TOaeYRYe]Uj3 4 1
+D 13 ./work.tb_fir =06:^8hIa=Sj77[GDckFL2 7 0
+2 0  1 BeDbGlmT:73DZnn7_WJ213 0 2 1
+2 0  0 XRj34nAVbnO?^nzfdbH400 2 4 1
+2 4 fast 0 8SBT^oPA>F<UX>_b@CenO2 3 7 1
+2 0  1 gdjI;E5jh9d]]NRTfNfME2 1 3 1
