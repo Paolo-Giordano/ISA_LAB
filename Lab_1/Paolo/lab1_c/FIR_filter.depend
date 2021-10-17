@@ -15,7 +15,9 @@
 	<stdio.h>
 	<stdlib.h>
 
-1634412577 source:c:\users\paolo\desktop\isa\lab_isa\lab_1\paolo\lab1_c\myfilter.c
+1634499140 source:c:\users\paolo\desktop\isa\lab_isa\lab_1\paolo\lab1_c\myfilter.c
 	<stdio.h>
 	<stdlib.h>
+	<math.h>
+	<string.h>
 
