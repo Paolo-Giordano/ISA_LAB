@@ -1,0 +1,28 @@
+variable period 12.64
+variable period_str "12_64"
+
+
+analyze -library WORK -format vhdl {../src/SATURATION_UNIT.vhd /home/ ../src/REGISTER_NBIT.vhd ../src/MULTIPLIER_NBIT.vhd ../src/FF.vhd ../src/ADDER_NBIT.vhd ../src/MYFIR.vhd}
+set power_preserve_rtl_hier_names true
+elaborate MYFIR -architecture structural -library WORK
+uniquify
+link
+
+create_clock -name clk -period $period {MYFIR_IN_CLK}
+set_dont_touch_network clk
+set_clock_uncertainty 0.07 [get_clocks clk]
+set_input_delay 0.5 -max -clock clk [remove_from_collection [all_inputs] clk]
+set_output_delay 0.5 -max -clock clk [all_outputs]
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+set_load $OLOAD [all_outputs]
+
+compile 
+
+report_timing > report_timing${period_str}.txt
+report_area > report_area${period_str}.txt
+
+ungroup -all -flatten
+change_names -hierarchy -rules verilog
+write_sdf ../netlist/MYFIR.sdf
+write -f verilog -hierarchy -output ../netlist/MYFIR.v
+write_sdc ../netlist/MYFIR.sdc

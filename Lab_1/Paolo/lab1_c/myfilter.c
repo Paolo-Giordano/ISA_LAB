@@ -7,9 +7,12 @@
 #define NB 9 /// number of bits
 #define N_SHIFT 0
 
+<<<<<<< HEAD
 ///data out valid after that the first 10 valid sample are received
 /// used also to compare the result from the vhdl and the C model
 int valid_samples = 0;
+=======
+>>>>>>> 4e7065036a183ccaf6ce5c3c804daf3eeab32895
 const int b[NT]= {-1, -4, -7, 16, 70, 101, 70, 16, -7, -4, -1}; /// b array
 
 /// Perform fixed point filtering assuming direct form I
@@ -22,7 +25,11 @@ int myfilter(int x, int vin, int* vout)
 
     int i; /// index
     int y; /// output sample
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 4e7065036a183ccaf6ce5c3c804daf3eeab32895
 
     /// clean the buffers
     if (first_run == 0)
@@ -54,6 +61,10 @@ int myfilter(int x, int vin, int* vout)
     for (i=0; i<NT; i++)
     {
         y += (sx[i]*b[i]) >> (NB+1) ;      ///shift the mult result to work with less bit
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 4e7065036a183ccaf6ce5c3c804daf3eeab32895
     }
 
     y = y << 2;         ///bring back the fixed point at the correct position

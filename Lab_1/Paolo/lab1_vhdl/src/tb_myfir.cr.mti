@@ -53,6 +53,14 @@ Model Technology ModelSim SE-64 vcom 6.5c Compiler 2009.08 Aug 27 2009
 -- Compiling entity register_nbit
 -- Compiling architecture behavioural of register_nbit
 
+} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/MY_FIR.vhd {1 {vcom -work work -2002 -explicit -vopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/MY_FIR.vhd
+Model Technology ModelSim SE-64 vcom 6.5c Compiler 2009.08 Aug 27 2009
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity myfir
+-- Compiling architecture structural of myfir
+
 } {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/SHIFT_REG_1bit.vhd {1 {vcom -work work -2002 -explicit -vopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/SHIFT_REG_1bit.vhd
 Model Technology ModelSim SE-64 vcom 6.5c Compiler 2009.08 Aug 27 2009
 -- Loading package standard
