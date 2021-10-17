@@ -4,7 +4,7 @@ module tb_fir ();
 
    wire CLK_i;
    wire RST_n_i;
-   wire [15:0] DIN_i;
+   wire [8:0] DIN_i;
    wire VIN_i;
    wire [8:0] H0_i;
    wire [8:0] H1_i;
@@ -17,7 +17,7 @@ module tb_fir ();
    wire [8:0] H8_i;
    wire [8:0] H9_i;
    wire [8:0] H10_i;
-   wire [15:0] DOUT_i;
+   wire [8:0] DOUT_i;
    wire VOUT_i;
    wire END_SIM_i;
 
@@ -26,7 +26,7 @@ module tb_fir ();
    .CLK(CLK_i),
 	 .RST_n(RST_n_i));
 
-   data_maker SM(
+   data_maker #(9) SM(
      .CLK(CLK_i),
 	   .RST_n(RST_n_i),
 		 .VOUT(VIN_i),
@@ -35,6 +35,13 @@ module tb_fir ();
 		 .H1(H1_i),
 		 .H2(H2_i),
 		 .H3(H3_i),
+		 .H4(H4_i),
+		 .H5(H5_i),
+		 .H6(H6_i),
+		 .H7(H7_i),
+		 .H8(H8_i),
+		 .H9(H9_i),
+		 .H10(H10_i),
 		 .END_SIM(END_SIM_i));
 
    myfir UUT(

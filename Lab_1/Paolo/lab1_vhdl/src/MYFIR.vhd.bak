@@ -91,11 +91,6 @@ architecture structural of MYFIR is
   signal pipe_delay_1, pipe_delay_2, pipe_delay_3                : std_logic_vector(Nb_c - shift_input_c-1 downto 0);
   signal pipe_delay_4, pipe_delay_5, pipe_delay_6                : std_logic_vector(Nb_c - shift_input_c-1 downto 0);
   signal pipe_delay_7, pipe_delay_8, pipe_delay_9, pipe_delay_10 : std_logic_vector(Nb_c - shift_input_c-1 downto 0);
-  -- Mult input
-  signal from_mult_to_add_0 ,from_mult_to_add_1 ,from_mult_to_add_2 : std_logic_vector(7 downto 0);
-  signal from_mult_to_add_3 ,from_mult_to_add_4 ,from_mult_to_add_5 : std_logic_vector(7 downto 0);
-  signal from_mult_to_add_6 ,from_mult_to_add_7 ,from_mult_to_add_8 : std_logic_vector(7 downto 0);
-  signal from_mult_to_add_9 ,from_mult_to_add_10 					: std_logic_vector(7 downto 0);
   -- MULT output
   signal mult_out_0, mult_out_1, mult_out_2       : std_logic_vector(2*Nb_c - shift_input_c - 2 downto 0);
   signal mult_out_3, mult_out_4, mult_out_5       : std_logic_vector(2*Nb_c - shift_input_c - 2 downto 0);
@@ -384,76 +379,63 @@ begin
   -- and "10 - shift_input_c" shifts are applied to the output of the multiplier
   -- considering that there are 10 serial sum, some overflow consideration are applied
   -- and we add 1 bit
-  
-  from_mult_to_add_0  <= mult_out_0(2*Nb_c-2) & mult_out_0( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_1  <= mult_out_1(2*Nb_c-2) & mult_out_1( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_2  <= mult_out_2(2*Nb_c-2) & mult_out_2( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_3  <= mult_out_3(2*Nb_c-2) & mult_out_3( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_4  <= mult_out_4(2*Nb_c-2) & mult_out_4( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_5  <= mult_out_5(2*Nb_c-2) & mult_out_5( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_6  <= mult_out_6(2*Nb_c-2) & mult_out_6( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_7  <= mult_out_7(2*Nb_c-2) & mult_out_7( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_8  <= mult_out_8(2*Nb_c-2) & mult_out_8( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_9  <= mult_out_9(2*Nb_c-2) & mult_out_9( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-  from_mult_to_add_10 <= mult_out_1(2*Nb_c-2) & mult_out_10( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c);
-
 
   adder_1: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_0,
-  ADDER_IN_B    => from_mult_to_add_1,
+  ADDER_IN_A    => mult_out_0( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
+  ADDER_IN_B    => mult_out_1( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_OUT_SUM => adder_out_1
   );
 
   adder_2: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_2,
+  ADDER_IN_A    => mult_out_2( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_IN_B    => adder_out_1,
   ADDER_OUT_SUM => adder_out_2
   );
 
   adder_3: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_3,
+  ADDER_IN_A    => mult_out_3( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_IN_B    => adder_out_2,
   ADDER_OUT_SUM => adder_out_3
   );
 
   adder_4: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_4,
+  ADDER_IN_A    => mult_out_4( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_IN_B    => adder_out_3,
   ADDER_OUT_SUM => adder_out_4
   );
 
   adder_5: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_5,
+  ADDER_IN_A    => mult_out_5( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_IN_B    => adder_out_4,
   ADDER_OUT_SUM => adder_out_5
   );
 
   adder_6: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_6,
+  ADDER_IN_A    => mult_out_6( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_IN_B    => adder_out_5,
   ADDER_OUT_SUM => adder_out_6
   );
 
   adder_7: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_7,
+  ADDER_IN_A    => mult_out_7( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_IN_B    => adder_out_6,
   ADDER_OUT_SUM => adder_out_7
   );
 
   adder_8: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_8,
+  ADDER_IN_A    => mult_out_8( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_IN_B    => adder_out_7,
   ADDER_OUT_SUM => adder_out_8
   );
 
   adder_9: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_9,
+  ADDER_IN_A    => mult_out_9( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_IN_B    => adder_out_8,
   ADDER_OUT_SUM => adder_out_9
   );
 
   adder_10: ADDER_NBIT generic map (2*Nb_c - shift_input_c - 1 - shift_output_mul_c + 1 ) port map(
-  ADDER_IN_A    => from_mult_to_add_10,
+  ADDER_IN_A    => mult_out_10( 2*Nb_c - shift_input_c - 2 downto shift_output_mul_c - 1 ),
   ADDER_IN_B    => adder_out_9,
   ADDER_OUT_SUM => adder_out_10
   );
@@ -480,7 +462,7 @@ begin
   end process;
 
   --the AND permits to bring in output directly a '0' when VIN = '0' and the data will be not valid
-  shifted_final_result <= final_result & '0' & '0';
+  shifted_final_result <= final_resut & '0' & '0';
   final_vout <= delay_myfir_data_in(Nb_c) and final_delay_myfir_vin;
 
   reg_out_data: REGISTER_NBIT generic map(Nb_c ) port map(
