@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
+#include<string.h>
 
 #define NT 10 /// number of coeffs
 #define NB 9 /// number of bits
@@ -13,17 +15,15 @@ const int b[NT+1]= {-1, -4, -7, 16, 70, 101, 70, 16, -7, -4, -1}; /// b array
 int myfilter(int x)
 {
     static int sx[NT]; /// x shift register
-    static int sy[NT-1]; /// y shift register
     static int first_run = 0; /// for cleaning shift registers
     int i; /// index
     int y; /// output sample
-    static int tmp;
+    i
 
     /// clean the buffers
     if (first_run == 0)
     {
         first_run = 1;
-        tmp = 0;
         for (i=0; i<NT; i++)
             sx[i] = 0;
     }
@@ -38,10 +38,19 @@ int myfilter(int x)
     y = 0;
     for (i=0; i<NT; i++)
     {
-        y += (sx[i]*b[i]) >> (NB+1) ;      ///shift the mult result to work with less bit
+        tmp = (sx[i]*b[i]) >> (NB+1) ;      ///shift the mult result to work with less bit
+		
     }
 
     y = y << 2;         ///bring back the fixed point at the correct position
+
+	//saturation
+    if (y > pow(2, NB - 1) - 1) {
+        y = pow(2, NB - 1) - 1;
+    }
+    else if (y < -pow(2, NB - 1)) {
+        y = -pow(2, NB - 1);
+    }
     return y;
 }
 
