@@ -80,7 +80,6 @@ architecture structural of MYFIR is
 
   --input coefficient delayed
   type matrix_coeff is array (10 downto 0) of std_logic_vector(8 downto 0);
-
   signal coefficients, delayed_coefficients : matrix_coeff;
   -- delayed input, and shifted version
   signal delay_myfir_data_in   : std_logic_vector(8 downto 0);
@@ -91,7 +90,7 @@ architecture structural of MYFIR is
   -- PIPE delay signals
   type matrix_pipe is array (9 downto 0) of std_logic_vector(8 - shift_input_c downto 0);
   signal pipe_delay : matrix_pipe;
-  -- mult INPUT
+  -- mult output
   type matrix_mult is array (10 downto 0) of std_logic_vector(16 - shift_input_c downto 0);
   signal mult_output : matrix_mult;
   -- adder INPUT
@@ -201,8 +200,7 @@ architecture structural of MYFIR is
     -- and "10 - shift_input_c" shifts are applied to the output of the multiplier
     -- considering that there are 10 serial sum, some overflow consideration are applied
     -- and we add 1 bit
-
-    g_shifted_adder_input:for i in 0 to 11 generate
+    g_shifted_adder_input:for i in 0 to 10 generate
       from_mult_to_adder(i) <= mult_output(i)(16) & mult_output(i)(16 - shift_input_c downto shift_output_mul_c);
     end generate;
 
@@ -236,7 +234,7 @@ architecture structural of MYFIR is
         if (to_integer(signed(adder_output(9))) > 63)  then
           final_result <= std_logic_vector(to_signed(63, 7));
   	  else
-  		    final_result <= adder_output(9)(6 downto 0);
+  		  final_result <= adder_output(9)(6 downto 0);
         end if;
       end if;
     end process;
