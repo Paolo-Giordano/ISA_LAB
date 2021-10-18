@@ -1,0 +1,147 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/sim
+T_opt
+Z1 V2W<HaKC]f1BWO>K9EUN^70
+Z2 04 6 4 work tb_fir fast 0
+Z3 =3-52540097797c-616d4d18-b183d-1d3f
+Z4 o-quiet -auto_acc_if_foreign -work work -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/UUT=../netlist/MYFIR.sdf -suppress 1948
+Z5 n@_opt
+Z6 OL;O;6.5c;42
+Eclk_gen
+Z7 w1634411610
+Z8 DPx17 __model_tech/ieee 18 std_logic_unsigned 0 22 hEMVMlaNCR^<OOoVNV;m90
+Z9 DPx17 __model_tech/ieee 15 std_logic_arith 0 22 GJbAT?7@hRQU9IQ702DT]2
+Z10 DPx17 __model_tech/ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+31
+Z11 8../tb/clk_gen.vhd
+Z12 F../tb/clk_gen.vhd
+l0
+L6
+Z13 VlKk0OVG2Lg8n7K0PBj]Ka2
+Z14 OL;C;6.5c;42
+Z15 o-93 -work ./work
+Z16 tExplicit 1
+Z17 !s100 E>bm2@VV?98=]E?]lC]HR3
+Abeh
+R8
+R9
+R10
+DEx60 /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/sim/work 7 clk_gen 0 22 lKk0OVG2Lg8n7K0PBj]Ka2
+31
+Mx3 17 __model_tech/ieee 14 std_logic_1164
+Mx2 17 __model_tech/ieee 15 std_logic_arith
+Mx1 17 __model_tech/ieee 18 std_logic_unsigned
+l19
+L13
+Z18 VYZ[@=J:KK9n8oU7DJ5WL_1
+R14
+R15
+R16
+Z19 !s100 MO9U]?[b0PZoGY`n]l0km2
+Edata_maker
+Z20 w1634543630
+Z21 DPx16 __model_tech/std 6 textio 0 22 m2KQDRRhmF833<<DjYdL70
+Z22 DPx17 __model_tech/ieee 16 std_logic_textio 0 22 8YS?iX`WD1REQG`ZRYQGB2
+R8
+Z23 DPx17 __model_tech/ieee 11 numeric_std 0 22 =NSdli^?T5OD8;4F<blj<3
+R9
+R10
+31
+Z24 8../tb/data_maker_new.vhd
+Z25 F../tb/data_maker_new.vhd
+l0
+L11
+Z26 VFh:idEonSK]Rd;VGFYMC60
+R14
+R15
+R16
+Z27 !s100 l^5jAU7SQY6A;<NmjZl><2
+Abeh
+R21
+R22
+R8
+R23
+R9
+R10
+DEx60 /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/sim/work 10 data_maker 0 22 Fh:idEonSK]Rd;VGFYMC60
+31
+Mx6 17 __model_tech/ieee 14 std_logic_1164
+Mx5 17 __model_tech/ieee 15 std_logic_arith
+Mx4 17 __model_tech/ieee 11 numeric_std
+Z28 Mx3 17 __model_tech/ieee 18 std_logic_unsigned
+Z29 Mx2 17 __model_tech/ieee 16 std_logic_textio
+Z30 Mx1 16 __model_tech/std 6 textio
+l39
+L32
+Z31 V@kZ^4E>JTOz^XJJ]G[QSS0
+R14
+R15
+R16
+Z32 !s100 OGKfGokC>ffzVROZGK77=2
+Edata_sink
+Z33 w1634413048
+R21
+R22
+R8
+R9
+R10
+31
+Z34 8../tb/data_sink.vhd
+Z35 F../tb/data_sink.vhd
+l0
+L11
+Z36 V7akaE5lUbo[Y[UMaYmRkA0
+R14
+R15
+R16
+Z37 !s100 Ykb>>ZLbCdaDam<WE8J_T2
+Abeh
+R21
+R22
+R8
+R9
+R10
+DEx60 /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/sim/work 9 data_sink 0 22 7akaE5lUbo[Y[UMaYmRkA0
+31
+Mx5 17 __model_tech/ieee 14 std_logic_1164
+Mx4 17 __model_tech/ieee 15 std_logic_arith
+R28
+R29
+R30
+l21
+L19
+Z38 VDiO`gccEA28fbonACXhJn3
+R14
+R15
+R16
+Z39 !s100 n9UR<hjF7g24aFF1]Clcf1
+vMYFIR
+Z40 I=?KzE]PTzm@?>iD]V<GWz3
+Z41 VhoN3e>3``YilKZQn?UDE;0
+Z42 w1634552692
+Z43 8../netlist/MYFIR.v
+Z44 F../netlist/MYFIR.v
+L0 8
+Z45 OL;L;6.5c;42
+r1
+31
+Z46 o-work ./work
+Z47 n@m@y@f@i@r
+Z48 !s100 i4=3zG[]n6oYR0Dh0kR<j1
+!s85 0
+vtb_fir
+Z49 I6IF<K3R[CM0=hIFTT9QC13
+Z50 Vn4ToFGQLaei@:>cm_n>5j1
+Z51 w1634553107
+Z52 8../tb/tb_fir.v
+Z53 F../tb/tb_fir.v
+L0 3
+R45
+r1
+31
+R46
+Z54 !s100 Oe8j96:6e]6aS:aIjPo9b0
+!s85 0

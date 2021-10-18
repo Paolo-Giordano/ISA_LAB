@@ -1,0 +1,158 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : MYFIR
+Version: O-2018.06-SP4
+Date   : Mon Oct 18 12:24:51 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: i_reg_in_data/REGISTER_NBIT_OUT_Q_reg[5]
+              (rising edge-triggered flip-flop clocked by MYCLK)
+  Endpoint: i_reg_out_data/REGISTER_NBIT_OUT_Q_reg[8]
+            (rising edge-triggered flip-flop clocked by MYCLK)
+  Path Group: MYCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MYFIR              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MYCLK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  i_reg_in_data/REGISTER_NBIT_OUT_Q_reg[5]/CK (DFFR_X1)
+                                                          0.00       0.00 r
+  i_reg_in_data/REGISTER_NBIT_OUT_Q_reg[5]/Q (DFFR_X1)
+                                                          0.12       0.12 r
+  i_reg_in_data/REGISTER_NBIT_OUT_Q[5] (REGISTER_NBIT_N_g9_2)
+                                                          0.00       0.12 r
+  i_mult_0/MULTIPLIER_IN_B[1] (MULTIPLIER_NBIT_N1_g9_N2_g5_0)
+                                                          0.00       0.12 r
+  i_mult_0/mult_30/b[1] (MULTIPLIER_NBIT_N1_g9_N2_g5_0_DW_mult_tc_0)
+                                                          0.00       0.12 r
+  i_mult_0/mult_30/U171/ZN (AND2_X1)                      0.05       0.17 r
+  i_mult_0/mult_30/U39/CO (HA_X1)                         0.06       0.23 r
+  i_mult_0/mult_30/U37/S (FA_X1)                          0.11       0.34 f
+  i_mult_0/mult_30/U178/ZN (INV_X1)                       0.04       0.37 r
+  i_mult_0/mult_30/U196/ZN (OAI222_X1)                    0.05       0.42 f
+  i_mult_0/mult_30/U154/ZN (NAND2_X1)                     0.03       0.45 r
+  i_mult_0/mult_30/U158/ZN (AND3_X1)                      0.07       0.52 r
+  i_mult_0/mult_30/U195/ZN (OAI222_X1)                    0.05       0.57 f
+  i_mult_0/mult_30/U142/ZN (NAND2_X1)                     0.04       0.61 r
+  i_mult_0/mult_30/U103/ZN (NAND3_X1)                     0.04       0.65 f
+  i_mult_0/mult_30/U145/ZN (NAND2_X1)                     0.04       0.69 r
+  i_mult_0/mult_30/U148/ZN (NAND3_X1)                     0.04       0.72 f
+  i_mult_0/mult_30/U128/Z (XOR2_X1)                       0.07       0.80 f
+  i_mult_0/mult_30/product[8] (MULTIPLIER_NBIT_N1_g9_N2_g5_0_DW_mult_tc_0)
+                                                          0.00       0.80 f
+  i_mult_0/MULTIPLIER_OUT_PRODUCT[8] (MULTIPLIER_NBIT_N1_g9_N2_g5_0)
+                                                          0.00       0.80 f
+  i_adder_1/ADDER_IN_A[2] (ADDER_NBIT_N_g8_0)             0.00       0.80 f
+  i_adder_1/add_24/A[2] (ADDER_NBIT_N_g8_0_DW01_add_0)
+                                                          0.00       0.80 f
+  i_adder_1/add_24/U1_2/CO (FA_X1)                        0.10       0.90 f
+  i_adder_1/add_24/U1_3/S (FA_X1)                         0.14       1.03 r
+  i_adder_1/add_24/SUM[3] (ADDER_NBIT_N_g8_0_DW01_add_0)
+                                                          0.00       1.03 r
+  i_adder_1/ADDER_OUT_SUM[3] (ADDER_NBIT_N_g8_0)          0.00       1.03 r
+  i_adder_1_0/ADDER_IN_B[3] (ADDER_NBIT_N_g8_9)           0.00       1.03 r
+  i_adder_1_0/add_24/B[3] (ADDER_NBIT_N_g8_9_DW01_add_0)
+                                                          0.00       1.03 r
+  i_adder_1_0/add_24/U1_3/S (FA_X1)                       0.12       1.15 f
+  i_adder_1_0/add_24/SUM[3] (ADDER_NBIT_N_g8_9_DW01_add_0)
+                                                          0.00       1.15 f
+  i_adder_1_0/ADDER_OUT_SUM[3] (ADDER_NBIT_N_g8_9)        0.00       1.15 f
+  i_adder_2/ADDER_IN_B[3] (ADDER_NBIT_N_g8_8)             0.00       1.15 f
+  i_adder_2/add_24/B[3] (ADDER_NBIT_N_g8_8_DW01_add_0)
+                                                          0.00       1.15 f
+  i_adder_2/add_24/U1_3/CO (FA_X1)                        0.10       1.26 f
+  i_adder_2/add_24/U1_4/S (FA_X1)                         0.14       1.39 r
+  i_adder_2/add_24/SUM[4] (ADDER_NBIT_N_g8_8_DW01_add_0)
+                                                          0.00       1.39 r
+  i_adder_2/ADDER_OUT_SUM[4] (ADDER_NBIT_N_g8_8)          0.00       1.39 r
+  i_adder_3/ADDER_IN_B[4] (ADDER_NBIT_N_g8_7)             0.00       1.39 r
+  i_adder_3/add_24/B[4] (ADDER_NBIT_N_g8_7_DW01_add_0)
+                                                          0.00       1.39 r
+  i_adder_3/add_24/U1_4/S (FA_X1)                         0.12       1.51 f
+  i_adder_3/add_24/SUM[4] (ADDER_NBIT_N_g8_7_DW01_add_0)
+                                                          0.00       1.51 f
+  i_adder_3/ADDER_OUT_SUM[4] (ADDER_NBIT_N_g8_7)          0.00       1.51 f
+  i_adder_4/ADDER_IN_B[4] (ADDER_NBIT_N_g8_6)             0.00       1.51 f
+  i_adder_4/add_24/B[4] (ADDER_NBIT_N_g8_6_DW01_add_0)
+                                                          0.00       1.51 f
+  i_adder_4/add_24/U1_4/CO (FA_X1)                        0.10       1.62 f
+  i_adder_4/add_24/U1_5/CO (FA_X1)                        0.09       1.71 f
+  i_adder_4/add_24/U1_6/S (FA_X1)                         0.14       1.84 r
+  i_adder_4/add_24/SUM[6] (ADDER_NBIT_N_g8_6_DW01_add_0)
+                                                          0.00       1.84 r
+  i_adder_4/ADDER_OUT_SUM[6] (ADDER_NBIT_N_g8_6)          0.00       1.84 r
+  i_adder_5/ADDER_IN_B[6] (ADDER_NBIT_N_g8_5)             0.00       1.84 r
+  i_adder_5/add_24/B[6] (ADDER_NBIT_N_g8_5_DW01_add_0)
+                                                          0.00       1.84 r
+  i_adder_5/add_24/U1_6/S (FA_X1)                         0.12       1.96 f
+  i_adder_5/add_24/SUM[6] (ADDER_NBIT_N_g8_5_DW01_add_0)
+                                                          0.00       1.96 f
+  i_adder_5/ADDER_OUT_SUM[6] (ADDER_NBIT_N_g8_5)          0.00       1.96 f
+  i_adder_6/ADDER_IN_B[6] (ADDER_NBIT_N_g8_4)             0.00       1.96 f
+  i_adder_6/add_24/B[6] (ADDER_NBIT_N_g8_4_DW01_add_0)
+                                                          0.00       1.96 f
+  i_adder_6/add_24/U1_6/S (FA_X1)                         0.15       2.11 r
+  i_adder_6/add_24/SUM[6] (ADDER_NBIT_N_g8_4_DW01_add_0)
+                                                          0.00       2.11 r
+  i_adder_6/ADDER_OUT_SUM[6] (ADDER_NBIT_N_g8_4)          0.00       2.11 r
+  i_adder_7/ADDER_IN_B[6] (ADDER_NBIT_N_g8_3)             0.00       2.11 r
+  i_adder_7/add_24/B[6] (ADDER_NBIT_N_g8_3_DW01_add_0)
+                                                          0.00       2.11 r
+  i_adder_7/add_24/U1_6/S (FA_X1)                         0.12       2.23 f
+  i_adder_7/add_24/SUM[6] (ADDER_NBIT_N_g8_3_DW01_add_0)
+                                                          0.00       2.23 f
+  i_adder_7/ADDER_OUT_SUM[6] (ADDER_NBIT_N_g8_3)          0.00       2.23 f
+  i_adder_8/ADDER_IN_B[6] (ADDER_NBIT_N_g8_2)             0.00       2.23 f
+  i_adder_8/add_24/B[6] (ADDER_NBIT_N_g8_2_DW01_add_0)
+                                                          0.00       2.23 f
+  i_adder_8/add_24/U1_6/CO (FA_X1)                        0.10       2.34 f
+  i_adder_8/add_24/U1_7/S (FA_X1)                         0.14       2.47 r
+  i_adder_8/add_24/SUM[7] (ADDER_NBIT_N_g8_2_DW01_add_0)
+                                                          0.00       2.47 r
+  i_adder_8/ADDER_OUT_SUM[7] (ADDER_NBIT_N_g8_2)          0.00       2.47 r
+  i_adder_9/ADDER_IN_B[7] (ADDER_NBIT_N_g8_1)             0.00       2.47 r
+  i_adder_9/add_24/B[7] (ADDER_NBIT_N_g8_1_DW01_add_0)
+                                                          0.00       2.47 r
+  i_adder_9/add_24/U1_7/S (FA_X1)                         0.13       2.60 f
+  i_adder_9/add_24/SUM[7] (ADDER_NBIT_N_g8_1_DW01_add_0)
+                                                          0.00       2.60 f
+  i_adder_9/ADDER_OUT_SUM[7] (ADDER_NBIT_N_g8_1)          0.00       2.60 f
+  U55/ZN (NOR2_X1)                                        0.06       2.66 r
+  U25/Z (BUF_X1)                                          0.04       2.70 r
+  U42/ZN (OAI21_X1)                                       0.03       2.73 f
+  i_reg_out_data/REGISTER_NBIT_IN_D[8] (REGISTER_NBIT_N_g9_1)
+                                                          0.00       2.73 f
+  i_reg_out_data/U10/ZN (NAND2_X1)                        0.03       2.75 r
+  i_reg_out_data/U5/ZN (NAND2_X1)                         0.03       2.78 f
+  i_reg_out_data/REGISTER_NBIT_OUT_Q_reg[8]/D (DFFR_X1)
+                                                          0.01       2.79 f
+  data arrival time                                                  2.79
+
+  clock MYCLK (rise edge)                                 2.90       2.90
+  clock network delay (ideal)                             0.00       2.90
+  clock uncertainty                                      -0.07       2.83
+  i_reg_out_data/REGISTER_NBIT_OUT_Q_reg[8]/CK (DFFR_X1)
+                                                          0.00       2.83 r
+  library setup time                                     -0.04       2.79
+  data required time                                                 2.79
+  --------------------------------------------------------------------------
+  data required time                                                 2.79
+  data arrival time                                                 -2.79
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
