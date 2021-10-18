@@ -3,37 +3,11 @@ m255
 cModel Technology
 d/home/isa03_2021_2022/Lab_ISA/Lab_1/Michelangelo/sim
 T_opt
-V=`ZnMDSO6f:_]LP7=7h[92
+Vl5FB]2anknO?RdaAC90X^2
 06 6 4 ./work tb_fir fast 0
-o-quiet -auto_acc_if_foreign -work work
+o-quiet -auto_acc_if_foreign -work work -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/UUT=../netlist/myfir.sdf -suppress 1948
 tExplicit 1
 OE;O;6.2g;35
-Eadder
-w1634501557
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-31
-8../src/adder.vhd
-F../src/adder.vhd
-l0
-L5
-VFQZemJ_[36_X^G05ljoXb1
-OE;C;6.2g;35
-o-93 -work ./work
-tExplicit 1
-Abeh
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work adder FQZemJ_[36_X^G05ljoXb1
-31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-l17
-L15
-VGi<L[2bD8o;]eU7F^BX?[2
-OE;C;6.2g;35
-o-93 -work ./work
-tExplicit 1
 Eclk_gen
 w1634501557
 DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
@@ -133,114 +107,23 @@ VDiO`gccEA28fbonACXhJn3
 OE;C;6.2g;35
 o-93 -work ./work
 tExplicit 1
-Emultiplier
-w1634501557
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+vMYFIR
+I1E?l9J6?N[X]GhiH@`6HA0
+VhoN3e>3``YilKZQn?UDE;0
+w1634582665
+8../netlist/myfir.v
+F../netlist/myfir.v
+L0 8
+VhoN3e>3``YilKZQn?UDE;0
+OE;L;6.2g;35
+r1
 31
-8../src/multiplier.vhd
-F../src/multiplier.vhd
-l0
-L5
-VWGT`F8:gWN5^UM=eX2JO[2
-OE;C;6.2g;35
-o-93 -work ./work
-tExplicit 1
-Abeh
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work multiplier WGT`F8:gWN5^UM=eX2JO[2
-31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-l17
-L15
-V7G<lkGRkIIo?4XIA1@5_e2
-OE;C;6.2g;35
-o-93 -work ./work
-tExplicit 1
-Emyfir
-w1634501557
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-31
-8../src/MYFIR.vhd
-F../src/MYFIR.vhd
-l0
-L4
-V:Tll4=i00<V@An;;9iUH_1
-OE;C;6.2g;35
-o-93 -work ./work
-tExplicit 1
-Artl
-DE work saturation_unit GlAfooOSO4=<Q82f3?Y7=0
-DE work adder FQZemJ_[36_X^G05ljoXb1
-DE work multiplier WGT`F8:gWN5^UM=eX2JO[2
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work myfir :Tll4=i00<V@An;;9iUH_1
-31
-M1 ieee std_logic_1164
-l64
-L26
-VPm4QE9?AUZJ7z?zn?GeRd1
-OE;C;6.2g;35
-o-93 -work ./work
-tExplicit 1
-Esaturation_unit
-w1634501557
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-31
-8../src/saturation_unit.vhd
-F../src/saturation_unit.vhd
-l0
-L5
-VGlAfooOSO4=<Q82f3?Y7=0
-OE;C;6.2g;35
-o-93 -work ./work
-tExplicit 1
-Abeh
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work saturation_unit GlAfooOSO4=<Q82f3?Y7=0
-31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-l15
-L13
-V=iDQ;ERa29TOaeYRYe]Uj3
-OE;C;6.2g;35
-o-93 -work ./work
-tExplicit 1
-Etb_adder
-w1634501557
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../tb/tb_adder.vhd
-F../tb/tb_adder.vhd
-l0
-L5
-VBMOmAhXDBRX:m<^z2NFV@3
-OE;C;6.2g;35
-31
-o-93 -work ./work
-tExplicit 1
-Abeh
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work tb_adder BMOmAhXDBRX:m<^z2NFV@3
-l26
-L8
-V[_KZ^24UX0@K6M>UlWje61
-OE;C;6.2g;35
-31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-o-93 -work ./work
-tExplicit 1
+o-work ./work
+n@m@y@f@i@r
 vtb_fir
-I=06:^8hIa=Sj77[GDckFL2
+Ik^h5^lL?<WfK45K=23^iC3
 Vn4ToFGQLaei@:>cm_n>5j1
-w1634504688
+w1634584320
 8../tb/tb_fir.v
 F../tb/tb_fir.v
 L0 3
@@ -249,55 +132,3 @@ OE;L;6.2g;35
 r1
 31
 o-work ./work
-Etb_multiplier
-w1634501557
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../tb/tb_multiplier.vhd
-F../tb/tb_multiplier.vhd
-l0
-L5
-VQbKzE>dn6hJ^bL0D[oYMX2
-OE;C;6.2g;35
-31
-o-93 -work ./work
-tExplicit 1
-Abeh
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work tb_multiplier QbKzE>dn6hJ^bL0D[oYMX2
-l26
-L8
-VNJOD4^aBRA:Go6`h:`KlY1
-OE;C;6.2g;35
-31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-o-93 -work ./work
-tExplicit 1
-Etb_saturation_unit
-w1634501557
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../tb/tb_saturation_unit.vhd
-F../tb/tb_saturation_unit.vhd
-l0
-L5
-V1ddLT76V1K]@2JN[ogA[h2
-OE;C;6.2g;35
-31
-o-93 -work ./work
-tExplicit 1
-Abeh
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work tb_saturation_unit 1ddLT76V1K]@2JN[ogA[h2
-l22
-L8
-VlMCfMZ_0]024^Z?EQZaM30
-OE;C;6.2g;35
-31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-o-93 -work ./work
-tExplicit 1

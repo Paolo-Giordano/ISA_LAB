@@ -45,7 +45,7 @@ module tb_fir ();
 		 .H10(H10_i),
 		 .END_SIM(END_SIM_i));
 
-   myfir UUT(.MYFIR_IN_RST_n(RST_n_i),
+   MYFIR UUT(.MYFIR_IN_RST_n(RST_n_i),
        .MYFIR_IN_CLK(CLK_i),
        .MYFIR_IN_b0(H0_i),
 	     .MYFIR_IN_b1(H1_i),

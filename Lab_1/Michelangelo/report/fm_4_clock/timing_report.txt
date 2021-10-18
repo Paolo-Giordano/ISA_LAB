@@ -1,0 +1,89 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : MYFIR
+Version: O-2018.06-SP4
+Date   : Mon Oct 18 20:45:46 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: d_din_reg_1__3_
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: MYFIR_OUT_DOUT_reg_2_
+            (rising edge-triggered flip-flop clocked by MY_CLK)
+  Path Group: MY_CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  MYFIR              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MY_CLK (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  d_din_reg_1__3_/CK (DFF_X1)                             0.00       0.00 r
+  d_din_reg_1__3_/Q (DFF_X1)                              0.15       0.15 r
+  i_MULT_id_1_mult_21_U236/ZN (INV_X1)                    0.05       0.20 f
+  i_MULT_id_1_mult_21_U232/Z (XOR2_X1)                    0.18       0.37 r
+  i_MULT_id_1_mult_21_U328/ZN (NAND2_X1)                  0.11       0.48 f
+  i_MULT_id_1_mult_21_U312/ZN (OAI22_X1)                  0.08       0.56 r
+  i_MULT_id_1_mult_21_U49/S (HA_X1)                       0.08       0.65 r
+  i_MULT_id_1_mult_21_U48/S (FA_X1)                       0.12       0.77 f
+  i_MULT_id_1_mult_21_U260/ZN (AOI222_X1)                 0.11       0.88 r
+  i_MULT_id_1_mult_21_U219/ZN (INV_X1)                    0.03       0.91 f
+  i_MULT_id_1_mult_21_U259/ZN (AOI222_X1)                 0.09       1.00 r
+  i_MULT_id_1_mult_21_U218/ZN (INV_X1)                    0.03       1.03 f
+  i_MULT_id_1_mult_21_U258/ZN (AOI222_X1)                 0.09       1.12 r
+  i_MULT_id_1_mult_21_U221/ZN (INV_X1)                    0.03       1.15 f
+  i_MULT_id_1_mult_21_U257/ZN (AOI222_X1)                 0.09       1.24 r
+  i_MULT_id_1_mult_21_U220/ZN (INV_X1)                    0.03       1.27 f
+  i_MULT_id_1_mult_21_U256/ZN (AOI222_X1)                 0.09       1.36 r
+  i_MULT_id_1_mult_21_U229/ZN (INV_X1)                    0.03       1.39 f
+  i_MULT_id_1_mult_21_U9/CO (FA_X1)                       0.09       1.48 f
+  i_MULT_id_1_mult_21_U8/CO (FA_X1)                       0.09       1.57 f
+  i_MULT_id_1_mult_21_U7/CO (FA_X1)                       0.09       1.66 f
+  i_MULT_id_1_mult_21_U6/CO (FA_X1)                       0.09       1.75 f
+  i_MULT_id_1_mult_21_U5/CO (FA_X1)                       0.09       1.84 f
+  i_MULT_id_1_mult_21_U4/CO (FA_X1)                       0.09       1.93 f
+  i_MULT_id_1_mult_21_U3/CO (FA_X1)                       0.09       2.02 f
+  i_MULT_id_1_mult_21_U249/Z (XOR2_X1)                    0.08       2.10 f
+  i_MULT_id_1_mult_21_U247/Z (XOR2_X1)                    0.07       2.17 f
+  i_ADD0_id_add_21_U1_7/S (FA_X1)                         0.15       2.32 r
+  i_ADD_id_0_add_21_U1_7/S (FA_X1)                        0.12       2.43 f
+  i_ADD_id_1_add_21_U1_7/S (FA_X1)                        0.15       2.58 r
+  i_ADD_id_2_add_21_U1_7/S (FA_X1)                        0.12       2.70 f
+  i_ADD_id_3_add_21_U1_7/S (FA_X1)                        0.15       2.84 r
+  i_ADD_id_4_add_21_U1_7/S (FA_X1)                        0.12       2.96 f
+  i_ADD_id_5_add_21_U1_7/S (FA_X1)                        0.15       3.10 r
+  i_ADD_id_6_add_21_U1_7/S (FA_X1)                        0.12       3.22 f
+  i_ADD_id_7_add_21_U1_7/S (FA_X1)                        0.15       3.37 r
+  i_ADD_id_8_add_21_U1_7/S (FA_X1)                        0.12       3.49 f
+  i_SAT_id_U3/ZN (XNOR2_X1)                               0.12       3.61 r
+  i_SAT_id_U4/ZN (NOR2_X1)                                0.04       3.65 f
+  i_SAT_id_U2/ZN (INV_X1)                                 0.06       3.71 r
+  i_SAT_id_U15/ZN (NAND2_X1)                              0.04       3.75 f
+  U427/ZN (NAND2_X1)                                      0.03       3.78 r
+  U426/ZN (OAI21_X1)                                      0.03       3.81 f
+  MYFIR_OUT_DOUT_reg_2_/D (DFF_X1)                        0.01       3.82 f
+  data arrival time                                                  3.82
+
+  clock MY_CLK (rise edge)                               13.20      13.20
+  clock network delay (ideal)                             0.00      13.20
+  clock uncertainty                                      -0.07      13.13
+  MYFIR_OUT_DOUT_reg_2_/CK (DFF_X1)                       0.00      13.13 r
+  library setup time                                     -0.05      13.08
+  data required time                                                13.08
+  --------------------------------------------------------------------------
+  data required time                                                13.08
+  data arrival time                                                 -3.82
+  --------------------------------------------------------------------------
+  slack (MET)                                                        9.27
+
+
+1

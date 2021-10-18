@@ -1,0 +1,14 @@
+#ungroup the cells to flatten the hierarchy
+ungroup -all -flatten
+
+#impose verilog rules for the names of internal signals
+change_names -hierarchy -rules verilog
+
+#save a file describing the delay of the netlist
+write_sdf ../netlist/myfir.sdf
+
+#save the netlist in verilog
+write -f verilog -hierarchy -output ../netlist/myfir.v
+
+#save the constraints to the input and output ports
+write_sdc ../netlist/myfir.sdc
