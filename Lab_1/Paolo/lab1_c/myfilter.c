@@ -5,7 +5,7 @@
 
 #define NT 11 /// number of coeffs
 #define NB 9 /// number of bits
-#define N_SHIFT 0
+#define N_SHIFT 4
 
 
 ///data out valid after that the first 10 valid sample are received
@@ -55,7 +55,7 @@ int myfilter(int x, int vin, int* vout)
     y = 0;
     for (i=0; i<NT; i++)
     {
-        y += (sx[i]*b[i]) >> (NB+1) ;      ///shift the mult result to work with less bit
+        y += (sx[i]*b[i]) >> (NB-3) ;      ///shift the mult result to work with less bit
     }
 
     y = y << 2;         ///bring back the fixed point at the correct position

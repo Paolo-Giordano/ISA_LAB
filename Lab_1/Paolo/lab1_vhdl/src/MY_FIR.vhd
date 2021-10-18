@@ -76,7 +76,7 @@ architecture structural of MYFIR is
     );
   end component;
 
-  constant shift_input_c      : integer := 0;
+  constant shift_input_c      : integer := 4;
   constant shift_output_mul_c : integer := 10 - shift_input_c;
 
   --input coefficient delayed
@@ -204,7 +204,7 @@ architecture structural of MYFIR is
     -- considering that there are 10 serial sum, some overflow consideration are applied
     -- and we add 1 bit
     g_shifted_adder_input:for i in 0 to 10 generate
-      from_mult_to_adder(i) <= mult_output(i)(16) & mult_output(i)(16 - shift_input_c downto shift_output_mul_c);
+      from_mult_to_adder(i) <= mult_output(i)(16 - shift_input_c) & mult_output(i)(16 - shift_input_c downto shift_output_mul_c);
     end generate;
 
     i_adder_1: ADDER_NBIT generic map (8) port map(

@@ -1,0 +1,52 @@
+# //  ModelSim SE 6.2g Feb 21 2007 Linux 3.10.0-957.5.1.el7.x86_64
+# //
+# //  Copyright 1991-2007 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Project file /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/tb_myfir_server.mpf was not found.
+# Unable to open project.
+# Loading project tb_myfir_server
+do simulation_myfir.do
+# ps
+# work.tb_fir
+# 100
+# us
+# Compile of ADDER_NBIT.vhd was successful.
+# Compile of MULTIPLIER_NBIT.vhd was successful.
+# Compile of MY_FIR.vhd was successful.
+# Compile of REGISTER_NBIT.vhd was successful.
+# Compile of SHIFT_REG_1bit.vhd was successful.
+# Compile of clk_gen.vhd was successful.
+# Compile of data_maker_new.vhd was successful.
+# Compile of data_sink.vhd was successful.
+# Compile of tb_fir.v was successful.
+# Compile of tb_fir.vhd was successful.
+# 10 compiles, 0 failed with no errors. 
+# vsim -t ps work.tb_fir 
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading /software/mentor/modelsim_6.2g/linux/../std.standard
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_1164(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_arith(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_unsigned(body)
+# Loading work.tb_fir(tb)#1
+# Loading work.clk_gen(beh)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.numeric_std(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../std.textio(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_textio(body)
+# Loading work.data_maker(beh)#1
+# Loading work.myfir(structural)#1
+# Loading work.register_nbit(behavioural)#1
+# Loading work.shift_reg_1bit(behavioural)#1
+# Loading work.register_nbit(behavioural)#2
+# Loading work.multiplier_nbit(behavioural)#1
+# Loading work.adder_nbit(behavioural)#1
+# Loading work.data_sink(beh)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_fir/i_uut_id
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 2  Instance: /tb_fir/i_uut_id
