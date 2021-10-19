@@ -9,5 +9,5 @@ vlog -work ./work ../tb/tb_fir.v
 vsim -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/UUT=../netlist/filter.sdf work.tb_fir
 vcd file ../vcd/filter_syn.vcd
 vcd add /tb_fir/UUT/*
-run 3 us
+run 4 us
 
