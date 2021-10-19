@@ -1,0 +1,85 @@
+# //  ModelSim SE 6.2g Feb 21 2007 Linux 3.10.0-957.5.1.el7.x86_64
+# //
+# //  Copyright 1991-2007 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading project tb_myfir_server
+# reading /software/mentor/modelsim_6.2g/linux/../modelsim.ini
+# Loading project MYFIR
+# Compile of ADDER_NBIT.vhd failed with 1 errors.
+# Compile of FF.vhd failed with 1 errors.
+# Compile of filter.vhd failed with 1 errors.
+# Compile of MULTIPLIER_NBIT.vhd failed with 1 errors.
+# Compile of REGISTER_NBIT.vhd failed with 1 errors.
+# Compile of SATURATION_UNIT.vhd failed with 1 errors.
+# Compile of clk_gen.vhd failed with 1 errors.
+# Compile of data_maker_new.vhd failed with 1 errors.
+# Compile of data_sink.vhd failed with 1 errors.
+# Compile of tb_fir.v failed with 1 errors.
+# 10 compiles, 10 failed with 10 errors. 
+vlib work
+# Compile of ADDER_NBIT.vhd was successful.
+# Compile of FF.vhd was successful.
+# Compile of filter.vhd was successful.
+# Compile of MULTIPLIER_NBIT.vhd was successful.
+# Compile of REGISTER_NBIT.vhd was successful.
+# Compile of SATURATION_UNIT.vhd was successful.
+# Compile of clk_gen.vhd was successful.
+# Compile of data_maker_new.vhd was successful.
+# Compile of data_sink.vhd was successful.
+# Compile of tb_fir.v was successful.
+# 10 compiles, 0 failed with no errors. 
+do simulation.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# ps
+# work.tb_fir
+# 1
+# us
+# Compile of ADDER_NBIT.vhd was successful.
+# Compile of FF.vhd was successful.
+# Compile of filter.vhd was successful.
+# Compile of MULTIPLIER_NBIT.vhd was successful.
+# Compile of REGISTER_NBIT.vhd was successful.
+# Compile of SATURATION_UNIT.vhd was successful.
+# Compile of clk_gen.vhd was successful.
+# Compile of data_maker_new.vhd was successful.
+# Compile of data_sink.vhd was successful.
+# Compile of tb_fir.v was successful.
+# 10 compiles, 0 failed with no errors. 
+# vsim -t ps work.tb_fir 
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading work.tb_fir(fast)
+# Loading /software/mentor/modelsim_6.2g/linux/../std.standard
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_1164(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_arith(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_unsigned(body)
+# Loading work.clk_gen(beh)
+# Loading /software/mentor/modelsim_6.2g/linux/../std.textio(body)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_textio(body)
+# Loading work.data_maker(beh)
+# Loading /software/mentor/modelsim_6.2g/linux/../ieee.numeric_std(body)
+# Loading work.filter(structural)#1
+# Loading work.register_nbit(behavioral)#1
+# Loading work.ff(behavioral)
+# Loading work.register_nbit(behavioral)#2
+# Loading work.multiplier_nbit(behavioral)#1
+# Loading work.adder_nbit(behavioral)#1
+# Loading work.saturation_unit(behavioral)
+# Loading work.data_sink(beh)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 3  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 3  Instance: /tb_fir/UUT/i_su
