@@ -8,27 +8,27 @@ end entity;
 
 architecture tb of tb_fir is
 
-  component MYFIR is
-    port (
-        MYFIR_IN_RST_n          : in std_logic;
-        MYFIR_IN_CLK            : in std_logic;
-        MYFIR_IN_b0             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b1             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b2             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b3             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b4             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b5             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b6             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b7             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b8             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b9             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b10            : in std_logic_vector(8 downto 0);
-        MYFIR_IN_VIN            : in std_logic;
-        MYFIR_IN_DIN            : in std_logic_vector(8 downto 0);
-        MYFIR_OUT_VOUT          : out std_logic;
-        MYFIR_OUT_DOUT          : out std_logic_vector(8 downto 0)
-    );
-end component;
+  component filter is
+      port (
+          RST_n          : in std_logic;
+          CLK            : in std_logic;
+          b0             : in std_logic_vector(8 downto 0);
+          b1             : in std_logic_vector(8 downto 0);
+          b2             : in std_logic_vector(8 downto 0);
+          b3             : in std_logic_vector(8 downto 0);
+          b4             : in std_logic_vector(8 downto 0);
+          b5             : in std_logic_vector(8 downto 0);
+          b6             : in std_logic_vector(8 downto 0);
+          b7             : in std_logic_vector(8 downto 0);
+          b8             : in std_logic_vector(8 downto 0);
+          b9             : in std_logic_vector(8 downto 0);
+          b10            : in std_logic_vector(8 downto 0);
+          VIN            : in std_logic;
+          DIN            : in std_logic_vector(8 downto 0);
+          VOUT           : out std_logic;
+          DOUT           : out std_logic_vector(8 downto 0)
+      );
+  end component;
 
   component clk_gen is
   port (
@@ -79,7 +79,7 @@ begin
   i_SM_id: data_maker port map(CLK_i,RST_n_i,VIN_i,DIN_i,H0_i,H1_i,H2_i,
                               H3_i,H4_i,H5_i,H6_i,H7_i,H8_i,H9_i,H10_i,END_SIM_i);
 
-  i_UUT_id: MYFIR port map(RST_n_i,CLK_i,H0_i,H1_i,H2_i,H3_i,H4_i,H5_i,
+  i_UUT_id: filter port map(RST_n_i,CLK_i,H0_i,H1_i,H2_i,H3_i,H4_i,H5_i,
                            H6_i,H7_i,H8_i,H9_i,H10_i,VIN_i,DIN_i,VOUT_i,DOUT_i);
 
   i_DS_id: data_sink port map(CLK_i,RST_n_i,VOUT_i,DOUT_i);

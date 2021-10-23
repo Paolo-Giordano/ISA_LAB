@@ -44,24 +44,24 @@ module tb_fir ();
 		 .H10(H10_i),
 		 .END_SIM(END_SIM_i));
 
-   MYFIR UUT(
-       .MYFIR_IN_CLK(CLK_i),
-	     .MYFIR_IN_RST_n(RST_n_i),
-	     .MYFIR_IN_DIN(DIN_i),
-       .MYFIR_IN_VIN(VIN_i),
-	     .MYFIR_IN_b0(H0_i),
-	     .MYFIR_IN_b1(H1_i),
-	     .MYFIR_IN_b2(H2_i),
-	     .MYFIR_IN_b3(H3_i),
-       .MYFIR_IN_b4(H4_i),
-       .MYFIR_IN_b5(H5_i),
-       .MYFIR_IN_b6(H6_i),
-       .MYFIR_IN_b7(H7_i),
-       .MYFIR_IN_b8(H8_i),
-       .MYFIR_IN_b9(H9_i),
-       .MYFIR_IN_b10(H10_i),
-       .MYFIR_OUT_DOUT(DOUT_i),
-       .MYFIR_OUT_VOUT(VOUT_i));
+   FILTER UUT(
+       .CLK(CLK_i),
+	     .RST_n(RST_n_i),
+	     .DIN(DIN_i),
+       .VIN(VIN_i),
+	     .b0(H0_i),
+	     .b1(H1_i),
+	     .b2(H2_i),
+	     .b3(H3_i),
+       .b4(H4_i),
+       .b5(H5_i),
+       .b6(H6_i),
+       .b7(H7_i),
+       .b8(H8_i),
+       .b9(H9_i),
+       .b10(H10_i),
+       .DOUT(DOUT_i),
+       .VOUT(VOUT_i));
 
    data_sink DS(
     .CLK(CLK_i),

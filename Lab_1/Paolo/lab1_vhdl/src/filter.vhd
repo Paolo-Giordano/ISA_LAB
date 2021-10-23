@@ -11,29 +11,29 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity MYFIR is
+entity filter is
     port (
-        MYFIR_IN_RST_n          : in std_logic;
-        MYFIR_IN_CLK            : in std_logic;
-        MYFIR_IN_b0             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b1             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b2             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b3             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b4             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b5             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b6             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b7             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b8             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b9             : in std_logic_vector(8 downto 0);
-        MYFIR_IN_b10            : in std_logic_vector(8 downto 0);
-        MYFIR_IN_VIN            : in std_logic;
-        MYFIR_IN_DIN            : in std_logic_vector(8 downto 0);
-        MYFIR_OUT_VOUT          : out std_logic;
-        MYFIR_OUT_DOUT          : out std_logic_vector(8 downto 0)
+        RST_n          : in std_logic;
+        CLK            : in std_logic;
+        b0             : in std_logic_vector(8 downto 0);
+        b1             : in std_logic_vector(8 downto 0);
+        b2             : in std_logic_vector(8 downto 0);
+        b3             : in std_logic_vector(8 downto 0);
+        b4             : in std_logic_vector(8 downto 0);
+        b5             : in std_logic_vector(8 downto 0);
+        b6             : in std_logic_vector(8 downto 0);
+        b7             : in std_logic_vector(8 downto 0);
+        b8             : in std_logic_vector(8 downto 0);
+        b9             : in std_logic_vector(8 downto 0);
+        b10            : in std_logic_vector(8 downto 0);
+        VIN            : in std_logic;
+        DIN            : in std_logic_vector(8 downto 0);
+        VOUT           : out std_logic;
+        DOUT           : out std_logic_vector(8 downto 0)
     );
 end entity;
 
-architecture structural of MYFIR is
+architecture structural of filter is
 
   component REGISTER_NBIT is
     generic (N_g : integer := 9);
@@ -76,7 +76,7 @@ architecture structural of MYFIR is
     );
   end component;
 
-  constant shift_input_c      : integer := 0;
+  constant shift_input_c      : integer := 4;
   constant shift_output_mul_c : integer := 10 - shift_input_c;
 
   --input coefficient delayed
@@ -105,22 +105,22 @@ architecture structural of MYFIR is
   signal final_vout             : std_logic;
   begin
     --------   LOAD ALL THE COEFFICIENT BY REGISTER ------------
-    coefficients(0)  <= MYFIR_IN_b0;
-    coefficients(1)  <= MYFIR_IN_b1;
-    coefficients(2)  <= MYFIR_IN_b2;
-    coefficients(3)  <= MYFIR_IN_b3;
-    coefficients(4)  <= MYFIR_IN_b4;
-    coefficients(5)  <= MYFIR_IN_b5;
-    coefficients(6)  <= MYFIR_IN_b6;
-    coefficients(7)  <= MYFIR_IN_b7;
-    coefficients(8)  <= MYFIR_IN_b8;
-    coefficients(9)  <= MYFIR_IN_b9;
-    coefficients(10) <= MYFIR_IN_b10;
+    coefficients(0)  <= b0;
+    coefficients(1)  <= b1;
+    coefficients(2)  <= b2;
+    coefficients(3)  <= b3;
+    coefficients(4)  <= b4;
+    coefficients(5)  <= b5;
+    coefficients(6)  <= b6;
+    coefficients(7)  <= b7;
+    coefficients(8)  <= b8;
+    coefficients(9)  <= b9;
+    coefficients(10) <= b10;
 
     g_delayed_coeff: for i in 0 to 10 generate
     i_register: REGISTER_NBIT generic map(9) port map(
-    REGISTER_NBIT_IN_CLK    => MYFIR_IN_CLK,
-    REGISTER_NBIT_IN_RST_N  => MYFIR_IN_RST_n,
+    REGISTER_NBIT_IN_CLK    => CLK,
+    REGISTER_NBIT_IN_RST_N  => RST_n,
     REGISTER_NBIT_IN_EN     => '1',
     REGISTER_NBIT_IN_D      => coefficients(i),
     REGISTER_NBIT_OUT_Q     => delayed_coefficients(i)
@@ -129,20 +129,20 @@ architecture structural of MYFIR is
 
     --------------    LOAD INPUT DATA AND VIN   -----------------
 
-    p_flip_flop_vin: process (MYFIR_IN_CLK, MYFIR_IN_RST_n)
+    p_flip_flop_vin: process (CLK, RST_n)
     begin
-      if (MYFIR_IN_RST_n = '0') then
+      if (RST_n = '0') then
         delayed_myfir_vin <= '0';
-      elsif (MYFIR_IN_CLK'event and MYFIR_IN_CLK = '1') then
-        delayed_myfir_vin <= MYFIR_IN_VIN;
+      elsif (CLK'event and CLK = '1') then
+        delayed_myfir_vin <= VIN;
       end if;
     end process;
 
     i_reg_in_data: REGISTER_NBIT generic map(9) port map(
-    REGISTER_NBIT_IN_CLK    => MYFIR_IN_CLK,
-    REGISTER_NBIT_IN_RST_N  => MYFIR_IN_RST_n,
+    REGISTER_NBIT_IN_CLK    => CLK,
+    REGISTER_NBIT_IN_RST_N  => RST_n,
     REGISTER_NBIT_IN_EN     => '1',
-    REGISTER_NBIT_IN_D      => MYFIR_IN_DIN,
+    REGISTER_NBIT_IN_D      => DIN,
     REGISTER_NBIT_OUT_Q     => delay_myfir_data_in
     );
 
@@ -153,17 +153,17 @@ architecture structural of MYFIR is
     ---------------   SHIFT REGISTER TO DELAY VIN AND BRING TO VOUT   -------------
     -- 10 is the depth of shifter, because thereare 10 stages
     i_delay_vin: SHIFT_REG_1bit generic map (10) port map(
-    SHIFT_REG_IN_CLK    => MYFIR_IN_CLK,
-    SHIFT_REG_IN_RST_N  => MYFIR_IN_RST_n,
-    SHIFT_REG_IN_EN     => delayed_myfir_vin
+    SHIFT_REG_IN_CLK    => CLK,
+    SHIFT_REG_IN_RST_N  => RST_n,
+    SHIFT_REG_IN_EN     => delayed_myfir_vin,
     SHIFT_REG_IN        => delayed_myfir_vin,
     SHIFT_REG_OUT       => final_delay_myfir_vin
     );
 
     ------------       N STAGE OF PIPE    -----------------
     i_pipe_R1: REGISTER_NBIT generic map(9 - shift_input_c) port map(
-    REGISTER_NBIT_IN_CLK    => MYFIR_IN_CLK,
-    REGISTER_NBIT_IN_RST_N  => MYFIR_IN_RST_n,
+    REGISTER_NBIT_IN_CLK    => CLK,
+    REGISTER_NBIT_IN_RST_N  => RST_n,
     REGISTER_NBIT_IN_EN     => delayed_myfir_vin,
     REGISTER_NBIT_IN_D      => shifted_data_in,
     REGISTER_NBIT_OUT_Q     => pipe_delay(0)
@@ -171,8 +171,8 @@ architecture structural of MYFIR is
 
     g_pipe: for i in 1 to 9 generate
       i_pipe:  REGISTER_NBIT generic map(9 - shift_input_c) port map(
-      REGISTER_NBIT_IN_CLK    => MYFIR_IN_CLK,
-      REGISTER_NBIT_IN_RST_N  => MYFIR_IN_RST_n,
+      REGISTER_NBIT_IN_CLK    => CLK,
+      REGISTER_NBIT_IN_RST_N  => RST_n,
       REGISTER_NBIT_IN_EN     => delayed_myfir_vin,
       REGISTER_NBIT_IN_D      => pipe_delay(i-1),
       REGISTER_NBIT_OUT_Q     => pipe_delay(i)
@@ -204,7 +204,7 @@ architecture structural of MYFIR is
     -- considering that there are 10 serial sum, some overflow consideration are applied
     -- and we add 1 bit
     g_shifted_adder_input:for i in 0 to 10 generate
-      from_mult_to_adder(i) <= mult_output(i)(16) & mult_output(i)(16 - shift_input_c downto shift_output_mul_c);
+      from_mult_to_adder(i) <= mult_output(i)(16 - shift_input_c) & mult_output(i)(16 - shift_input_c downto shift_output_mul_c);
     end generate;
 
     i_adder_1: ADDER_NBIT generic map (8) port map(
@@ -247,19 +247,19 @@ architecture structural of MYFIR is
     final_vout <= delayed_myfir_vin and final_delay_myfir_vin;
 
     i_reg_out_data: REGISTER_NBIT generic map(9) port map(
-    REGISTER_NBIT_IN_CLK    => MYFIR_IN_CLK,
-    REGISTER_NBIT_IN_RST_N  => MYFIR_IN_RST_n,
+    REGISTER_NBIT_IN_CLK    => CLK,
+    REGISTER_NBIT_IN_RST_N  => RST_n,
     REGISTER_NBIT_IN_EN     => final_vout,
     REGISTER_NBIT_IN_D      => shifted_final_result,
-    REGISTER_NBIT_OUT_Q     => MYFIR_OUT_DOUT
+    REGISTER_NBIT_OUT_Q     => DOUT
     );
 
-    p_flip_flop_vout: process (MYFIR_IN_CLK, MYFIR_IN_RST_n)
+    p_flip_flop_vout: process (CLK, RST_n)
     begin
-      if (MYFIR_IN_RST_n = '0') then
-        MYFIR_OUT_VOUT <= '0';
-      elsif (MYFIR_IN_CLK'event and MYFIR_IN_CLK = '1') then
-        MYFIR_OUT_VOUT <= final_vout;
+      if (RST_n = '0') then
+        VOUT <= '0';
+      elsif (CLK'event and CLK = '1') then
+        VOUT <= final_vout;
       end if;
     end process;
 
