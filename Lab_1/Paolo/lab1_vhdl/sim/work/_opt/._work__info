@@ -3,65 +3,65 @@ m255
 cModel Technology
 d/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/sim
 T_opt
-VmJe7Zn0]YdkNK`UBGXORB0
-06 6 2 ./work tb_fir tb 1
-o-quiet -auto_acc_if_foreign -work work
+VkFJej]?Ra5PQn5obj64`O1
+06 6 4 ./work tb_fir fast 0
+o-quiet -auto_acc_if_foreign -work work -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/UUT=../netlist/filter.sdf -suppress 1948
 tExplicit 1
 OE;O;6.2g;35
 Eadder_nbit
 w1634411610
 DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-32
-8/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/ADDER_NBIT.vhd
-F/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/ADDER_NBIT.vhd
+8../src/ADDER_NBIT.vhd
+F../src/ADDER_NBIT.vhd
 l0
 L9
-Vl5hKEMl3n>QUo5zoa`ji83
+Vli@SIZY@eOf0Ro1B<l:R73
 OE;C;6.2g;35
-o-work work -2002 -explicit
+31
+o-93 -work ./work
 tExplicit 1
 Abehavioural
 DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work adder_nbit l5hKEMl3n>QUo5zoa`ji83
-32
-M2 ieee std_logic_1164
-M1 ieee numeric_std
+DE work adder_nbit li@SIZY@eOf0Ro1B<l:R73
 l21
 L18
-V9n5a4<4iGQaX]ooGdk@952
+VbFoS`RLO<;>0I<JgIHgC41
 OE;C;6.2g;35
-o-work work -2002 -explicit
+31
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-93 -work ./work
 tExplicit 1
 Eclk_gen
 w1634411610
 DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
 DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-32
-8/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/tb/clk_gen.vhd
-F/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/tb/clk_gen.vhd
+31
+8../tb/clk_gen.vhd
+F../tb/clk_gen.vhd
 l0
 L6
-Vd5g0W;<;LIGekK2n^ImmS1
+VlKk0OVG2Lg8n7K0PBj]Ka2
 OE;C;6.2g;35
-o-work work -2002 -explicit
+o-93 -work ./work
 tExplicit 1
 Abeh
 DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
 DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work clk_gen d5g0W;<;LIGekK2n^ImmS1
-32
+DE work clk_gen lKk0OVG2Lg8n7K0PBj]Ka2
+31
 M3 ieee std_logic_1164
 M2 ieee std_logic_arith
 M1 ieee std_logic_unsigned
 l19
 L13
-Vj<QW>likElFZ5R9]cVHIP2
+VYZ[@=J:KK9n8oU7DJ5WL_1
 OE;C;6.2g;35
-o-work work -2002 -explicit
+o-93 -work ./work
 tExplicit 1
 Edata_maker
 w1634543630
@@ -71,14 +71,14 @@ DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
 DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
 DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-32
-8/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/tb/data_maker_new.vhd
-F/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/tb/data_maker_new.vhd
+31
+8../tb/data_maker_new.vhd
+F../tb/data_maker_new.vhd
 l0
 L11
-V<JdoOTBQ[fSV;Z_46ia3?1
+VFh:idEonSK]Rd;VGFYMC60
 OE;C;6.2g;35
-o-work work -2002 -explicit
+o-93 -work ./work
 tExplicit 1
 Abeh
 DP std textio K]Z^fghZ6B=BjnK5NomDT3
@@ -87,8 +87,8 @@ DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
 DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
 DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work data_maker <JdoOTBQ[fSV;Z_46ia3?1
-32
+DE work data_maker Fh:idEonSK]Rd;VGFYMC60
+31
 M6 ieee std_logic_1164
 M5 ieee std_logic_arith
 M4 ieee numeric_std
@@ -97,25 +97,25 @@ M2 ieee std_logic_textio
 M1 std textio
 l39
 L32
-Ve6U3d=7Y<bS8Z[>Lz=ak=2
+V@kZ^4E>JTOz^XJJ]G[QSS0
 OE;C;6.2g;35
-o-work work -2002 -explicit
+o-93 -work ./work
 tExplicit 1
 Edata_sink
-w1634413048
+w1635025942
 DP std textio K]Z^fghZ6B=BjnK5NomDT3
 DP ieee std_logic_textio 8YS?iX`WD1REQG`ZRYQGB2
 DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
 DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-32
-8/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/tb/data_sink.vhd
-F/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/tb/data_sink.vhd
+31
+8../tb/data_sink.vhd
+F../tb/data_sink.vhd
 l0
 L11
-VEmA3NES6]B6JCaVUeZ=m]3
+V7akaE5lUbo[Y[UMaYmRkA0
 OE;C;6.2g;35
-o-work work -2002 -explicit
+o-93 -work ./work
 tExplicit 1
 Abeh
 DP std textio K]Z^fghZ6B=BjnK5NomDT3
@@ -123,8 +123,8 @@ DP ieee std_logic_textio 8YS?iX`WD1REQG`ZRYQGB2
 DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
 DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work data_sink EmA3NES6]B6JCaVUeZ=m]3
-32
+DE work data_sink 7akaE5lUbo[Y[UMaYmRkA0
+31
 M5 ieee std_logic_1164
 M4 ieee std_logic_arith
 M3 ieee std_logic_unsigned
@@ -132,145 +132,106 @@ M2 ieee std_logic_textio
 M1 std textio
 l21
 L19
-Vf5Z]?B]:3ED43a2^:Il@80
+VDo[W2TkJSWOZQ:6L[Ng2N3
 OE;C;6.2g;35
-o-work work -2002 -explicit
+o-93 -work ./work
 tExplicit 1
+vfilter
+I@`Gb8EjIIG9z2;HD;Sk^42
+V[COY3@b2<f2ah=jg9>F6E2
+w1635063875
+8../netlist/filter.v
+F../netlist/filter.v
+L0 8
+V[COY3@b2<f2ah=jg9>F6E2
+OE;L;6.2g;35
+r1
+31
+o-work ./work
 Emultiplier_nbit
 w1634411610
 DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-32
-8/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/MULTIPLIER_NBIT.vhd
-F/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/MULTIPLIER_NBIT.vhd
+8../src/MULTIPLIER_NBIT.vhd
+F../src/MULTIPLIER_NBIT.vhd
 l0
 L10
-VH@Fbg=Z:Okn?]fEm19X`o3
+VLX?Sh3I@AUgd904Z1@[iZ3
 OE;C;6.2g;35
-o-work work -2002 -explicit
+31
+o-93 -work ./work
 tExplicit 1
 Abehavioural
 DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work multiplier_nbit H@Fbg=Z:Okn?]fEm19X`o3
-32
-M2 ieee std_logic_1164
-M1 ieee numeric_std
+DE work multiplier_nbit LX?Sh3I@AUgd904Z1@[iZ3
 l26
 L20
-V7`CQn;NGTUQfeQY1VDVGO3
+V`C3dUb590kCJPY;WJOU:R3
 OE;C;6.2g;35
-o-work work -2002 -explicit
-tExplicit 1
-Emyfir
-w1634545087
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-32
-8/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/MY_FIR.vhd
-F/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/MY_FIR.vhd
-l0
-L14
-V52PLeCC<eX^5<<h>BcJ`O0
-OE;C;6.2g;35
-o-work work -2002 -explicit
-tExplicit 1
-Astructural
-DE work adder_nbit l5hKEMl3n>QUo5zoa`ji83
-DE work multiplier_nbit H@Fbg=Z:Okn?]fEm19X`o3
-DE work shift_reg_1bit Pm_a6<en?f7QK343iVSK62
-DE work register_nbit FU^cPI:k1>fUX78F<bj9a3
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work myfir 52PLeCC<eX^5<<h>BcJ`O0
-32
+31
 M2 ieee std_logic_1164
 M1 ieee numeric_std
-l106
-L36
-Vjcm^n;Xd4ZODe>=BdnRRo3
-OE;C;6.2g;35
-o-work work -2002 -explicit
+o-93 -work ./work
 tExplicit 1
 Eregister_nbit
 w1634411610
 DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-32
-8/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/REGISTER_NBIT.vhd
-F/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/REGISTER_NBIT.vhd
+8../src/REGISTER_NBIT.vhd
+F../src/REGISTER_NBIT.vhd
 l0
 L9
-VFU^cPI:k1>fUX78F<bj9a3
+V88AgJ=kjH5D7@FE[XCVhT3
 OE;C;6.2g;35
-o-work work -2002 -explicit
+31
+o-93 -work ./work
 tExplicit 1
 Abehavioural
-32
 DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work register_nbit FU^cPI:k1>fUX78F<bj9a3
-M2 ieee std_logic_1164
-M1 ieee numeric_std
+DE work register_nbit 88AgJ=kjH5D7@FE[XCVhT3
 l23
 L20
-Vc]^S7]>fMC;>XBObLnnJ;0
+V@aNYj521U>k`;`4:<TfN]0
 OE;C;6.2g;35
-o-work work -2002 -explicit
+31
+M2 ieee std_logic_1164
+M1 ieee numeric_std
+o-93 -work ./work
 tExplicit 1
 Eshift_reg_1bit
 w1634543630
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-32
-8/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/SHIFT_REG_1bit.vhd
-F/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/src/SHIFT_REG_1bit.vhd
+8../src/SHIFT_REG_1bit.vhd
+F../src/SHIFT_REG_1bit.vhd
 l0
 L13
-VPm_a6<en?f7QK343iVSK62
+V:`HVHzmd2^9GAWTND125A1
 OE;C;6.2g;35
-o-work work -2002 -explicit
+31
+o-93 -work ./work
 tExplicit 1
 Abehavioural
 DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work shift_reg_1bit Pm_a6<en?f7QK343iVSK62
-32
-M1 ieee std_logic_1164
+DE work shift_reg_1bit :`HVHzmd2^9GAWTND125A1
 l28
 L24
-V4eOSOZ?`X@cNgY?:AH3Ua1
+V14>`7S=jWEo]^PJiS88Vk1
 OE;C;6.2g;35
-o-work work -2002 -explicit
+31
+M1 ieee std_logic_1164
+o-93 -work ./work
 tExplicit 1
-Etb_fir
-w1634543630
-DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
-DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-32
-8/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/tb/tb_fir.vhd
-F/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/tb/tb_fir.vhd
-l0
-L6
-VFYDmKDSXbA4>n^UVWRUM32
-OE;C;6.2g;35
-o-work work -2002 -explicit
-tExplicit 1
-Atb
-DE work data_sink EmA3NES6]B6JCaVUeZ=m]3
-DE work myfir 52PLeCC<eX^5<<h>BcJ`O0
-DE work data_maker <JdoOTBQ[fSV;Z_46ia3?1
-DE work clk_gen d5g0W;<;LIGekK2n^ImmS1
-DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
-DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work tb_fir FYDmKDSXbA4>n^UVWRUM32
-32
-M3 ieee std_logic_1164
-M2 ieee std_logic_arith
-M1 ieee std_logic_unsigned
-l75
-L9
-V]41O]RKW94`A:YD;1Z9N51
-OE;C;6.2g;35
-o-work work -2002 -explicit
-tExplicit 1
+vtb_fir
+ILCjIA4LD;]l`_b2H0g5RY1
+Vn4ToFGQLaei@:>cm_n>5j1
+w1635064872
+8../tb/tb_fir.v
+F../tb/tb_fir.v
+L0 3
+Vn4ToFGQLaei@:>cm_n>5j1
+OE;L;6.2g;35
+r1
+31
+o-work ./work

@@ -44,7 +44,7 @@ module tb_fir ();
 		 .H10(H10_i),
 		 .END_SIM(END_SIM_i));
 
-   FILTER UUT(
+   filter UUT(
        .CLK(CLK_i),
 	     .RST_n(RST_n_i),
 	     .DIN(DIN_i),
