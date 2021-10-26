@@ -1,1 +1,1 @@
-/home/isa03_2021_2022/Lab_ISA/Lab_1/Michelangelo/netlist/myfir.sdc
+C:/home/isa03_2021_2022/Lab_ISA/Lab_1/Michelangelo/netlist/myfir.sdc

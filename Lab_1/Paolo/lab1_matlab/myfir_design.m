@@ -23,7 +23,7 @@ bq=bi/2^(nb-1); %% convert back coefficients as nb-bit real values
 plot(w1/pi, 20*log10(abs(h1))); 
 hold on;
 plot(w2/pi, 20*log10(abs(h2)),'r--');
-a = max (20*log10(abs(h2)))
+a = max (20*log10(abs(h2)));
 grid on;
 xlabel('Normalized frequency');
 ylabel('dB');
