@@ -3,37 +3,11 @@ m255
 cModel Technology
 d/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/sim
 T_opt
-VkFJej]?Ra5PQn5obj64`O1
+V@nS>inZ^e>i[dF::NKI]:3
 06 6 4 ./work tb_fir fast 0
-o-quiet -auto_acc_if_foreign -work work -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/UUT=../netlist/filter.sdf -suppress 1948
+o-quiet -auto_acc_if_foreign -work work -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/UUT=../innovus/filter.sdf -suppress 1948
 tExplicit 1
 OE;O;6.2g;35
-Eadder_nbit
-w1634411610
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../src/ADDER_NBIT.vhd
-F../src/ADDER_NBIT.vhd
-l0
-L9
-Vli@SIZY@eOf0Ro1B<l:R73
-OE;C;6.2g;35
-31
-o-93 -work ./work
-tExplicit 1
-Abehavioural
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work adder_nbit li@SIZY@eOf0Ro1B<l:R73
-l21
-L18
-VbFoS`RLO<;>0I<JgIHgC41
-OE;C;6.2g;35
-31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-o-93 -work ./work
-tExplicit 1
 Eclk_gen
 w1634411610
 DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
@@ -137,92 +111,17 @@ OE;C;6.2g;35
 o-93 -work ./work
 tExplicit 1
 vfilter
-I@`Gb8EjIIG9z2;HD;Sk^42
+I0=T87?mfd;>`gWecEKR`>1
 V[COY3@b2<f2ah=jg9>F6E2
-w1635063875
-8../netlist/filter.v
-F../netlist/filter.v
-L0 8
+w1635075477
+8../innovus/filter.v
+F../innovus/filter.v
+L0 15
 V[COY3@b2<f2ah=jg9>F6E2
 OE;L;6.2g;35
 r1
 31
 o-work ./work
-Emultiplier_nbit
-w1634411610
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../src/MULTIPLIER_NBIT.vhd
-F../src/MULTIPLIER_NBIT.vhd
-l0
-L10
-VLX?Sh3I@AUgd904Z1@[iZ3
-OE;C;6.2g;35
-31
-o-93 -work ./work
-tExplicit 1
-Abehavioural
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work multiplier_nbit LX?Sh3I@AUgd904Z1@[iZ3
-l26
-L20
-V`C3dUb590kCJPY;WJOU:R3
-OE;C;6.2g;35
-31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-o-93 -work ./work
-tExplicit 1
-Eregister_nbit
-w1634411610
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../src/REGISTER_NBIT.vhd
-F../src/REGISTER_NBIT.vhd
-l0
-L9
-V88AgJ=kjH5D7@FE[XCVhT3
-OE;C;6.2g;35
-31
-o-93 -work ./work
-tExplicit 1
-Abehavioural
-DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work register_nbit 88AgJ=kjH5D7@FE[XCVhT3
-l23
-L20
-V@aNYj521U>k`;`4:<TfN]0
-OE;C;6.2g;35
-31
-M2 ieee std_logic_1164
-M1 ieee numeric_std
-o-93 -work ./work
-tExplicit 1
-Eshift_reg_1bit
-w1634543630
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-8../src/SHIFT_REG_1bit.vhd
-F../src/SHIFT_REG_1bit.vhd
-l0
-L13
-V:`HVHzmd2^9GAWTND125A1
-OE;C;6.2g;35
-31
-o-93 -work ./work
-tExplicit 1
-Abehavioural
-DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
-DE work shift_reg_1bit :`HVHzmd2^9GAWTND125A1
-l28
-L24
-V14>`7S=jWEo]^PJiS88Vk1
-OE;C;6.2g;35
-31
-M1 ieee std_logic_1164
-o-93 -work ./work
-tExplicit 1
 vtb_fir
 ILCjIA4LD;]l`_b2H0g5RY1
 Vn4ToFGQLaei@:>cm_n>5j1
