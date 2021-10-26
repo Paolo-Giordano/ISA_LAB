@@ -3,7 +3,7 @@
 Report : area
 Design : MYFIR
 Version: O-2018.06-SP4
-Date   : Mon Oct 18 20:46:12 2021
+Date   : Wed Oct 20 20:16:36 2021
 ****************************************
 
 Library(s) Used:
@@ -12,7 +12,7 @@ Library(s) Used:
 
 Number of ports:                          121
 Number of nets:                          3454
-Number of cells:                         2721
+Number of cells:                         2711
 Number of combinational cells:           2492
 Number of sequential cells:               219
 Number of macros/black boxes:               0

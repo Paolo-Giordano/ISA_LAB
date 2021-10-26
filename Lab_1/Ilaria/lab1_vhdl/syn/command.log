@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06-SP4 for linux64 -- Nov 27, 2018
-#@ # Date:   Tue Oct 19 13:00:18 2021
+#@ # Date:   Tue Oct 26 11:35:28 2021
 #@ # Run by: isa03_2021_2022@localhost.localdomain
 #@ 
 
@@ -43008,6 +43008,6 @@ source power_estimation.src
 #@ read_saif -input ../saif/filter_syn.saif -instance tb_fir/UUT -unit ns -scale 1
 #@ create_clock -name clk CLK
 #@ 
-#@ report_power > report_power${period_str}.txt
+#@ report_power > ../report/report_power${period_str}.txt
 #@ # -- End source power_estimation.src
 

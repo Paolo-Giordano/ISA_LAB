@@ -1,4 +1,4 @@
-set CLK_FREQ 13.2
+set CLK_FREQ 12.68
 #import source file
 analyze -f vhdl -lib WORK ../src/adder.vhd
 analyze	-f vhdl	-lib WORK ../src/multiplier.vhd

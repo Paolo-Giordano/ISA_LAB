@@ -7,7 +7,7 @@ Report : timing
         -max_paths 1
 Design : filter
 Version: O-2018.06-SP4
-Date   : Tue Oct 19 12:53:03 2021
+Date   : Tue Oct 26 11:30:25 2021
 ****************************************
 
 Operating Conditions: typical   Library: NangateOpenCellLibrary
@@ -15,7 +15,7 @@ Wire Load Model Mode: top
 
   Startpoint: i_reg_DL_0/REGISTER_OUT_Q_reg[4]
               (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: i_regIN_DOUT/REGISTER_OUT_Q_reg[2]
+  Endpoint: i_regIN_DOUT/REGISTER_OUT_Q_reg[6]
             (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
@@ -127,20 +127,20 @@ Wire Load Model Mode: top
   i_add_9/ADDER_OUT_SUM[7] (ADDER_NBIT_N_g8_0)            0.00       3.57 r
   i_su/SU_IN_DATA[9] (SATURATION_UNIT)                    0.00       3.57 r
   i_su/U3/ZN (NAND2_X1)                                   0.06       3.63 f
-  i_su/U16/ZN (NAND2_X1)                                  0.05       3.68 r
-  i_su/U15/ZN (NAND2_X1)                                  0.03       3.71 f
-  i_su/SU_OUT_DATA[2] (SATURATION_UNIT)                   0.00       3.71 f
-  i_regIN_DOUT/REGISTER_IN_D[2] (REGISTER_NBIT_N_g9_0)
+  i_su/U8/ZN (NAND2_X1)                                   0.05       3.68 r
+  i_su/U7/ZN (NAND2_X1)                                   0.03       3.71 f
+  i_su/SU_OUT_DATA[6] (SATURATION_UNIT)                   0.00       3.71 f
+  i_regIN_DOUT/REGISTER_IN_D[6] (REGISTER_NBIT_N_g9_0)
                                                           0.00       3.71 f
-  i_regIN_DOUT/U7/ZN (NAND2_X1)                           0.03       3.74 r
-  i_regIN_DOUT/U6/ZN (OAI21_X1)                           0.03       3.77 f
-  i_regIN_DOUT/REGISTER_OUT_Q_reg[2]/D (DFFR_X1)          0.01       3.78 f
+  i_regIN_DOUT/U15/ZN (NAND2_X1)                          0.03       3.74 r
+  i_regIN_DOUT/U14/ZN (OAI21_X1)                          0.03       3.77 f
+  i_regIN_DOUT/REGISTER_OUT_Q_reg[6]/D (DFFR_X1)          0.01       3.78 f
   data arrival time                                                  3.78
 
   clock clk (rise edge)                                  12.68      12.68
   clock network delay (ideal)                             0.00      12.68
   clock uncertainty                                      -0.07      12.61
-  i_regIN_DOUT/REGISTER_OUT_Q_reg[2]/CK (DFFR_X1)         0.00      12.61 r
+  i_regIN_DOUT/REGISTER_OUT_Q_reg[6]/CK (DFFR_X1)         0.00      12.61 r
   library setup time                                     -0.05      12.56
   data required time                                                12.56
   --------------------------------------------------------------------------

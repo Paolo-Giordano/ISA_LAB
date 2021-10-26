@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity MYFIR is
+entity myfir is
     port (
         MYFIR_IN_RST_n          : in std_logic;
         MYFIR_IN_CLK            : in std_logic;
@@ -23,7 +23,7 @@ entity MYFIR is
     );
 end entity;
 
-architecture rtl of MYFIR is
+architecture rtl of myfir is
 
     component adder is
 

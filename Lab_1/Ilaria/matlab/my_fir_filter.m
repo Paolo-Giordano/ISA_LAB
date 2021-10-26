@@ -27,7 +27,7 @@ figure
 plot(tt,x1,'--d');
 hold on
 plot(tt,x2,'r--s');
-%%plot(tt,x, 'g--+');
+plot(tt,x, 'g--+');
 plot(tt, y, 'c--o');
 
 legend('x1', 'x2', 'x', 'y')

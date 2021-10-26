@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06-SP4 for linux64 -- Nov 27, 2018
-#@ # Date:   Mon Oct 18 21:45:38 2021
+#@ # Date:   Thu Oct 21 11:55:12 2021
 #@ # Run by: isa03_2021_2022@localhost.localdomain
 #@ 
 
@@ -6652,7 +6652,3 @@ source back_annotation.tlc
 #@ 
 #@ #power report
 #@ report_power
-#@ 
-#@ # -- End source back_annotation.tlc
-
-quit

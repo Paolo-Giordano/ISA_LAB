@@ -1,6 +1,6 @@
 ###################################################################
 
-# Created by write_sdc on Mon Oct 18 20:44:25 2021
+# Created by write_sdc on Thu Oct 21 11:47:00 2021
 
 ###################################################################
 set sdc_version 2.1
@@ -16,7 +16,7 @@ set_load -pin_load 3.40189 [get_ports {MYFIR_OUT_DOUT[3]}]
 set_load -pin_load 3.40189 [get_ports {MYFIR_OUT_DOUT[2]}]
 set_load -pin_load 3.40189 [get_ports {MYFIR_OUT_DOUT[1]}]
 set_load -pin_load 3.40189 [get_ports {MYFIR_OUT_DOUT[0]}]
-create_clock [get_ports MYFIR_IN_CLK]  -name MY_CLK  -period 13.2  -waveform {0 6.6}
+create_clock [get_ports MYFIR_IN_CLK]  -name MY_CLK  -period 12.68  -waveform {0 6.34}
 set_clock_uncertainty 0.07  [get_clocks MY_CLK]
 set_input_delay -clock MY_CLK  -max 0.5  [get_ports MYFIR_IN_RST_n]
 set_input_delay -clock MY_CLK  -max 0.5  [get_ports {MYFIR_IN_b0[8]}]

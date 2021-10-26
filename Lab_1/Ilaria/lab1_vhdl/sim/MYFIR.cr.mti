@@ -1,11 +1,9 @@
-/home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/clk_gen.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/clk_gen.vhd
+/home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/REGISTER_NBIT.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/REGISTER_NBIT.vhd
 Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
 -- Loading package standard
 -- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package std_logic_unsigned
--- Compiling entity clk_gen
--- Compiling architecture beh of clk_gen
+-- Compiling entity register_nbit
+-- Compiling architecture behavioral of register_nbit
 
 } {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/SATURATION_UNIT.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/SATURATION_UNIT.vhd
 Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
@@ -14,13 +12,6 @@ Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
 -- Loading package numeric_std
 -- Compiling entity saturation_unit
 -- Compiling architecture behavioral of saturation_unit
-
-} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/REGISTER_NBIT.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/REGISTER_NBIT.vhd
-Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
--- Loading package standard
--- Loading package std_logic_1164
--- Compiling entity register_nbit
--- Compiling architecture behavioral of register_nbit
 
 } {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/filter.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/filter.vhd
 Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
@@ -38,23 +29,20 @@ Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
 -- Compiling entity multiplier_nbit
 -- Compiling architecture behavioral of multiplier_nbit
 
-} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/tb_fir.v {1 {vlog -work work -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/tb_fir.v
-Model Technology ModelSim SE vlog 6.2g Compiler 2007.02 Feb 21 2007
--- Compiling module tb_fir
-
-Top level modules:
-	tb_fir
-
-} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/data_sink.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/data_sink.vhd
+} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/ADDER_NBIT.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/ADDER_NBIT.vhd
 Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
 -- Loading package standard
 -- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package std_logic_unsigned
--- Loading package textio
--- Loading package std_logic_textio
--- Compiling entity data_sink
--- Compiling architecture beh of data_sink
+-- Loading package numeric_std
+-- Compiling entity adder_nbit
+-- Compiling architecture behavioral of adder_nbit
+
+} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/FF.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/FF.vhd
+Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Compiling entity ff
+-- Compiling architecture behavioral of ff
 
 } {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/data_maker_new.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/data_maker_new.vhd
 Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
@@ -67,19 +55,22 @@ Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
 -- Compiling entity data_maker
 -- Compiling architecture beh of data_maker
 
-} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/FF.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/FF.vhd
+} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/data_sink.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/data_sink.vhd
 Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
 -- Loading package standard
 -- Loading package std_logic_1164
--- Compiling entity ff
--- Compiling architecture behavioral of ff
+-- Loading package std_logic_arith
+-- Loading package std_logic_unsigned
+-- Loading package textio
+-- Loading package std_logic_textio
+-- Compiling entity data_sink
+-- Compiling architecture beh of data_sink
 
-} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/ADDER_NBIT.vhd {1 {vcom -work work -2002 -explicit -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/src/ADDER_NBIT.vhd
-Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
--- Loading package standard
--- Loading package std_logic_1164
--- Loading package numeric_std
--- Compiling entity adder_nbit
--- Compiling architecture behavioral of adder_nbit
+} {} {}} /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/tb_fir.v {1 {vlog -work work -novopt /home/isa03_2021_2022/Lab_ISA/Lab_1/Ilaria/lab1_vhdl/tb/tb_fir.v
+Model Technology ModelSim SE vlog 6.2g Compiler 2007.02 Feb 21 2007
+-- Compiling module tb_fir
+
+Top level modules:
+	tb_fir
 
 } {} {}}

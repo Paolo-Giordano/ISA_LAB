@@ -11,3 +11,7 @@ vcd file ../vcd/filter_syn.vcd
 vcd add /tb_fir/UUT/*
 run 4 us
 
+quit -sim
+
+
+

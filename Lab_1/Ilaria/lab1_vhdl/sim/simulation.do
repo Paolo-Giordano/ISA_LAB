@@ -2,7 +2,7 @@ vlib work
 
 set RES ps
 set SIM_FILE work.tb_fir
-set SIM_TIME 1
+set SIM_TIME 4
 set SIM_UNIT us
 
 
@@ -22,4 +22,6 @@ run $SIM_TIME $SIM_UNIT
 
 # quit from sim
 quit -sim
+
+../../lab1_c/lab1_c/myfilter
 
