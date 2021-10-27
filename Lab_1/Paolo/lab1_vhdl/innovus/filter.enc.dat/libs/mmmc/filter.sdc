@@ -1,1 +1,1 @@
-C:/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/netlist/filter.sdc
+/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/lab1_vhdl/netlist/filter.sdc

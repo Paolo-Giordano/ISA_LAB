@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06-SP4 for linux64 -- Nov 27, 2018
-#@ # Date:   Sun Oct 24 10:58:34 2021
+#@ # Date:   Wed Oct 27 18:55:02 2021
 #@ # Run by: isa03_2021_2022@localhost.localdomain
 #@ 
 
@@ -42998,38 +42998,4 @@ gui_start
 #@ }
 #@ 
 #@ # -- End source /software/synopsys/syn_current_64.18/auxx/tcllib/lib/iwidgets4.1/watch.itk
-
-source power_estimation.tcl
-#@ # -- Starting source power_estimation.tcl
-
-#@ variable period "11.56"
-#@ 
-#@ #read back the netlist
-#@ read_verilog -netlist ../netlist/filter.v
-#@ 
-#@ #read saif file
-#@ read_saif -input ../saif/filter_syn.saif -instance tb_fir/UUT -unit ns -scale 1
-#@ 
-#@ #create clock
-#@ create_clock -name CLK
-#@ 
-#@ report_power > ../report/clock_${period}/power_estimation.txt
-#@ # -- End source power_estimation.tcl
-
-source power_estimation.tcl
-#@ # -- Starting source power_estimation.tcl
-
-#@ variable period "11.56"
-#@ 
-#@ #read back the netlist
-#@ read_verilog -netlist ../netlist/filter.v
-#@ 
-#@ #read saif file
-#@ read_saif -input ../saif/filter_syn.saif -instance tb_fir/UUT -unit ns -scale 1
-#@ 
-#@ #create clock
-#@ create_clock -name CLK
-#@ 
-#@ report_power > ../report/clock_${period}/power_estimation.txt
-#@ # -- End source power_estimation.tcl
 

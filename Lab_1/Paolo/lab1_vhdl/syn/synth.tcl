@@ -21,7 +21,6 @@ elaborate $top_entity -architecture $top_entity_arch  -library work
 create_clock -name MYCLK -period $period CLK
 
 #set dont touch and uncertaintly
-set_dont_touch_network MY_CLK
 set_dont_touch_network MYCLK
 set_clock_uncertainty 0.07 [get_clocks MYCLK]
 set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]

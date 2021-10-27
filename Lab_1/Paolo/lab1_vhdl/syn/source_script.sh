@@ -8,10 +8,9 @@ rm -r -f  work/*
 source /software/scripts/init_synopsys_64.18
 
 #start synopsys
-#dc_shell-xg-t
-design_vision
+design_vision && design_vision>source synth.tcl
 
 #compile design
-#source synth.tcl
+#design_vision>source synth.tcl
 
 
