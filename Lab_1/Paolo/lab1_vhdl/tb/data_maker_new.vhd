@@ -52,7 +52,7 @@ begin  -- beh
 
 
   process (CLK, RST_n)
-    file fp_in : text open READ_MODE is "../../lab1_matlab/samples.txt";
+    file fp_in : text open READ_MODE is "../../matlab/samples.txt";
     variable line_in : line;
     variable x : integer;
     variable vin : std_logic;

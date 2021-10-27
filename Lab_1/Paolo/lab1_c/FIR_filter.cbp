@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="../lab1_matlab/samples.txt outputC.txt ../lab1_vhdl/sim/results.txt" />
+				<Option parameters="../lmatlab/samples.txt outputC.txt ../lab1_vhdl/sim/results.txt" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
