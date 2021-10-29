@@ -60,7 +60,7 @@ r1 = rand(1,length(xq));
 vin = zeros(1,length(xq));
 
 for i = 1:1:length(xq)
-    if r1(i) > 0.9
+    if r1(i) > 0.95
         vin = 0;
     else
         vin = 1;
