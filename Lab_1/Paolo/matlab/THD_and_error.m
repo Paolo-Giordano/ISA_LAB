@@ -1,5 +1,6 @@
 %% Total harmonic distorsion and error  
 clear all
+close all
 
 p=1;
 x_in=5;
@@ -7,7 +8,7 @@ y_in=8;
 nb=mod(y_in,7)+8; %% number of bits
 
 fp1 = fopen('./resultsm.txt', 'r');
-fp2 = fopen('../lab1_c/outputC.txt','r');
+fp2 = fopen('../c/outputC.txt','r');
 fp3 = fopen('./samples.txt', 'r');
 
 formatspec = '%d\n';
@@ -42,6 +43,12 @@ for i = 1:1:length(samples_c)
     end
 end
 max_error = max(error)
+
+plot( [1:1:length(samples_c)], samples_c , 'r')
+hold on
+plot( [1:1:length(mat_out_valid)], mat_out_valid , 'b--')
+legend('C', 'm');
+
 
 fclose(fp1);
 fclose(fp2);

@@ -1,3 +1,8 @@
+
+%% BE CAREFUL!
+% if you run this file, the random sequence of vin will change and you will
+% have to run again the C program and the vhdl to obtain coherent results
+
 fs=10000; %% sampling frequency
 f1=500;  %% first sinewave freq (in band)
 f2=4500; %% second sinnewave freq (out band)
