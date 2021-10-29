@@ -1,29 +1,9 @@
-# do post_p&r.do 
-# Model Technology ModelSim SE vcom 6.2g Compiler 2007.02 Feb 21 2007
-# -- Loading package standard
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package std_logic_unsigned
-# -- Compiling entity clk_gen
-# -- Compiling architecture beh of clk_gen
-# -- Loading package numeric_std
-# -- Loading package textio
-# -- Loading package std_logic_textio
-# -- Compiling entity data_maker
-# -- Compiling architecture beh of data_maker
-# -- Compiling entity data_sink
-# -- Compiling architecture beh of data_sink
-# Model Technology ModelSim SE vlog 6.2g Compiler 2007.02 Feb 21 2007
-# -- Compiling module filter
-# 
-# Top level modules:
-# 	filter
-# Model Technology ModelSim SE vlog 6.2g Compiler 2007.02 Feb 21 2007
-# -- Compiling module tb_fir
-# 
-# Top level modules:
-# 	tb_fir
-# vsim -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/UUT=../innovus/filter.sdf work.tb_fir 
+# do simulation.do 
+# ns
+# work.tb_fir
+# 100
+# us
+# vsim -t ns work.tb_fir 
 # ** Note: (vsim-3812) Design is being optimized...
 # //  ModelSim SE 6.2g Feb 21 2007 Linux 3.10.0-957.5.1.el7.x86_64
 # //
@@ -36,24 +16,6 @@
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
 # Loading work.tb_fir(fast)
-# Loading work.filter(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.INV_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X3(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.CLKBUF_X2(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.DFFR_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.AND2_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.OAI21_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.NAND2_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.NOR2_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.OAI22_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.XNOR2_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.NOR4_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.AOI222_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.OAI222_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.XOR2_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.HA_X1(fast)
-# Loading /software/dk/nangate45/verilog/msim6.2g.FA_X1(fast)
-# Loading instances from ../innovus/filter.sdf
 # Loading /software/mentor/modelsim_6.2g/linux/../std.standard
 # Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_1164(body)
 # Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_arith(body)
@@ -63,49 +25,24 @@
 # Loading /software/mentor/modelsim_6.2g/linux/../std.textio(body)
 # Loading /software/mentor/modelsim_6.2g/linux/../ieee.std_logic_textio(body)
 # Loading work.data_maker(beh)#1
-# ** Warning: (vsim-3017) ../innovus/filter.v(1874): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/delayed_myfir_vin_reg
-# ** Warning: (vsim-3017) ../innovus/filter.v(1878): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/VOUT_reg
-# ** Warning: (vsim-3017) ../innovus/filter.v(2531): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_delay_vin_delayed_in_reg_8_
-# ** Warning: (vsim-3017) ../innovus/filter.v(2535): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_delay_vin_delayed_in_reg_7_
-# ** Warning: (vsim-3017) ../innovus/filter.v(2539): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_delay_vin_delayed_in_reg_6_
-# ** Warning: (vsim-3017) ../innovus/filter.v(2543): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_delay_vin_delayed_in_reg_5_
-# ** Warning: (vsim-3017) ../innovus/filter.v(2547): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_delay_vin_delayed_in_reg_4_
-# ** Warning: (vsim-3017) ../innovus/filter.v(2551): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_delay_vin_delayed_in_reg_3_
-# ** Warning: (vsim-3017) ../innovus/filter.v(2555): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_delay_vin_delayed_in_reg_2_
-# ** Warning: (vsim-3017) ../innovus/filter.v(2559): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_delay_vin_delayed_in_reg_1_
-# ** Warning: (vsim-3017) ../innovus/filter.v(2563): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_delay_vin_delayed_in_reg_0_
-# ** Warning: (vsim-3017) ../innovus/filter.v(7064): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_1_add_24_U1_7
-# ** Warning: (vsim-3017) ../innovus/filter.v(7104): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_1_0_add_24_U1_7
-# ** Warning: (vsim-3017) ../innovus/filter.v(7144): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_2_add_24_U1_7
-# ** Warning: (vsim-3017) ../innovus/filter.v(7184): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_3_add_24_U1_7
-# ** Warning: (vsim-3017) ../innovus/filter.v(7224): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_4_add_24_U1_7
-# ** Warning: (vsim-3017) ../innovus/filter.v(7264): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_5_add_24_U1_7
-# ** Warning: (vsim-3017) ../innovus/filter.v(7304): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_6_add_24_U1_7
-# ** Warning: (vsim-3017) ../innovus/filter.v(7344): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_7_add_24_U1_7
-# ** Warning: (vsim-3017) ../innovus/filter.v(7384): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_8_add_24_U1_7
-# ** Warning: (vsim-3017) ../innovus/filter.v(7424): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /tb_fir/UUT/i_adder_9_add_24_U1_7
+# Loading work.filter(structural)#1
+# Loading work.register_nbit(behavioral)#1
+# Loading work.ff(behavioral)
+# Loading work.register_nbit(behavioral)#2
+# Loading work.shift_reg_1bit(behavioural)#1
+# Loading work.multiplier_nbit(behavioural)#1
+# Loading work.adder_nbit(behavioral)#1
+# Loading work.saturation_unit(behavioral)
 # Loading work.data_sink(beh)
-# Loading timing data from ../innovus/filter.sdf
-# ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
-#    Time: 0 ns  Iteration: 0  Region: /tb_fir  File: ../tb/tb_fir.v
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 3  Instance: /tb_fir/UUT/i_su
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 3  Instance: /tb_fir/UUT/i_su

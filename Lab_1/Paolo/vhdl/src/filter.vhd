@@ -1,15 +1,11 @@
-----------------------------------------------------
--- Description : Fir filter implemented with direct form
--- N = 10 number of stage
--- Nb = 9 input/output parallelism
--- applying an internal shift of the input data and of the
--- multiplier out to reduce the total area. The shift are
--- performed to guarantee  a maximun THD of -30 dB
-----------------------------------------------------
+-------------------------------------------------
+--Description: my FIR filter with Inputs and ouput
+--on 9 bits
+-------------------------------------------------
 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 
 entity filter is
     port (
@@ -34,233 +30,209 @@ entity filter is
 end entity;
 
 architecture structural of filter is
+    component ADDER_NBIT is
+        generic (N_g:integer:=8);
+        port (
+            ADDER_IN_A      : in std_logic_vector(N_g-1 downto 0);
+            ADDER_IN_B      : in std_logic_vector(N_g-1 downto 0);
+            ADDER_OUT_SUM   : out std_logic_vector(N_g-1 downto 0)
+        );
+    end component;
 
-  component REGISTER_NBIT is
-    generic (N_g : integer := 9);
-    port (
-    REGISTER_NBIT_IN_CLK    : in std_logic;
-    REGISTER_NBIT_IN_RST_N  : in std_logic;
-    REGISTER_NBIT_IN_EN     : in std_logic;
-    REGISTER_NBIT_IN_D      : in std_logic_vector(N_g-1 downto 0);
-    REGISTER_NBIT_OUT_Q     : out std_logic_vector(N_g-1 downto 0)
-    );
-  end component;
-
-  component SHIFT_REG_1bit is
-    generic (N_g : integer := 2);    --N FF in series
-    port (
-      SHIFT_REG_IN_CLK    : in std_logic;
-      SHIFT_REG_IN_RST_N  : in std_logic;
-      SHIFT_REG_IN_EN     : in std_logic;
-      SHIFT_REG_IN        : in std_logic;
-      SHIFT_REG_OUT       : out std_logic
-    );
-  end component;
-
-  component ADDER_NBIT is
-    generic (N_g : integer := 9);
-    port (
-    ADDER_IN_A    : in std_logic_vector(N_g -1 downto 0);
-    ADDER_IN_B    : in std_logic_vector(N_g -1 downto 0);
-    ADDER_OUT_SUM : out std_logic_vector(N_g -1 downto 0)
-    );
-  end component;
-
-  component MULTIPLIER_NBIT is
-    generic (N1_g : integer := 9;
-             N2_g : integer := 9);
-    port (
-    MULTIPLIER_IN_A         : in std_logic_vector(N1_g-1 downto 0);
-    MULTIPLIER_IN_B         : in std_logic_vector(N2_g-1 downto 0);
-    MULTIPLIER_OUT_PRODUCT  : out std_logic_vector((N1_g + N2_g)-2 downto 0)
-    );
-  end component;
-
-  constant shift_input_c      : integer := 4;
-  constant shift_output_mul_c : integer := 10 - shift_input_c;
-
-  --input coefficient delayed
-  type matrix_coeff is array (10 downto 0) of std_logic_vector(8 downto 0);
-  signal coefficients, delayed_coefficients : matrix_coeff;
-  -- delayed input, and shifted version
-  signal delay_myfir_data_in   : std_logic_vector(8 downto 0);
-  signal shifted_data_in       : std_logic_vector(8 - shift_input_c  downto 0);
-  -- vin signal
-  signal delayed_myfir_vin     : std_logic;
-  signal final_delay_myfir_vin : std_logic;
-  -- PIPE delay signals
-  type matrix_pipe is array (9 downto 0) of std_logic_vector(8 - shift_input_c downto 0);
-  signal pipe_delay : matrix_pipe;
-  -- mult output
-  type matrix_mult is array (10 downto 0) of std_logic_vector(16 - shift_input_c downto 0);
-  signal mult_output : matrix_mult;
-  -- adder INPUT
-  type matrix_adder is array (10 downto 0) of std_logic_vector(7 downto 0);
-  signal from_mult_to_adder : matrix_adder;
-  type matrix_adder_out is array (9 downto 0) of std_logic_vector(7 downto 0);
-  signal adder_output : matrix_adder_out;
-  --
-  signal final_result           : std_logic_vector(6 downto 0);
-  signal shifted_final_result   : std_logic_vector(8 downto 0);
-  signal final_vout             : std_logic;
-  begin
-    --------   LOAD ALL THE COEFFICIENT BY REGISTER ------------
-    coefficients(0)  <= b0;
-    coefficients(1)  <= b1;
-    coefficients(2)  <= b2;
-    coefficients(3)  <= b3;
-    coefficients(4)  <= b4;
-    coefficients(5)  <= b5;
-    coefficients(6)  <= b6;
-    coefficients(7)  <= b7;
-    coefficients(8)  <= b8;
-    coefficients(9)  <= b9;
-    coefficients(10) <= b10;
-
-    g_delayed_coeff: for i in 0 to 10 generate
-    i_register: REGISTER_NBIT generic map(9) port map(
-    REGISTER_NBIT_IN_CLK    => CLK,
-    REGISTER_NBIT_IN_RST_N  => RST_n,
-    REGISTER_NBIT_IN_EN     => '1',
-    REGISTER_NBIT_IN_D      => coefficients(i),
-    REGISTER_NBIT_OUT_Q     => delayed_coefficients(i)
-    );
-  end generate;
-
-    --------------    LOAD INPUT DATA AND VIN   -----------------
-
-    p_flip_flop_vin: process (CLK, RST_n)
-    begin
-      if (RST_n = '0') then
-        delayed_myfir_vin <= '0';
-      elsif (CLK'event and CLK = '1') then
-        delayed_myfir_vin <= VIN;
-      end if;
-    end process;
-
-    i_reg_in_data: REGISTER_NBIT generic map(9) port map(
-    REGISTER_NBIT_IN_CLK    => CLK,
-    REGISTER_NBIT_IN_RST_N  => RST_n,
-    REGISTER_NBIT_IN_EN     => '1',
-    REGISTER_NBIT_IN_D      => DIN,
-    REGISTER_NBIT_OUT_Q     => delay_myfir_data_in
-    );
-
-    -- shift the input signal = don't take the LSB's
-    shifted_data_in <= delay_myfir_data_in(8 downto shift_input_c);
-
-
-    ---------------   SHIFT REGISTER TO DELAY VIN AND BRING TO VOUT   -------------
-    -- 10 is the depth of shifter, because thereare 10 stages
-    i_delay_vin: SHIFT_REG_1bit generic map (10) port map(
-    SHIFT_REG_IN_CLK    => CLK,
-    SHIFT_REG_IN_RST_N  => RST_n,
-    SHIFT_REG_IN_EN     => delayed_myfir_vin,
-    SHIFT_REG_IN        => delayed_myfir_vin,
-    SHIFT_REG_OUT       => final_delay_myfir_vin
-    );
-
-    ------------       N STAGE OF PIPE    -----------------
-    i_pipe_R1: REGISTER_NBIT generic map(9 - shift_input_c) port map(
-    REGISTER_NBIT_IN_CLK    => CLK,
-    REGISTER_NBIT_IN_RST_N  => RST_n,
-    REGISTER_NBIT_IN_EN     => delayed_myfir_vin,
-    REGISTER_NBIT_IN_D      => shifted_data_in,
-    REGISTER_NBIT_OUT_Q     => pipe_delay(0)
-    );
-
-    g_pipe: for i in 1 to 9 generate
-      i_pipe:  REGISTER_NBIT generic map(9 - shift_input_c) port map(
-      REGISTER_NBIT_IN_CLK    => CLK,
-      REGISTER_NBIT_IN_RST_N  => RST_n,
-      REGISTER_NBIT_IN_EN     => delayed_myfir_vin,
-      REGISTER_NBIT_IN_D      => pipe_delay(i-1),
-      REGISTER_NBIT_OUT_Q     => pipe_delay(i)
+    component MULTIPLIER_NBIT is
+      generic (N1_g : integer := 9;
+               N2_g : integer := 9);
+      port (
+      MULTIPLIER_IN_A         : in std_logic_vector(N1_g-1 downto 0);
+      MULTIPLIER_IN_B         : in std_logic_vector(N2_g-1 downto 0);
+      MULTIPLIER_OUT_PRODUCT  : out std_logic_vector((N1_g + N2_g)-2 downto 0)
       );
-    end generate;
+    end component;
 
-    ----------    multiplier stage   ---------------
-    -- coefficient are on 9 bits, data input can be shifted up to 4 bits to respect the THD
-    i_mult_0: MULTIPLIER_NBIT generic map (9, 9 - shift_input_c) port map(
-    MULTIPLIER_IN_A        => delayed_coefficients(0),
-    MULTIPLIER_IN_B        => shifted_data_in,
-    MULTIPLIER_OUT_PRODUCT => mult_output(0)
-    );
+    component REGISTER_NBIT is
+        generic (N_g:integer:=8);
+        port (
+            REGISTER_IN_RST_N  : in std_logic;
+            REGISTER_IN_CLK    : in std_logic;
+            REGISTER_IN_EN     : in std_logic;
+            REGISTER_IN_D      : in std_logic_vector(N_g-1 downto 0);
+            REGISTER_OUT_Q     : out std_logic_vector(N_g-1 downto 0)
+        );
+    end component;
 
-    g_multiplier: for i in 1 to 10 generate
-      i_multiplier:MULTIPLIER_NBIT generic map (9, 9 - shift_input_c) port map(
-      MULTIPLIER_IN_A        => delayed_coefficients(i),
-      MULTIPLIER_IN_B        => pipe_delay(i-1),
-      MULTIPLIER_OUT_PRODUCT => mult_output(i)
+    component FF is
+        port (
+            FF_IN_RST_N  : in std_logic;
+            FF_IN_CLK    : in std_logic;
+            FF_IN_EN     : in std_logic;
+            FF_IN_D      : in std_logic;
+            FF_OUT_Q     : out std_logic
+        );
+    end component;
+
+    component SATURATION_UNIT is
+        port (
+            SU_IN_DATA  : in std_logic_vector (9 downto 0);
+            SU_OUT_DATA : out std_logic_vector (8 downto 0)
+        );
+    end component;
+
+    component SHIFT_REG_1bit is
+      generic (N_g : integer := 2);    --N FF in series
+      port (
+        SHIFT_REG_IN_CLK    : in std_logic;
+        SHIFT_REG_IN_RST_N  : in std_logic;
+        SHIFT_REG_IN_EN     : in std_logic;
+        SHIFT_REG_IN        : in std_logic;
+        SHIFT_REG_OUT       : out std_logic
       );
-    end generate;
+    end component;
 
-    -------------------  ADDER STAGE  -------------
+    --shift the input DIN before the multiplier
+    constant shift_input_c      : integer := 4;
 
-    -- the parallelism of the adder depends on the input shift and the mult out shift
-    -- from a normal signed multiplication we obtain a result on 2*Nb_c-2 bit, then
-    -- the total amount of shift is 10, where "shift_input_c" shifts are applied to the data input signal
-    -- and "10 - shift_input_c" shifts are applied to the output of the multiplier
-    -- considering that there are 10 serial sum, some overflow consideration are applied
-    -- and we add 1 bit
-    g_shifted_adder_input:for i in 0 to 10 generate
-      from_mult_to_adder(i) <= mult_output(i)(16 - shift_input_c) & mult_output(i)(16 - shift_input_c downto shift_output_mul_c);
-    end generate;
+    --the postfix d means signal delayed by the input register
+    --evaluated stands for output qauntity at the input of an output register
+    signal in_DIN_d, evaluated_DOUT     : std_logic_vector (8 downto 0);
+    signal in_VIN_d, evaluated_VOUT     : std_logic;
+    signal vout_out                     : std_logic;
+    --filter coefficients are inserted in an array to manage easily them in generate loop
+    type array_coeff is array (10 downto 0) of std_logic_vector (8 downto 0);
+    signal b_coeff, b_coeff_d           : array_coeff;
 
-    i_adder_1: ADDER_NBIT generic map (8) port map(
-    ADDER_IN_A    => from_mult_to_adder(0),
-    ADDER_IN_B    => from_mult_to_adder(1),
-    ADDER_OUT_SUM => adder_output(0)
-    );
+    --array to connect the the registers of the delay line
+    type array_delay_line is array (10 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
+    signal delay_line                   : array_delay_line;
 
-    g_adder_output: for i in 1 to 9 generate
-      i_adder: ADDER_NBIT generic map (8) port map(
-      ADDER_IN_A    => from_mult_to_adder(i+1),
-      ADDER_IN_B    => adder_output(i-1),
-      ADDER_OUT_SUM => adder_output(i)
-      );
-    end generate;
+    --array with the outputs of the multipliers
+    type array_products is array (10 downto 0) of std_logic_vector (16 - shift_input_c downto 0);
+    signal product                      : array_products;
+    --array with the outputs of the adders plus at the index 0 one input of the first adder
+    --to manage it easily inside generate loops
+    type array_sums is array (10 downto 0) of std_logic_vector (7 downto 0);
+    signal sum                          : array_sums;
+    --array for the inputs of te adders that come from the multipliers, properly shifted and extended
+    type array_addend_a is array (9 downto 0) of std_logic_vector (7 downto 0);
+    signal from_multiplier_to_adder     : array_sums;
 
-    -- saturation unit, for the worst case we can obtain a final sum that is bigger than the maximum
-    -- represanteble value on 7 bits(signed). Saturate at the max or at the min value and the add
-    -- 2 zeros on the right to bring the output on 9 bits
+    --input saturation unit
+    signal in_su                        : std_logic_vector(9 downto 0);
 
-    Saturation_shift_unit: process(adder_output(9))
     begin
-      if (adder_output(9)(7) = '1') then
-        if (to_integer(signed(adder_output(9))) < -64)  then
-          final_result <= std_logic_vector(to_signed(-64, 7));
-  	  else
-  		  final_result <= adder_output(9)(6 downto 0);
-        end if;
-      else
-        if (to_integer(signed(adder_output(9))) > 63)  then
-          final_result <= std_logic_vector(to_signed(63, 7));
-  	  else
-  		  final_result <= adder_output(9)(6 downto 0);
-        end if;
-      end if;
-    end process;
 
-    --the AND permits to bring in output directly a '0' when VIN = '0' and the data will be not valid
-    shifted_final_result <= final_result & '0' & '0';
-    final_vout <= delayed_myfir_vin and final_delay_myfir_vin;
+        --input register for DIN, always enabled
+        i_regIN_DIN : REGISTER_NBIT generic map(N_g=> 9) port map(
+            REGISTER_IN_RST_N   => RST_n,
+            REGISTER_IN_CLK     => CLK,
+            REGISTER_IN_EN      => '1',
+            REGISTER_IN_D       => DIN,
+            REGISTER_OUT_Q      => in_DIN_d
+        );
+        -- input FF for VIN, always enabled
+        i_ffIN_VIN : FF port map(
+            FF_IN_RST_N   => RST_n,
+            FF_IN_CLK     => CLK,
+            FF_IN_EN      => '1',
+            FF_IN_D       => VIN,
+            FF_OUT_Q      => in_VIN_d
+        );
+        --input reg for the coefficients, always enabled
+        g_reg_coeff: for i in 0 to 10 generate
+        begin
+            i_regIN_coeff: REGISTER_NBIT generic map(N_g=> 9) port map(
+                REGISTER_IN_RST_N   => RST_n,
+                REGISTER_IN_CLK     => CLK,
+                REGISTER_IN_EN      => '1',
+                REGISTER_IN_D       => b_coeff(i),
+                REGISTER_OUT_Q      => b_coeff_d(i)
+            );
+        end generate;
 
-    i_reg_out_data: REGISTER_NBIT generic map(9) port map(
-    REGISTER_NBIT_IN_CLK    => CLK,
-    REGISTER_NBIT_IN_RST_N  => RST_n,
-    REGISTER_NBIT_IN_EN     => final_vout,
-    REGISTER_NBIT_IN_D      => shifted_final_result,
-    REGISTER_NBIT_OUT_Q     => DOUT
-    );
 
-    p_flip_flop_vout: process (CLK, RST_n)
-    begin
-      if (RST_n = '0') then
-        VOUT <= '0';
-      elsif (CLK'event and CLK = '1') then
-        VOUT <= final_vout;
-      end if;
-    end process;
+        --delay line for DIN shifted, enabled by the sampled VIN
+        delay_line (0) <= in_DIN_d( 8 downto shift_input_c);
+        g_delay_line: for i in 0 to 9 generate
+        begin
+            i_reg_DL: REGISTER_NBIT generic map(N_g=> 9 - shift_input_c) port map(
+                REGISTER_IN_RST_N   => RST_n,
+                REGISTER_IN_CLK     => CLK,
+                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_D       => delay_line(i),
+                REGISTER_OUT_Q      => delay_line(i+1)
+            );
+        end generate;
 
-  end architecture;
+        --shift register for VIN
+        i_shift_reg: SHIFT_REG_1bit generic map(10) port map(
+        SHIFT_REG_IN_CLK    => CLK,
+        SHIFT_REG_IN_RST_N  => RST_n,
+        SHIFT_REG_IN_EN     => in_VIN_d,
+        SHIFT_REG_IN        => in_VIN_d,
+        SHIFT_REG_OUT       => vout_out
+        );
+
+        g_multipliers: for i in 0 to 10 generate
+        begin
+            i_mult: MULTIPLIER_NBIT generic map (9 - shift_input_c, 9) port map(
+                    MULTIPLIER_IN_A         => delay_line(i),
+                    MULTIPLIER_IN_B         => b_coeff_d(i),
+                    MULTIPLIER_OUT_PRODUCT  => product(i)
+                );
+        end generate;
+
+        --to get the input of the adders from the evaluated products only the 7 most
+        --significant bits have to be considered
+        sum (0) <= product(0)(16 - shift_input_c) & product(0)(16 - shift_input_c downto 10 - shift_input_c);
+        process(product)
+        begin
+            for i in 0 to 9 loop
+                from_multiplier_to_adder(i)  <= product(i+1)(16 - shift_input_c) & product(i+1)(16 - shift_input_c downto 10 - shift_input_c);
+            end loop;
+        end process;
+        g_adders: for i in 0 to 9 generate
+        begin
+            i_add: ADDER_NBIT generic map (N_g=> 8) port map(
+                    ADDER_IN_A         => from_multiplier_to_adder(i),
+                    ADDER_IN_B         => sum(i),
+                    ADDER_OUT_SUM      => sum(i+1)
+                );
+        end generate;
+
+        in_su <= sum(10) & "00";
+        i_su: SATURATION_UNIT port map(
+            SU_IN_DATA  => in_su,
+            SU_OUT_DATA => evaluated_DOUT
+        );
+
+        evaluated_VOUT <= in_VIN_d and vout_out;
+
+        --output register for DOUT, enabled only if DOUT='1'
+        i_regIN_DOUT : REGISTER_NBIT generic map(N_g=> 9) port map(
+            REGISTER_IN_RST_N   => RST_n,
+            REGISTER_IN_CLK     => CLK,
+            REGISTER_IN_EN      => evaluated_VOUT,
+            REGISTER_IN_D       => evaluated_DOUT,
+            REGISTER_OUT_Q      => DOUT
+        );
+        -- output FF for VOUT, always enabled
+        i_ffIN_VOUT : FF port map(
+            FF_IN_RST_N   => RST_n,
+            FF_IN_CLK     => CLK,
+            FF_IN_EN      => '1',
+            FF_IN_D       => evaluated_VOUT,
+            FF_OUT_Q      => VOUT
+        );
+
+        b_coeff(10)<= b10;
+        b_coeff(9) <= b9;
+        b_coeff(8) <= b8;
+        b_coeff(7) <= b7;
+        b_coeff(6) <= b6;
+        b_coeff(5) <= b5;
+        b_coeff(4) <= b4;
+        b_coeff(3) <= b3;
+        b_coeff(2) <= b2;
+        b_coeff(1) <= b1;
+        b_coeff(0) <= b0;
+
+end architecture;

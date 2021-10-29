@@ -5,8 +5,8 @@
 
 #define NT 11 /// number of coeffs
 #define NB 9 /// number of bits
-#define N_added_shift 0 /// number of added shift with respect to NB-1
-#define N_input_shift 0 ///number of shift of the data in
+#define N_added_shift 2 /// number of added shift with respect to NB-1
+#define N_input_shift 4 ///number of shift of the data in
 
 //valid samples is used to count if in the shift registers all the positions
 //are occupied by valid samples or not, at the beginning is not true
@@ -50,8 +50,8 @@ int myfilter(int x, int VIN, int* VOUT_fp)
     /// Moving average part
     y = 0;
     for (i = 0; i < NT; i++) {
-        tmp = (sx[i] * b[i]) >> (NB - 1);
-        y += tmp >> (N_added_shift - N_input_shift);
+        y += (sx[i] * b[i]) >> ((NB - 1)+(N_added_shift - N_input_shift));
+        //y += tmp >> (N_added_shift - N_input_shift);
     }
 
     /// extension of the result again on NB bits

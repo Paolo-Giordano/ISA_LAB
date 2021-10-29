@@ -19,5 +19,5 @@ vlog -work ./work ../tb/*.v
 vsim -c -do simulation.do
 
 #check result 
-diff ./results.txt ./../../lab1_c/outputC.txt
+diff ./results.txt ./../../c/outputC.txt
 
