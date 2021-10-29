@@ -6,8 +6,8 @@
 #define NT 11 /// number of coeffs
 #define NB 9 /// number of bits
 #define N_added_shift 2 /// number of added shift with respect to NB-1
-
-//valid samples is used to count if in the shift registers all the positions 
+#define N_input_shift 0 /// number of the shift on the input
+//valid samples is used to count if in the shift registers all the positions
 //are occupied by valid samples or not, at the beginning is not true
 //valid means samples read together with vin='1'
 int valid_samples = 0;
@@ -56,13 +56,13 @@ int myfilter(int x, int VIN, int* VOUT_fp)
     /// extension of the result again on NB bits
     y = y << N_added_shift;
     //saturation
-    
+
     if (y > pow(2, NB - 1) - 1) {
         y = pow(2, NB - 1) - 1;
     }
     else if (y < -pow(2, NB - 1)) {
         y = -pow(2, NB - 1);
-    } 
+    }
 
 
 
@@ -116,10 +116,11 @@ int main (int argc, char **argv)
   fclose(fp_in);
   fclose(fp_out);
 
+  /*
   //results check
   if (strcmp(argv[3], "1")==0){
       if (argc == 5) { //check if there is the name of the file to be compared
-	
+
           FILE * fp_simresults_file = fopen(argv[4], "r"); //open file to be checked
           if ( fp_simresults_file  == NULL)
           {
@@ -131,7 +132,7 @@ int main (int argc, char **argv)
           int error = 0;
           int line = 0;
           fscanf(fp_simresults_file, "%d\n", &res_sim);
-	  
+
           do {
               fscanf(fp_reference_file, "%d\n", &res_c);
               line++;
@@ -149,13 +150,14 @@ int main (int argc, char **argv)
 
           fclose(fp_reference_file);
           fclose(fp_simresults_file);
-	
+
       }
       else {
           printf("Use: %s <input_file> <output_file> <check_flag> <file_to_be_checked>\n", argv[0]);
           exit(1);
       }
   }
+  */
 
   return 0;
 

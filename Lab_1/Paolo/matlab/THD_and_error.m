@@ -11,12 +11,13 @@ fp1 = fopen('./resultsm.txt', 'r');
 fp2 = fopen('../c/outputC.txt','r');
 fp3 = fopen('./samples.txt', 'r');
 
-formatspec = '%d\n';
+formatspec = '%d ';
 samples_m = fscanf(fp1, formatspec);
 samples_c = fscanf(fp2, formatspec);
 vin = fscanf(fp3, '%*d %d\n');
 
 %%calculate total armonic distortion
+thd_m=thd(samples_m);
 thd_res=thd(samples_c);
 
 %% error
