@@ -1,6 +1,5 @@
 -------------------------------------------------
 --Description: my FIR filter with unfoldig N=3
---and a pipeline level
 -------------------------------------------------
  
 library IEEE;
@@ -119,11 +118,6 @@ architecture structural of filter_opt is
     --array with the outputs of the multipliers
     type array_products is array (10 downto 0) of std_logic_vector (16 - shift_input_c downto 0);
     signal product1,product2,product3   : array_products;
-    --array with products shifted to take only the 7 MSB as input of the adders
-    --the postfix d is to indicate the shifted products delay of one clock cycle by the pipe level
-    type array_products_shifted is array (10 downto 0) of std_logic_vector (6 downto 0);
-    signal shifted_product1_7bit,shifted_product2_7bit,shifted_product3_7bit        :array_products_shifted;
-    signal shifted_product1_7bit_d,shifted_product2_7bit_d,shifted_product3_7bit_d  :array_products_shifted;
     --array with the outputs of the adders plus at the index 0 one input of the first adder
     --to manage it easily inside generate loops
     type array_sums is array (10 downto 0) of std_logic_vector (7 downto 0);
@@ -180,8 +174,7 @@ architecture structural of filter_opt is
         end generate;
 
         --shift register for VIN
-        --incremented by one the dimension to consider also the pipe level
-        i_shift_reg: SHIFT_REG_1bit generic map(5) port map(
+        i_shift_reg: SHIFT_REG_1bit generic map(4) port map(
             SHIFT_REG_IN_CLK    => CLK,
             SHIFT_REG_IN_RST_N  => RST_n,
             SHIFT_REG_IN_EN     => in_VIN_d,
@@ -280,54 +273,17 @@ architecture structural of filter_opt is
 
         --to get the input of the adders from the evaluated products only the 7 most
         --significant bits have to be considered
+        sum1 (0) <= product1(0)(16 - shift_input_c) & product1(0)(16 - shift_input_c downto 10 - shift_input_c);
+        sum2 (0) <= product2(0)(16 - shift_input_c) & product2(0)(16 - shift_input_c downto 10 - shift_input_c);
+        sum3 (0) <= product3(0)(16 - shift_input_c) & product3(0)(16 - shift_input_c downto 10 - shift_input_c);
         process(product1, product2, product3)
         begin
-            for i in 0 to 10 loop
-                shifted_product1_7bit(i)  <= product1(i)(16 - shift_input_c downto 10 - shift_input_c);
-                shifted_product2_7bit(i)  <= product2(i)(16 - shift_input_c downto 10 - shift_input_c);
-                shifted_product3_7bit(i)  <= product3(i)(16 - shift_input_c downto 10 - shift_input_c);
-            end loop;
-        end process;
-
-        --pipe level 1
-        g_pipe_level1: for i in 0 to 10 generate
-        begin
-            i_reg_pipe1_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
-                REGISTER_IN_RST_N   => RST_n,
-                REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
-                REGISTER_IN_D       => shifted_product1_7bit(i),
-                REGISTER_OUT_Q      => shifted_product1_7bit_d(i)
-            );
-            i_reg_pipe2_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
-                REGISTER_IN_RST_N   => RST_n,
-                REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
-                REGISTER_IN_D       => shifted_product2_7bit(i),
-                REGISTER_OUT_Q      => shifted_product2_7bit_d(i)
-            );
-            i_reg_pipe3_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
-                REGISTER_IN_RST_N   => RST_n,
-                REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
-                REGISTER_IN_D       => shifted_product3_7bit(i),
-                REGISTER_OUT_Q      => shifted_product3_7bit_d(i)
-            );
-        end generate;
-
-        --sign extension to get adders' input on 8 bits and proper assignment of products to adders' inputs
-        sum1 (0) <= shifted_product1_7bit_d(0)(6) & shifted_product1_7bit_d(0);
-        sum2 (0) <= shifted_product2_7bit_d(0)(6) & shifted_product2_7bit_d(0);
-        sum3 (0) <= shifted_product3_7bit_d(0)(6) & shifted_product3_7bit_d(0);
-        process(shifted_product1_7bit_d,shifted_product2_7bit_d,shifted_product3_7bit_d)
-        begin
             for i in 0 to 9 loop
-                from_multiplier_to_adder1(i)  <= shifted_product1_7bit_d(i+1)(6) & shifted_product1_7bit_d(i+1);
-                from_multiplier_to_adder2(i)  <= shifted_product2_7bit_d(i+1)(6) & shifted_product2_7bit_d(i+1);
-                from_multiplier_to_adder3(i)  <= shifted_product3_7bit_d(i+1)(6) & shifted_product3_7bit_d(i+1);
+                from_multiplier_to_adder1(i)  <= product1(i+1)(16 - shift_input_c) & product1(i+1)(16 - shift_input_c downto 10 - shift_input_c);
+                from_multiplier_to_adder2(i)  <= product2(i+1)(16 - shift_input_c) & product2(i+1)(16 - shift_input_c downto 10 - shift_input_c);
+                from_multiplier_to_adder3(i)  <= product3(i+1)(16 - shift_input_c) & product3(i+1)(16 - shift_input_c downto 10 - shift_input_c);
             end loop;
         end process;
-
         g_adders: for i in 0 to 9 generate
         begin
             i_add1: ADDER_NBIT generic map (N_g=> 8) port map(

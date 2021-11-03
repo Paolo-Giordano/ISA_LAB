@@ -4,7 +4,8 @@
 
 //parameters: file with VHDL results, file with C results,
 //third parameter set to 0 to consider the basic version of the filter 
-//without optimizations, 1 to cosider the version with unfolding
+//without optimizations, 1 to cosider the version with unfolding,2 for
+//the version with unfolding and pipelining
 int main(int argc, char **argv)
 {
     //results check
@@ -26,7 +27,7 @@ int main(int argc, char **argv)
 
         fscanf(fp_simresults_file, "%d\n", &res_sim);  //read first data from vhdl file
 
-	if (strcmp(argv[3],"1")==0 ){
+	if (strcmp(argv[3],"1")==0 || ){
 	    fscanf(fp_reference_file, "%d\n", &res_c);
 	    fscanf(fp_reference_file, "%d\n", &res_c);}
         do {
