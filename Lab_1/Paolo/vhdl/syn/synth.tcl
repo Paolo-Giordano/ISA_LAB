@@ -1,8 +1,8 @@
 #variables
-variable top_entity "filter"
+variable top_entity "filter_opt"
 variable top_entity_arch "STRUCTURAL"
-variable period "11.56"
-variable report_folder "clock_11.56"
+variable period "2.25"
+variable report_folder "filter_unfolding_v1/clock_2_25"
 
 remove_design -designs
 
@@ -11,7 +11,9 @@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
 analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
 analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
 analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-analyze -f vhdl -lib WORK ../src/filter.vhd
+analyze -f vhdl -lib WORK ../src/FF.vhd
+analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
+analyze -f vhdl -lib WORK ../src/$top_entity.vhd
 
 set power_preserve_rtl_hier_names true
 

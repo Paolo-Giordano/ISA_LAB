@@ -89,13 +89,13 @@ architecture structural of filter is
     end component;
 
     --shift the input DIN before the multiplier
-    constant shift_input_c      : integer := 4;
+    constant shift_input_c      : integer := 0;
 
     --the postfix d means signal delayed by the input register
     --evaluated stands for output qauntity at the input of an output register
     signal in_DIN_d, evaluated_DOUT     : std_logic_vector (8 downto 0);
     signal in_VIN_d, evaluated_VOUT     : std_logic;
-    signal vout_out                     : std_logic;
+    signal VIN_outDL                    : std_logic;
     --filter coefficients are inserted in an array to manage easily them in generate loop
     type array_coeff is array (10 downto 0) of std_logic_vector (8 downto 0);
     signal b_coeff, b_coeff_d           : array_coeff;
@@ -162,13 +162,13 @@ architecture structural of filter is
             );
         end generate;
 
-        --shift register for VIN
+        --shift register for VIN used as delay line
         i_shift_reg: SHIFT_REG_1bit generic map(10) port map(
-        SHIFT_REG_IN_CLK    => CLK,
-        SHIFT_REG_IN_RST_N  => RST_n,
-        SHIFT_REG_IN_EN     => in_VIN_d,
-        SHIFT_REG_IN        => in_VIN_d,
-        SHIFT_REG_OUT       => vout_out
+            SHIFT_REG_IN_CLK    => CLK,
+            SHIFT_REG_IN_RST_N  => RST_n,
+            SHIFT_REG_IN_EN     => in_VIN_d,
+            SHIFT_REG_IN        => in_VIN_d,
+            SHIFT_REG_OUT       => VIN_outDL
         );
 
         g_multipliers: for i in 0 to 10 generate
@@ -204,9 +204,9 @@ architecture structural of filter is
             SU_OUT_DATA => evaluated_DOUT
         );
 
-        evaluated_VOUT <= in_VIN_d and vout_out;
+        evaluated_VOUT <= in_VIN_d and VIN_outDL;
 
-        --output register for DOUT, enabled only if DOUT='1'
+        --output register for DOUT, enabled only if VOUT='1'
         i_regIN_DOUT : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,

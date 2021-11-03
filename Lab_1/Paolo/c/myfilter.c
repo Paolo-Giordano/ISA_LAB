@@ -5,8 +5,8 @@
 
 #define NT 11 /// number of coeffs
 #define NB 9 /// number of bits
-#define N_added_shift 2 /// number of added shift with respect to NB-1
-#define N_input_shift 4 ///number of shift of the data in
+#define N_added_shift 2 /// number of added shift with respect to NB-1 after multiplication
+#define N_input_shift 0 ///number of shift of the data in
 
 //valid samples is used to count if in the shift registers all the positions
 //are occupied by valid samples or not, at the beginning is not true
@@ -78,8 +78,6 @@ int myfilter(int x, int VIN, int* VOUT_fp)
 
 
 //auguments: file with input samples, name of the file to save the results
-//flag to decide if comparing the results with VHDL ones or not (0 no check, 1 check)
-//if the flag is 1, name of the file to be compared with the output file of the c program
 int main (int argc, char **argv)
 {
   FILE *fp_in;
@@ -92,7 +90,7 @@ int main (int argc, char **argv)
   /// check the command line
   if (argc != 3)
   {
-    printf("Use: %s <input_file> <output_file> <check_flag>\n", argv[0]);
+    printf("Use: %s <input_file> <output_file>", argv[0]);
     exit(1);
   }
 

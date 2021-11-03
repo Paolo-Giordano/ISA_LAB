@@ -1,13 +1,14 @@
-#
-# simulation of Myfir.vhd
-#
+vlib work
 
-#variabili fisse 
-set RES ns
+set RES ps
 set SIM_FILE work.tb_fir
-set SIM_TIME 100
+set SIM_TIME 4
 set SIM_UNIT us
 
+
+#compilation 
+project open MYFIR.mpf
+project compileall
 
 #simulation -- resolution
 vsim -t $RES $SIM_FILE
@@ -15,8 +16,6 @@ vsim -t $RES $SIM_FILE
 # toggle leaf name <-> full name
 #config wave -signalnamewidth 1
 
-# all wave selected (we don't really need)
-add wave *
 
 # run simulation
 run $SIM_TIME $SIM_UNIT
@@ -24,4 +23,6 @@ run $SIM_TIME $SIM_UNIT
 # quit from sim
 quit -sim
 quit
+
+
 
