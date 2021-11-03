@@ -55,17 +55,20 @@ yq(idy)=2^(nb-1)-1;
 %% save input and output
 fp=fopen('samples.txt','w');
 
-%%for vin, generate random value 0 with probability 10% and 1 with 90%
+%%for vin, generate random value for VIN 0 with probability 10% and 1 with 90%
 r1 = rand(1,length(xq));
 vin = zeros(1,length(xq));
 
-for i = 1:1:length(xq)
+for i = 1:3:length(xq)
     if r1(i) > 0.97
         vin = 0;
     else
         vin = 1;
     end 
     fprintf(fp,'%d %d\n', xq(i), vin);
+    fprintf(fp,'%d %d\n', xq(i+1), vin);
+    fprintf(fp,'%d %d\n', xq(i+2), vin);
+    
 end ;
 
 fp=fopen('resultsm.txt', 'w');

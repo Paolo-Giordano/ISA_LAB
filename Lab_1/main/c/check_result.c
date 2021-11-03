@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+//parameters: file with VHDL results, file with C results,
+//third parameter set to 0 to consider the basic version of the filter 
+//without optimizations, 1 to cosider the version with unfolding
 int main(int argc, char **argv)
 {
     //results check
 
-    if (argc == 3)   //check if there is the name of the file to be compared
+    if (argc == 4)   //check if there are the files to be compared
     {
 
     FILE * fp_simresults_file = fopen(argv[1], "r"); //open file to be checked
@@ -21,8 +25,11 @@ int main(int argc, char **argv)
         int line = 0;
 
         fscanf(fp_simresults_file, "%d\n", &res_sim);  //read first data from vhdl file
-        do
-        {
+
+	if (strcmp(argv[3],"1")==0 ){
+	    fscanf(fp_reference_file, "%d\n", &res_c);
+	    fscanf(fp_reference_file, "%d\n", &res_c);}
+        do {
             fscanf(fp_reference_file, "%d\n", &res_c);
             line++;
             if (res_sim != res_c)
@@ -44,7 +51,7 @@ int main(int argc, char **argv)
 
     }
     else{
-        printf("Use: %s <input_file> <output_file> <check_flag>\n", argv[0]);
+        printf("Use: %s <input_file1> <output_file2> <type_of_check>", argv[0]);
     }
 
     return 0;

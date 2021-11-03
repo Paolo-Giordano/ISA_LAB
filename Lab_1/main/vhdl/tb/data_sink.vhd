@@ -1,7 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
---use ieee.numeric_std.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_textio.all;
 
@@ -21,7 +20,7 @@ architecture beh of data_sink is
 begin  -- beh
 
   process (CLK, RST_n)
-    file res_fp : text open WRITE_MODE is "./../sim/results.txt";
+    file res_fp : text open WRITE_MODE is "./results.txt";
     variable line_out : line;    
   begin  -- process
     if RST_n = '0' then                 -- asynchronous reset (active low)
