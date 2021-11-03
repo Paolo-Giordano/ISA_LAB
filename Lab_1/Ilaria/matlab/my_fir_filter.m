@@ -1,4 +1,9 @@
-fs=10000 %% sampling frequency
+
+%% BE CAREFUL!
+% if you run this file, the random sequence of vin will change and you will
+% have to run again the C program and the vhdl to obtain coherent results
+
+fs=10000; %% sampling frequency
 f1=500;  %% first sinewave freq (in band)
 f2=4500; %% second sinnewave freq (out band)
 f3=1200; %% square root freq
@@ -15,6 +20,7 @@ tt=0:1/fs:10*T; %% time samples
 x1=sin(2*pi*f1*tt); %% first sinewave
 x2=sin(2*pi*f2*tt); %% second sinewave
 
+%%%%    CHOOSE HERE between sinewave and worst case square wave  %%%%%%%
 x=(x1+x2)/2; %% input signal
 %x=square(2*pi*f3*tt,40);
 
@@ -47,18 +53,26 @@ yq(idy)=2^(nb-1)-1;
 
 
 %% save input and output
-
 fp=fopen('samples.txt','w');
-for i=1:1: length(xq)
-    if (15<i && i<19)
-        vin=0;
+
+%%for vin, generate random value for VIN 0 with probability 10% and 1 with 90%
+r1 = rand(1,length(xq));
+vin = zeros(1,length(xq));
+
+for i = 1:3:length(xq)
+    if r1(i) > 0.97
+        vin = 0;
     else
-        vin=1;
-    end
+        vin = 1;
+    end 
     fprintf(fp,'%d %d\n', xq(i), vin);
-end 
-fclose(fp);
+    fprintf(fp,'%d %d\n', xq(i+1), vin);
+    fprintf(fp,'%d %d\n', xq(i+2), vin);
+    
+end ;
 
 fp=fopen('resultsm.txt', 'w');
 fprintf(fp, '%d\n', yq);
 fclose(fp);
+
+
