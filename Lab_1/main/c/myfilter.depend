@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1635530612 source:c:\users\paolo\desktop\isa\lab_isa\lab_1\paolo\lab1_c\myfilter.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<string.h>
+
+1635531759 source:c:\users\paolo\desktop\isa\lab_isa\lab_1\paolo\c\myfilter.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<string.h>
+

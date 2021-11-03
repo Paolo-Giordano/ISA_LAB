@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1635531785 source:c:\users\paolo\desktop\isa\lab_isa\lab_1\paolo\check_result.c
+	<stdio.h>
+	<stdlib.h>
+
+1635532068 source:c:\users\paolo\desktop\isa\lab_isa\lab_1\paolo\lab1_c\check_result.c
+	<stdio.h>
+	<stdlib.h>
+
+1635532192 source:c:\users\paolo\desktop\isa\lab_isa\lab_1\paolo\c\check_result.c
+	<stdio.h>
+	<stdlib.h>
+
