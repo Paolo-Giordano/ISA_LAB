@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06-SP4 for linux64 -- Nov 27, 2018
-#@ # Date:   Wed Nov  3 21:10:38 2021
+#@ # Date:   Thu Nov  4 13:07:01 2021
 #@ # Run by: isa03_2021_2022@localhost.localdomain
 #@ 
 
@@ -43005,96 +43005,8 @@ source synth.tcl
 #@ #variables
 #@ variable top_entity "filter_opt"
 #@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "10.00"
-#@ variable report_folder "filter_unfolding_v1/clock_10.00"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/filter.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "10.00"
-#@ variable report_folder "filter_unfolding_v1/clock_10.00"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "10.00"
-#@ variable report_folder "filter_unfolding_v1/clock_10.00"
+#@ variable period "2.25"
+#@ variable report_folder "filter_unfolding_v2/clock_2_25"
 #@ 
 #@ remove_design -designs
 #@ 
@@ -43130,389 +43042,31 @@ source synth.tcl
 #@ report_area > ../report/$report_folder/area_report_${period}ns.txt
 #@ report_power > ../report/$report_folder/power_report_${period}ns.txt
 #@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
+#@ source verilog_gen.tcl
+#@ # -- Starting source verilog_gen.tcl
 
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
+#@ #backannotation
 #@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "10.00"
-#@ variable report_folder "filter_unfolding_v1/clock_10_00"
 #@ 
-#@ remove_design -designs
+#@ #ungrup the cell to flatten the hierarchy
+#@ ungroup -all -flatten
 #@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
+#@ #impose verilog rules to intern signals, to export netlist in verilog
+#@ change_names -hierarchy -rules verilog
 #@ 
-#@ set power_preserve_rtl_hier_names true
+#@ #write a standard delay format file to descibe the delay of the netlist
+#@ write_sdf ../netlist/$top_entity.sdf
 #@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
+#@ #save netlist in verilog
+#@ write -f verilog -hierarchy -output ../netlist/$top_entity.v
 #@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
+#@ #write constarint ofin/out in standard format
+#@ write_sdc ../netlist/$top_entity.sdc
+#@ # -- End source verilog_gen.tcl
+
 #@ # -- End source synth.tcl
 
 change_selection [get_s filter_opt]
-change_selection [get_s i_ffIN_VOUT]
-change_selection [get_s i_regIN_DOUT3]
-change_selection [get_s filter_opt]
-change_selection [get_s i_ffIN_VOUT]
-change_selection [get_s filter_opt]
-change_selection [get_s i_mult1_5]
-change_selection [get_s filter_opt]
-change_selection [get_s filter_opt]
-gui_zoom -window [gui_get_current_window -view] -factor 2.0
-gui_zoom -window [gui_get_current_window -view] -factor 2.0
-gui_scroll -window [gui_get_current_window -view] -vrel .2
-gui_scroll -window [gui_get_current_window -view] -vrel .2
-gui_scroll -window [gui_get_current_window -view] -vrel .2
-gui_zoom -window [gui_get_current_window -view] -factor 0.5
-gui_scroll -window [gui_get_current_window -view] -hrel -.2
-gui_scroll -window [gui_get_current_window -view] -hrel -.2
-gui_scroll -window [gui_get_current_window -view] -hrel -.2
-gui_scroll -window [gui_get_current_window -view] -hrel -.2
-gui_scroll -window [gui_get_current_window -view] -vrel .2
-change_selection [get_s i_mult3_10]
-change_selection [get_s i_mult3_10/mult_30]
-change_selection [get_s i_mult3_10]
-change_selection 
-change_selection [get_s filter_opt]
-change_selection [get_s i_mult3_10]
-change_selection [get_s {{i_mult3_10/MULTIPLIER_IN_A[0]} {i_mult3_10/MULTIPLIER_IN_A[7]} {i_mult3_10/MULTIPLIER_IN_A[6]} {i_mult3_10/MULTIPLIER_IN_A[4]}}]
-change_selection -add [get_s {{i_mult3_10/MULTIPLIER_IN_A[1]} {i_mult3_10/MULTIPLIER_IN_A[8]} {i_mult3_10/MULTIPLIER_IN_A[5]} {i_mult3_10/MULTIPLIER_IN_A[3]}}]
-change_selection -add [get_s {{i_mult3_10/MULTIPLIER_IN_A[2]} {9_pins(MULTIPLIER_IN_A[0],...)}}]
-change_selection [get_s {n16 {input_mult1[8][7]} {input_mult1[8][6]} {input_mult1[8][4]} n15 {input_mult1[8][5]} {input_mult1[8][3]} {input_mult1[8][2]}}]
-change_selection -add [get_s {{input_mult1[8][0]} n16(size:9)}]
-change_selection [get_s i_mult3_10]
-change_selection 
-change_selection [get_s i_mult3_10]
-change_selection [get_s i_mult3_10]
-change_selection [get_s i_mult3_10]
-change_selection [get_s i_mult3_10/mult_30]
-change_selection [get_s i_mult3_10]
-change_selection [get_s i_mult3_10/mult_30]
-change_selection 
-uplevel #0 { report_timing -path full -delay max -nworst 5 -max_paths 1 -significant_digits 2 -sort_by group }
-uplevel #0 { report_timing -path full -delay max -nworst 5 -max_paths 1 -significant_digits 2 -sort_by group }
-change_selection [get_s i_add3_9]
-uplevel #0 { report_timing -path full -delay max -nworst 5 -max_paths 1 -significant_digits 2 -sort_by group }
-change_selection [get_s i_add3_9]
-change_selection 
-uplevel #0 { report_timing -path full -delay max -nworst 1 -max_paths 1 -significant_digits 2 -sort_by group }
-uplevel #0 { report_timing -path full -delay max -nworst 5 -max_paths 1 -significant_digits 2 -sort_by group }
-change_selection [get_s i_add3_9/add_24]
-change_selection 
-uplevel #0 { report_timing -path full -delay max -nworst 5 -max_paths 5 -significant_digits 2 -sort_by group }
-change_selection [get_s filter_opt]
-uplevel #0 { report_timing  -from { i_add3_9/add_24/SUM[1] i_add3_9/add_24/B[5] i_add3_9/add_24/CI i_add3_9/add_24/SUM[3] i_add3_9/add_24/A[1] i_add3_9/U1/**logic_0** i_add3_9/add_24/B[3] i_add3_9/add_24/SUM[5] i_add3_9/add_24/CO i_add3_9/add_24/B[2] i_add3_9/add_24/SUM[0] i_add3_9/add_24/A[5] i_add3_9/add_24/SUM[7] i_add3_9/add_24/B[0] i_add3_9/add_24/B[7] i_add3_9/add_24/B[6] i_add3_9/add_24/A[3] i_add3_9/add_24/SUM[2] i_add3_9/add_24/SUM[4] i_add3_9/add_24/A[2] i_add3_9/add_24/B[4] i_add3_9/add_24/SUM[6] i_add3_9/add_24/A[0] i_add3_9/add_24/A[7] i_add3_9/add_24/A[6] i_add3_9/add_24/B[1] i_add3_9/add_24/A[4] } -to { i_add3_9/add_24/SUM[1] i_add3_9/add_24/B[5] i_add3_9/add_24/CI i_add3_9/add_24/SUM[3] i_add3_9/add_24/A[1] i_add3_9/U1/**logic_0** i_add3_9/add_24/B[3] i_add3_9/add_24/SUM[5] i_add3_9/add_24/CO i_add3_9/add_24/B[2] i_add3_9/add_24/SUM[0] i_add3_9/add_24/A[5] i_add3_9/add_24/SUM[7] i_add3_9/add_24/B[0] i_add3_9/add_24/B[7] i_add3_9/add_24/B[6] i_add3_9/add_24/A[3] i_add3_9/add_24/SUM[2] i_add3_9/add_24/SUM[4] i_add3_9/add_24/A[2] i_add3_9/add_24/B[4] i_add3_9/add_24/SUM[6] i_add3_9/add_24/A[0] i_add3_9/add_24/A[7] i_add3_9/add_24/A[6] i_add3_9/add_24/B[1] i_add3_9/add_24/A[4] } -path full -delay max -nworst 1 -max_paths 1 -significant_digits 2 -sort_by group }
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "0.00"
-#@ variable report_folder "filter_unfolding_v1/clock_0_00"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "0.00"
-#@ variable report_folder "filter_unfolding_v1/clock_0"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-change_selection [get_s i_mult3_10]
-uplevel #0 { report_timing  -from { i_mult3_10/mult_30/product[8] i_mult3_10/mult_30/a[0] i_mult3_10/mult_30/product[12] i_mult3_10/mult_30/product[14] i_mult3_10/mult_30/b[3] i_mult3_10/mult_30/a[7] i_mult3_10/mult_30/product[6] i_mult3_10/mult_30/b[1] i_mult3_10/mult_30/product[16] i_mult3_10/mult_30/b[8] i_mult3_10/mult_30/a[5] i_mult3_10/mult_30/product[4] i_mult3_10/mult_30/product[2] i_mult3_10/mult_30/b[6] i_mult3_10/mult_30/a[3] i_mult3_10/mult_30/product[9] i_mult3_10/mult_30/a[1] i_mult3_10/mult_30/product[0] i_mult3_10/mult_30/b[4] i_mult3_10/mult_30/a[8] i_mult3_10/mult_30/b[2] i_mult3_10/mult_30/product[7] i_mult3_10/mult_30/product[11] i_mult3_10/mult_30/product[13] i_mult3_10/mult_30/a[6] i_mult3_10/mult_30/b[0] i_mult3_10/mult_30/product[5] i_mult3_10/mult_30/product[15] i_mult3_10/mult_30/b[7] i_mult3_10/mult_30/a[4] i_mult3_10/mult_30/product[3] i_mult3_10/mult_30/a[2] i_mult3_10/mult_30/product[10] i_mult3_10/mult_30/product[1] i_mult3_10/mult_30/product[17] i_mult3_10/mult_30/b[5] } -to { i_mult3_10/mult_30/product[8] i_mult3_10/mult_30/a[0] i_mult3_10/mult_30/product[12] i_mult3_10/mult_30/product[14] i_mult3_10/mult_30/b[3] i_mult3_10/mult_30/a[7] i_mult3_10/mult_30/product[6] i_mult3_10/mult_30/b[1] i_mult3_10/mult_30/product[16] i_mult3_10/mult_30/b[8] i_mult3_10/mult_30/a[5] i_mult3_10/mult_30/product[4] i_mult3_10/mult_30/product[2] i_mult3_10/mult_30/b[6] i_mult3_10/mult_30/a[3] i_mult3_10/mult_30/product[9] i_mult3_10/mult_30/a[1] i_mult3_10/mult_30/product[0] i_mult3_10/mult_30/b[4] i_mult3_10/mult_30/a[8] i_mult3_10/mult_30/b[2] i_mult3_10/mult_30/product[7] i_mult3_10/mult_30/product[11] i_mult3_10/mult_30/product[13] i_mult3_10/mult_30/a[6] i_mult3_10/mult_30/b[0] i_mult3_10/mult_30/product[5] i_mult3_10/mult_30/product[15] i_mult3_10/mult_30/b[7] i_mult3_10/mult_30/a[4] i_mult3_10/mult_30/product[3] i_mult3_10/mult_30/a[2] i_mult3_10/mult_30/product[10] i_mult3_10/mult_30/product[1] i_mult3_10/mult_30/product[17] i_mult3_10/mult_30/b[5] } -path full -delay max -nworst 1 -max_paths 1 -significant_digits 2 -sort_by group }
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "10.00"
-#@ variable report_folder "filter_unfolding_v1/clock_10_00"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-uplevel #0 { report_timing  -from { i_add3_9/add_24/SUM[1] i_add3_9/add_24/B[5] i_add3_9/add_24/CI i_add3_9/add_24/SUM[3] i_add3_9/add_24/A[1] i_add3_9/U1/**logic_0** i_add3_9/add_24/B[3] i_add3_9/add_24/SUM[5] i_add3_9/add_24/CO i_add3_9/add_24/B[2] i_add3_9/add_24/SUM[0] i_add3_9/add_24/A[5] i_add3_9/add_24/SUM[7] i_add3_9/add_24/B[0] i_add3_9/add_24/B[7] i_add3_9/add_24/B[6] i_add3_9/add_24/A[3] i_add3_9/add_24/SUM[2] i_add3_9/add_24/SUM[4] i_add3_9/add_24/A[2] i_add3_9/add_24/B[4] i_add3_9/add_24/SUM[6] i_add3_9/add_24/A[0] i_add3_9/add_24/A[7] i_add3_9/add_24/A[6] i_add3_9/add_24/B[1] i_add3_9/add_24/A[4] } -to { i_add3_9/add_24/SUM[1] i_add3_9/add_24/B[5] i_add3_9/add_24/CI i_add3_9/add_24/SUM[3] i_add3_9/add_24/A[1] i_add3_9/U1/**logic_0** i_add3_9/add_24/B[3] i_add3_9/add_24/SUM[5] i_add3_9/add_24/CO i_add3_9/add_24/B[2] i_add3_9/add_24/SUM[0] i_add3_9/add_24/A[5] i_add3_9/add_24/SUM[7] i_add3_9/add_24/B[0] i_add3_9/add_24/B[7] i_add3_9/add_24/B[6] i_add3_9/add_24/A[3] i_add3_9/add_24/SUM[2] i_add3_9/add_24/SUM[4] i_add3_9/add_24/A[2] i_add3_9/add_24/B[4] i_add3_9/add_24/SUM[6] i_add3_9/add_24/A[0] i_add3_9/add_24/A[7] i_add3_9/add_24/A[6] i_add3_9/add_24/B[1] i_add3_9/add_24/A[4] } -path full -delay max -nworst 1 -max_paths 1 -significant_digits 2 -sort_by group }
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "10.00"
-#@ variable report_folder "filter_unfolding_v1/clock_10_00"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-uplevel #0 { report_timing  -from { i_add3_9/add_24/SUM[1] i_add3_9/add_24/B[5] i_add3_9/add_24/CI i_add3_9/add_24/SUM[3] i_add3_9/add_24/A[1] i_add3_9/U1/**logic_0** i_add3_9/add_24/B[3] i_add3_9/add_24/SUM[5] i_add3_9/add_24/CO i_add3_9/add_24/B[2] i_add3_9/add_24/SUM[0] i_add3_9/add_24/A[5] i_add3_9/add_24/SUM[7] i_add3_9/add_24/B[0] i_add3_9/add_24/B[7] i_add3_9/add_24/B[6] i_add3_9/add_24/A[3] i_add3_9/add_24/SUM[2] i_add3_9/add_24/SUM[4] i_add3_9/add_24/A[2] i_add3_9/add_24/B[4] i_add3_9/add_24/SUM[6] i_add3_9/add_24/A[0] i_add3_9/add_24/A[7] i_add3_9/add_24/A[6] i_add3_9/add_24/B[1] i_add3_9/add_24/A[4] } -to { i_add3_9/add_24/SUM[1] i_add3_9/add_24/B[5] i_add3_9/add_24/CI i_add3_9/add_24/SUM[3] i_add3_9/add_24/A[1] i_add3_9/U1/**logic_0** i_add3_9/add_24/B[3] i_add3_9/add_24/SUM[5] i_add3_9/add_24/CO i_add3_9/add_24/B[2] i_add3_9/add_24/SUM[0] i_add3_9/add_24/A[5] i_add3_9/add_24/SUM[7] i_add3_9/add_24/B[0] i_add3_9/add_24/B[7] i_add3_9/add_24/B[6] i_add3_9/add_24/A[3] i_add3_9/add_24/SUM[2] i_add3_9/add_24/SUM[4] i_add3_9/add_24/A[2] i_add3_9/add_24/B[4] i_add3_9/add_24/SUM[6] i_add3_9/add_24/A[0] i_add3_9/add_24/A[7] i_add3_9/add_24/A[6] i_add3_9/add_24/B[1] i_add3_9/add_24/A[4] } -path only -delay max -nworst 1 -max_paths 1 -significant_digits 2 -sort_by group }
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "2.03"
-#@ variable report_folder "filter_unfolding_v1/clock_2_05"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "2.05"
-#@ variable report_folder "filter_unfolding_v1/clock_2_05"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-uplevel #0 { report_timing  -from { i_mult3_10/mult_30/product[8] i_mult3_10/mult_30/a[0] i_mult3_10/mult_30/product[12] i_mult3_10/mult_30/product[14] i_mult3_10/mult_30/b[3] i_mult3_10/mult_30/a[7] i_mult3_10/mult_30/product[6] i_mult3_10/mult_30/b[1] i_mult3_10/mult_30/product[16] i_mult3_10/mult_30/b[8] i_mult3_10/mult_30/a[5] i_mult3_10/mult_30/product[4] i_mult3_10/mult_30/product[2] i_mult3_10/mult_30/b[6] i_mult3_10/mult_30/a[3] i_mult3_10/mult_30/product[9] i_mult3_10/mult_30/a[1] i_mult3_10/mult_30/product[0] i_mult3_10/mult_30/b[4] i_mult3_10/mult_30/a[8] i_mult3_10/mult_30/b[2] i_mult3_10/mult_30/product[7] i_mult3_10/mult_30/product[11] i_mult3_10/mult_30/product[13] i_mult3_10/mult_30/a[6] i_mult3_10/mult_30/b[0] i_mult3_10/mult_30/product[5] i_mult3_10/mult_30/product[15] i_mult3_10/mult_30/b[7] i_mult3_10/mult_30/a[4] i_mult3_10/mult_30/product[3] i_mult3_10/mult_30/a[2] i_mult3_10/mult_30/product[10] i_mult3_10/mult_30/product[1] i_mult3_10/mult_30/product[17] i_mult3_10/mult_30/b[5] } -to { i_mult3_10/mult_30/product[8] i_mult3_10/mult_30/a[0] i_mult3_10/mult_30/product[12] i_mult3_10/mult_30/product[14] i_mult3_10/mult_30/b[3] i_mult3_10/mult_30/a[7] i_mult3_10/mult_30/product[6] i_mult3_10/mult_30/b[1] i_mult3_10/mult_30/product[16] i_mult3_10/mult_30/b[8] i_mult3_10/mult_30/a[5] i_mult3_10/mult_30/product[4] i_mult3_10/mult_30/product[2] i_mult3_10/mult_30/b[6] i_mult3_10/mult_30/a[3] i_mult3_10/mult_30/product[9] i_mult3_10/mult_30/a[1] i_mult3_10/mult_30/product[0] i_mult3_10/mult_30/b[4] i_mult3_10/mult_30/a[8] i_mult3_10/mult_30/b[2] i_mult3_10/mult_30/product[7] i_mult3_10/mult_30/product[11] i_mult3_10/mult_30/product[13] i_mult3_10/mult_30/a[6] i_mult3_10/mult_30/b[0] i_mult3_10/mult_30/product[5] i_mult3_10/mult_30/product[15] i_mult3_10/mult_30/b[7] i_mult3_10/mult_30/a[4] i_mult3_10/mult_30/product[3] i_mult3_10/mult_30/a[2] i_mult3_10/mult_30/product[10] i_mult3_10/mult_30/product[1] i_mult3_10/mult_30/product[17] i_mult3_10/mult_30/b[5] } -path full -delay max -nworst 1 -max_paths 1 -significant_digits 2 -sort_by group }
 source synth.tcl
 #@ # -- Starting source synth.tcl
 
@@ -43520,9 +43074,11 @@ source synth.tcl
 #@ variable top_entity "filter_opt"
 #@ variable top_entity_arch "STRUCTURAL"
 #@ variable period "2.25"
-#@ variable report_folder "filter_unfolding_v1/clock_2_25"
+#@ variable report_folder "filter_unfolding_v2/clock_2_25"
 #@ 
 #@ remove_design -designs
+#@ change_selection -remove [get_s filter_opt]
+
 #@ 
 #@ #analyze
 #@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
@@ -43559,7 +43115,6 @@ source synth.tcl
 #@ #source verilog_gen.tcl
 #@ # -- End source synth.tcl
 
-uplevel #0 { report_timing  -from { i_mult1_0/mult_30/product[16] i_mult1_0/mult_30/b[3] i_mult1_0/mult_30/a[8] i_mult1_0/mult_30/product[5] i_mult1_0/mult_30/product[14] i_mult1_0/mult_30/b[5] i_mult1_0/mult_30/b[0] i_mult1_0/mult_30/a[1] i_mult1_0/mult_30/product[3] i_mult1_0/mult_30/product[11] i_mult1_0/mult_30/product[2] i_mult1_0/mult_30/b[7] i_mult1_0/mult_30/product[9] i_mult1_0/mult_30/b[2] i_mult1_0/mult_30/a[3] i_mult1_0/mult_30/product[0] i_mult1_0/mult_30/b[4] i_mult1_0/mult_30/a[5] i_mult1_0/mult_30/product[7] i_mult1_0/mult_30/a[0] i_mult1_0/mult_30/product[6] i_mult1_0/mult_30/product[15] i_mult1_0/mult_30/b[6] i_mult1_0/mult_30/a[7] i_mult1_0/mult_30/a[2] i_mult1_0/mult_30/product[4] i_mult1_0/mult_30/product[13] i_mult1_0/mult_30/product[12] i_mult1_0/mult_30/b[8] i_mult1_0/mult_30/a[4] i_mult1_0/mult_30/product[10] i_mult1_0/mult_30/product[1] i_mult1_0/mult_30/b[1] i_mult1_0/mult_30/a[6] i_mult1_0/mult_30/product[8] i_mult1_0/mult_30/product[17] } -to { i_mult1_0/mult_30/product[16] i_mult1_0/mult_30/b[3] i_mult1_0/mult_30/a[8] i_mult1_0/mult_30/product[5] i_mult1_0/mult_30/product[14] i_mult1_0/mult_30/b[5] i_mult1_0/mult_30/b[0] i_mult1_0/mult_30/a[1] i_mult1_0/mult_30/product[3] i_mult1_0/mult_30/product[11] i_mult1_0/mult_30/product[2] i_mult1_0/mult_30/b[7] i_mult1_0/mult_30/product[9] i_mult1_0/mult_30/b[2] i_mult1_0/mult_30/a[3] i_mult1_0/mult_30/product[0] i_mult1_0/mult_30/b[4] i_mult1_0/mult_30/a[5] i_mult1_0/mult_30/product[7] i_mult1_0/mult_30/a[0] i_mult1_0/mult_30/product[6] i_mult1_0/mult_30/product[15] i_mult1_0/mult_30/b[6] i_mult1_0/mult_30/a[7] i_mult1_0/mult_30/a[2] i_mult1_0/mult_30/product[4] i_mult1_0/mult_30/product[13] i_mult1_0/mult_30/product[12] i_mult1_0/mult_30/b[8] i_mult1_0/mult_30/a[4] i_mult1_0/mult_30/product[10] i_mult1_0/mult_30/product[1] i_mult1_0/mult_30/b[1] i_mult1_0/mult_30/a[6] i_mult1_0/mult_30/product[8] i_mult1_0/mult_30/product[17] } -path full -delay max -nworst 3 -max_paths 3 -significant_digits 2 -sort_by group }
-uplevel #0 { report_timing  -from { i_add1_0/add_24/SUM[6] i_add1_0/add_24/CO i_add1_0/add_24/A[5] i_add1_0/add_24/A[0] i_add1_0/add_24/B[1] i_add1_0/add_24/A[7] i_add1_0/add_24/B[3] i_add1_0/add_24/A[2] i_add1_0/add_24/SUM[1] i_add1_0/add_24/A[4] i_add1_0/add_24/B[5] i_add1_0/add_24/SUM[3] i_add1_0/add_24/B[0] i_add1_0/add_24/B[7] i_add1_0/add_24/A[6] i_add1_0/add_24/SUM[5] i_add1_0/U1/**logic_0** i_add1_0/add_24/B[2] i_add1_0/add_24/B[4] i_add1_0/add_24/SUM[0] i_add1_0/add_24/SUM[7] i_add1_0/add_24/B[6] i_add1_0/add_24/SUM[2] i_add1_0/add_24/CI i_add1_0/add_24/SUM[4] i_add1_0/add_24/A[1] i_add1_0/add_24/A[3] } -to { i_add3_9/add_24/SUM[1] i_add3_9/add_24/B[5] i_add3_9/add_24/CI i_add3_9/add_24/SUM[3] i_add3_9/add_24/A[1] i_add3_9/U1/**logic_0** i_add3_9/add_24/B[3] i_add3_9/add_24/SUM[5] i_add3_9/add_24/CO i_add3_9/add_24/B[2] i_add3_9/add_24/SUM[0] i_add3_9/add_24/A[5] i_add3_9/add_24/SUM[7] i_add3_9/add_24/B[0] i_add3_9/add_24/B[7] i_add3_9/add_24/B[6] i_add3_9/add_24/A[3] i_add3_9/add_24/SUM[2] i_add3_9/add_24/SUM[4] i_add3_9/add_24/A[2] i_add3_9/add_24/B[4] i_add3_9/add_24/SUM[6] i_add3_9/add_24/A[0] i_add3_9/add_24/A[7] i_add3_9/add_24/A[6] i_add3_9/add_24/B[1] i_add3_9/add_24/A[4] } -path full -delay max -nworst 5 -max_paths 5 -significant_digits 2 -sort_by group }
-uplevel #0 { report_timing  -from { i_add1_0/add_24/SUM[6] i_add1_0/add_24/CO i_add1_0/add_24/A[5] i_add1_0/add_24/A[0] i_add1_0/add_24/B[1] i_add1_0/add_24/A[7] i_add1_0/add_24/B[3] i_add1_0/add_24/A[2] i_add1_0/add_24/SUM[1] i_add1_0/add_24/A[4] i_add1_0/add_24/B[5] i_add1_0/add_24/SUM[3] i_add1_0/add_24/B[0] i_add1_0/add_24/B[7] i_add1_0/add_24/A[6] i_add1_0/add_24/SUM[5] i_add1_0/U1/**logic_0** i_add1_0/add_24/B[2] i_add1_0/add_24/B[4] i_add1_0/add_24/SUM[0] i_add1_0/add_24/SUM[7] i_add1_0/add_24/B[6] i_add1_0/add_24/SUM[2] i_add1_0/add_24/CI i_add1_0/add_24/SUM[4] i_add1_0/add_24/A[1] i_add1_0/add_24/A[3] } -to { i_add2_9/add_24/CO i_add2_9/add_24/B[5] i_add2_9/add_24/SUM[3] i_add2_9/add_24/A[1] i_add2_9/add_24/B[3] i_add2_9/add_24/SUM[5] i_add2_9/U1/**logic_0** i_add2_9/add_24/B[2] i_add2_9/add_24/SUM[0] i_add2_9/add_24/SUM[7] i_add2_9/add_24/A[5] i_add2_9/add_24/B[0] i_add2_9/add_24/SUM[2] i_add2_9/add_24/B[7] i_add2_9/add_24/B[6] i_add2_9/add_24/SUM[4] i_add2_9/add_24/A[3] i_add2_9/add_24/A[2] i_add2_9/add_24/B[4] i_add2_9/add_24/SUM[6] i_add2_9/add_24/A[0] i_add2_9/add_24/A[7] i_add2_9/add_24/A[6] i_add2_9/add_24/B[1] i_add2_9/add_24/CI i_add2_9/add_24/A[4] i_add2_9/add_24/SUM[1] } -path full -delay max -nworst 3 -max_paths 3 -significant_digits 2 -sort_by group }
-uplevel #0 { report_timing  -from { i_add3_0/add_24/SUM[7] i_add3_0/add_24/B[7] i_add3_0/add_24/A[3] i_add3_0/add_24/SUM[2] i_add3_0/add_24/B[2] i_add3_0/add_24/B[4] i_add3_0/add_24/A[5] i_add3_0/add_24/SUM[4] i_add3_0/add_24/A[0] i_add3_0/add_24/SUM[6] i_add3_0/add_24/B[6] i_add3_0/add_24/A[7] i_add3_0/add_24/A[2] i_add3_0/add_24/A[4] i_add3_0/add_24/CI i_add3_0/add_24/A[6] i_add3_0/add_24/B[1] i_add3_0/add_24/SUM[1] i_add3_0/add_24/CO i_add3_0/add_24/B[3] i_add3_0/add_24/SUM[3] i_add3_0/add_24/B[5] i_add3_0/add_24/SUM[5] i_add3_0/U1/**logic_0** i_add3_0/add_24/B[0] i_add3_0/add_24/A[1] i_add3_0/add_24/SUM[0] } -to { i_add3_9/add_24/SUM[1] i_add3_9/add_24/B[5] i_add3_9/add_24/CI i_add3_9/add_24/SUM[3] i_add3_9/add_24/A[1] i_add3_9/U1/**logic_0** i_add3_9/add_24/B[3] i_add3_9/add_24/SUM[5] i_add3_9/add_24/CO i_add3_9/add_24/B[2] i_add3_9/add_24/SUM[0] i_add3_9/add_24/A[5] i_add3_9/add_24/SUM[7] i_add3_9/add_24/B[0] i_add3_9/add_24/B[7] i_add3_9/add_24/B[6] i_add3_9/add_24/A[3] i_add3_9/add_24/SUM[2] i_add3_9/add_24/SUM[4] i_add3_9/add_24/A[2] i_add3_9/add_24/B[4] i_add3_9/add_24/SUM[6] i_add3_9/add_24/A[0] i_add3_9/add_24/A[7] i_add3_9/add_24/A[6] i_add3_9/add_24/B[1] i_add3_9/add_24/A[4] } -path full -delay max -nworst 3 -max_paths 3 -significant_digits 2 -sort_by group }
+report power
+report_timing
+uplevel #0 { report_timing  -from { i_add1_0/add_24/SUM[6] i_add1_0/add_24/CO i_add1_0/add_24/A[5] i_add1_0/add_24/A[0] i_add1_0/add_24/B[1] i_add1_0/add_24/A[7] i_add1_0/add_24/B[3] i_add1_0/add_24/A[2] i_add1_0/add_24/SUM[1] i_add1_0/add_24/A[4] i_add1_0/add_24/B[5] i_add1_0/add_24/SUM[3] i_add1_0/add_24/B[0] i_add1_0/add_24/B[7] i_add1_0/add_24/A[6] i_add1_0/add_24/SUM[5] i_add1_0/U1/**logic_0** i_add1_0/add_24/B[2] i_add1_0/add_24/B[4] i_add1_0/add_24/SUM[0] i_add1_0/add_24/SUM[7] i_add1_0/add_24/B[6] i_add1_0/add_24/SUM[2] i_add1_0/add_24/CI i_add1_0/add_24/SUM[4] i_add1_0/add_24/A[1] i_add1_0/add_24/A[3] } -path full -delay max -nworst 3 -max_paths 3 -significant_digits 2 -sort_by group }

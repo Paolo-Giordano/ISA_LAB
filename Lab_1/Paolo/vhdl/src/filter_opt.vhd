@@ -2,7 +2,7 @@
 -- Description: my FIR filter with unfoldig N=3
 -- a pipeline level between mults & adds
 -- a "vertical" pipeline level between add5/add6 &
--- pipe5/pipe 6, along all the 3 blocks (DA FARE ANCORA!)
+-- pipe5/pipe 6, along all the 3 blocks 
 -------------------------------------------------
 
 library IEEE;
@@ -129,7 +129,8 @@ architecture structural of filter_opt is
     signal shifted_product1_7bit_d,shifted_product2_7bit_d,shifted_product3_7bit_d  :array_products_shifted;
     --array with the outputs of the adders plus at the index 0 one input of the first adder
     --to manage it easily inside generate loops
-    type array_sums is array (10 downto 0) of std_logic_vector (7 downto 0);
+	-- ADD HERE one row for each pipe add->add
+    type array_sums is array (11 downto 0) of std_logic_vector (7 downto 0);
     signal sum1, sum2, sum3             : array_sums;
     --delay the out sum form adder 5 due to the pipe add->add
     signal sum1_5_d, sum2_5_d, sum3_5_d : std_logic_vector(7 downto 0);
@@ -232,9 +233,9 @@ architecture structural of filter_opt is
         --connections delay lines to multipliers
         --with 1 vertical pipe line, delay_linex(2) go to the added delay_linex(3),
         --which will be connected to input_multx(6)
-        delay_line1(5) <= delay_line1(6);
-        delay_line2(5) <= delay_line2(6);
-        delay_line3(5) <= delay_line3(6);
+        --delay_line1(2) <= delay_line1(3);
+        --delay_line2(2) <= delay_line2(3);
+        --delay_line3(2) <= delay_line3(3);
 
         --from input_mult(6) delay_linex(2) not used, replaced with delay_linex(3)
         --and scaling all the successive pipe_delay
@@ -345,7 +346,7 @@ architecture structural of filter_opt is
 
         --split in 2 the generation of adders from 0 to 4, from 5 to 9,
         --adder0 take as input sumx(0) where ther is already the shifter value with sign extension
-        g_adders: for i in 0 to 4 generate
+        g_adders1: for i in 0 to 4 generate
         begin
             i_add1: ADDER_NBIT generic map (N_g=> 8) port map(
                     ADDER_IN_A         => from_multiplier_to_adder1(i),
@@ -364,58 +365,64 @@ architecture structural of filter_opt is
                 );
         end generate;
         --add the pipe stage between adder
-        i_adder1_5_reg: REGISTER_NBIT generic map(N_g=> 7) port map(
+        i_adder1_5_reg: REGISTER_NBIT generic map(N_g=> 8) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
             REGISTER_IN_EN      => in_VIN_d,
             REGISTER_IN_D       => sum1(5),
-            REGISTER_OUT_Q      => sum1_5_d
+            REGISTER_OUT_Q      => sum1(6)
         );
-        i_adder2_5_reg: REGISTER_NBIT generic map(N_g=> 7) port map(
+        i_adder2_5_reg: REGISTER_NBIT generic map(N_g=> 8) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
             REGISTER_IN_EN      => in_VIN_d,
             REGISTER_IN_D       => sum2(5),
-            REGISTER_OUT_Q      => sum2_5_d
+            REGISTER_OUT_Q      => sum2(6)
         );
-        i_adder3_5_reg: REGISTER_NBIT generic map(N_g=> 7) port map(
+        i_adder3_5_reg: REGISTER_NBIT generic map(N_g=> 8) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
             REGISTER_IN_EN      => in_VIN_d,
             REGISTER_IN_D       => sum3(5),
-            REGISTER_OUT_Q      => sum3_5_d
+            REGISTER_OUT_Q      => sum3(6)
         );
+		--add to the sum array the delayed sum 
+		--sum1 (6) <= sum1_5_d;
+        --sum2 (6) <= sum2_5_d;
+        --sum3 (6) <= sum3_5_d;
         --the adder 5 take as input the previous sum delayed
-        g_adders: for i in 5 to 9 generate
+		--variable 1 is incremented by 1
+        g_adders2: for i in 5 to 9 generate
         begin
             i_add1: ADDER_NBIT generic map (N_g=> 8) port map(
-                    ADDER_IN_A         => sum1_5_d,
-                    ADDER_IN_B         => sum1(i),
-                    ADDER_OUT_SUM      => sum1(i+1)
+                    ADDER_IN_A         => from_multiplier_to_adder1(i),
+                    ADDER_IN_B         => sum1(i+1),
+                    ADDER_OUT_SUM      => sum1(i+2)
                 );
             i_add2: ADDER_NBIT generic map (N_g=> 8) port map(
-                    ADDER_IN_A         => sum2_5_d,
-                    ADDER_IN_B         => sum2(i),
-                    ADDER_OUT_SUM      => sum2(i+1)
+                    ADDER_IN_A         => from_multiplier_to_adder2(i),
+                    ADDER_IN_B         => sum2(i+1),
+                    ADDER_OUT_SUM      => sum2(i+2)
                 );
             i_add3: ADDER_NBIT generic map (N_g=> 8) port map(
-                    ADDER_IN_A         => sum3_5_d,
-                    ADDER_IN_B         => sum3(i),
-                    ADDER_OUT_SUM      => sum3(i+1)
+                    ADDER_IN_A         => from_multiplier_to_adder3(i),
+                    ADDER_IN_B         => sum3(i+1),
+                    ADDER_OUT_SUM      => sum3(i+2)
                 );
         end generate;
         
-        in_su1 <= sum1(10) & "00";
+		-- update the final sum for sat unit
+        in_su1 <= sum1(11) & "00";
         i_su1: SATURATION_UNIT port map(
             SU_IN_DATA  => in_su1,
             SU_OUT_DATA => evaluated_DOUT1
         );
-        in_su2 <= sum2(10) & "00";
+        in_su2 <= sum2(11) & "00";
         i_su2: SATURATION_UNIT port map(
             SU_IN_DATA  => in_su2,
             SU_OUT_DATA => evaluated_DOUT2
         );
-        in_su3 <= sum3(10) & "00";
+        in_su3 <= sum3(11) & "00";
         i_su3: SATURATION_UNIT port map(
             SU_IN_DATA  => in_su3,
             SU_OUT_DATA => evaluated_DOUT3
