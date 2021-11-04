@@ -108,10 +108,10 @@ architecture structural of filter_opt is
     signal b_coeff, b_coeff_d           : array_coeff;
 
     --array to connect the the registers of the delay lines
-    --ADD HERE number of rows equal to the vertical added pipeline (1 in this case in the middle)
-    type array_delay_line_3reg is array (4 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
+    --      add here number of rows equal to the vertical added pipeline (1 in this case in the middle)   ---
+    type array_delay_line_3reg is array (3 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
     signal delay_line1, delay_line2                   : array_delay_line_3reg;
-    type array_delay_line_4reg is array (5 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
+    type array_delay_line_4reg is array (4 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
     signal delay_line3				                  : array_delay_line_4reg;
 
     --to apply unfolding hardware is tripled, the number at the end of the names indicates the first, second or third
@@ -201,7 +201,7 @@ architecture structural of filter_opt is
         delay_line2 (0) <= in_DIN2_d( 8 downto shift_input_c);
         delay_line3 (0) <= in_DIN3_d( 8 downto shift_input_c);
         --generate 1 pipe_delay more for the vertical pipe
-        g_delay_lines: for i in 0 to 3 generate
+        g_delay_lines: for i in 0 to 2 generate
         begin
             i_reg_DL1: REGISTER_NBIT generic map(N_g=> 9 - shift_input_c) port map(
                 REGISTER_IN_RST_N   => RST_n,
@@ -231,19 +231,19 @@ architecture structural of filter_opt is
 
         --connections delay lines to multipliers
         --with 1 vertical pipe line, delay_linex(2) go to the added delay_linex(3),
-        --which will be connected to input_multx(6)
+        --which will be connected to input_multx(5)
         delay_line1(5) <= delay_line1(6);
         delay_line2(5) <= delay_line2(6);
         delay_line3(5) <= delay_line3(6);
 
-        --from input_mult(6) delay_linex(2) not used, replaced with delay_linex(3)
+        --from input_mult(5) delay_linex(2) not used, replaced with delay_linex(3)
         --and scaling all the successive pipe_delay
         input_mult1 (0) <= delay_line1 (0);
         input_mult1 (1) <= delay_line3 (1);
         input_mult1 (2) <= delay_line2 (1);
         input_mult1 (3) <= delay_line1 (1);
         input_mult1 (4) <= delay_line3 (2);
-        input_mult1 (5) <= delay_line2 (2);
+        input_mult1 (5) <= delay_line2 (3);
         input_mult1 (6) <= delay_line1 (3);
         input_mult1 (7) <= delay_line3 (4);
         input_mult1 (8) <= delay_line2 (4);
@@ -255,19 +255,21 @@ architecture structural of filter_opt is
         input_mult2 (2) <= delay_line3 (1);
         input_mult2 (3) <= delay_line2 (1);
         input_mult2 (4) <= delay_line1 (1);
-        input_mult2 (5) <= delay_line3 (2);
+        input_mult2 (5) <= delay_line3 (3);
         input_mult2 (6) <= delay_line2 (3);
         input_mult2 (7) <= delay_line1 (3);
         input_mult2 (8) <= delay_line3 (4);
         input_mult2 (9) <= delay_line2 (4);
         input_mult2 (10)<= delay_line1 (4);
 
+        --from input_multx3(5) delay_linex(1) replaced with delay_linex(2)
+        --and scaling all the successive pipe_delay
         input_mult3 (0) <= delay_line3 (0);
         input_mult3 (1) <= delay_line2 (0);
         input_mult3 (2) <= delay_line1 (0);
         input_mult3 (3) <= delay_line3 (1);
         input_mult3 (4) <= delay_line2 (1);
-        input_mult3 (5) <= delay_line1 (1);
+        input_mult3 (5) <= delay_line1 (2);
         input_mult3 (6) <= delay_line3 (3);
         input_mult3 (7) <= delay_line2 (3);
         input_mult3 (8) <= delay_line1 (3);
@@ -364,26 +366,26 @@ architecture structural of filter_opt is
                 );
         end generate;
         --add the pipe stage between adder
-        i_adder1_5_reg: REGISTER_NBIT generic map(N_g=> 7) port map(
+        i_adder5_reg: REGISTER_NBIT generic map(N_g=> 7) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
             REGISTER_IN_EN      => in_VIN_d,
             REGISTER_IN_D       => sum1(5),
             REGISTER_OUT_Q      => sum1_5_d
         );
-        i_adder2_5_reg: REGISTER_NBIT generic map(N_g=> 7) port map(
+        i_adder5_reg: REGISTER_NBIT generic map(N_g=> 7) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
             REGISTER_IN_EN      => in_VIN_d,
-            REGISTER_IN_D       => sum2(5),
-            REGISTER_OUT_Q      => sum2_5_d
+            REGISTER_IN_D       => sum1(5),
+            REGISTER_OUT_Q      => sum1_5_d
         );
-        i_adder3_5_reg: REGISTER_NBIT generic map(N_g=> 7) port map(
+        i_adder5_reg: REGISTER_NBIT generic map(N_g=> 7) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
             REGISTER_IN_EN      => in_VIN_d,
-            REGISTER_IN_D       => sum3(5),
-            REGISTER_OUT_Q      => sum3_5_d
+            REGISTER_IN_D       => sum1(5),
+            REGISTER_OUT_Q      => sum1_5_d
         );
         --the adder 5 take as input the previous sum delayed
         g_adders: for i in 5 to 9 generate
@@ -404,7 +406,7 @@ architecture structural of filter_opt is
                     ADDER_OUT_SUM      => sum3(i+1)
                 );
         end generate;
-        
+
         in_su1 <= sum1(10) & "00";
         i_su1: SATURATION_UNIT port map(
             SU_IN_DATA  => in_su1,
