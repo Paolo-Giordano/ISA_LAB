@@ -92,7 +92,7 @@ architecture structural of filter_opt is
     end component;
 
     --shift the input DIN before the multiplier
-    constant shift_input_c      : integer := 0; --4 
+    constant shift_input_c      : integer := 4; --4 
 
     --the postfix d means signal delayed by the input register
     --evaluated stands for output quantity at the input of an output register
