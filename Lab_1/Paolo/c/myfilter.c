@@ -6,7 +6,7 @@
 #define NT 11 /// number of coeffs
 #define NB 9 /// number of bits
 #define N_added_shift 2 /// number of added shift with respect to NB-1 after multiplication
-#define N_input_shift 0 ///number of shift of the data in
+#define N_input_shift 4  ///number of shift of the data in
 
 //valid samples is used to count if in the shift registers all the positions
 //are occupied by valid samples or not, at the beginning is not true

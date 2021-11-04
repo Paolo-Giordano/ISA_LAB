@@ -1,8 +1,8 @@
 #variables
 variable top_entity "filter_opt"
 variable top_entity_arch "STRUCTURAL"
-variable period "2.25"
-variable report_folder "filter_unfolding_v2/clock_2_25"
+variable period "3.16"
+variable report_folder "filter_unfolding_shifted/clock_3_16"
 
 remove_design -designs
 
