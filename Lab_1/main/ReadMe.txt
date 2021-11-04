@@ -1,5 +1,5 @@
 In the main there the final organized file which will be send for the Lab1.
 Matlab and C folder are already done.
-In vhdl folder at the moment there are sim, scr and tb with final file of filter and unfolding filter.
+In vhdl folder at the moment there are sim, scr and tb with final file of filter and unfolding_v1, unfolding_v2.
 Be careful at the different version of unfolding with pipe (version v1 pipe mult->add, further version with pipe add->add).
-In report there are report of unfolding_v1, and normal filter with input shift(Paolo).
+In report there are report of unfolding_v1, unfolding_v2 and normal filter with input shift(Paolo).
