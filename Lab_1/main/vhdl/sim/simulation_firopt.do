@@ -7,8 +7,12 @@ set SIM_UNIT us
 
 
 #compilation 
-project open MYFIR_opt.mpf
-project compileall
+#project open MYFIR_opt.mpf
+#project compileall
+
+vcom -93 -work ./work ../src/*
+vcom -93 -work ./work ../tb/*.vhd
+vlog -work ./work ../tb/*.v
 
 #simulation -- resolution
 vsim -t $RES $SIM_FILE
