@@ -39,9 +39,8 @@ end
 
 %%errore relativo al range intero = |approx - exact| / Nbit 
 for i = 1:1:length(samples_c)
-    if mat_out_valid(i) ~= 0
-        error(i) = abs(mat_out_valid(i) - samples_c(i)) / 2^(nb-1);
-    end
+    error(i) = abs(mat_out_valid(i) - samples_c(i)) / 2^(nb-1);
+    
 end
 max_error = max(error)
 
