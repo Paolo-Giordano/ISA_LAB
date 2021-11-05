@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06-SP4 for linux64 -- Nov 27, 2018
-#@ # Date:   Fri Nov  5 11:49:46 2021
+#@ # Date:   Fri Nov  5 21:28:27 2021
 #@ # Run by: isa03_2021_2022@localhost.localdomain
 #@ 
 
@@ -42999,187 +42999,21 @@ gui_start
 #@ 
 #@ # -- End source /software/synopsys/syn_current_64.18/auxx/tcllib/lib/iwidgets4.1/watch.itk
 
-source synth.tcl
-#@ # -- Starting source synth.tcl
+source power_estimation.tcl
+#@ # -- Starting source power_estimation.tcl
 
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "1.61"
-#@ variable report_folder "filter_unfolding_v3_shifted/clock_1_61"
+#@ variable folder "filter_base/clock_13_16"
+#@ variable top_entity "filter"
 #@ 
-#@ remove_design -designs
+#@ #read back the netlist
+#@ read_verilog -netlist ../netlist/$top_entity.v
 #@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
+#@ #read saif file
+#@ read_saif -input ../saif/${top_entity}_syn.saif -instance tb_fir/UUT -unit ns -scale 1
 #@ 
-#@ set power_preserve_rtl_hier_names true
+#@ #create clock
+#@ create_clock -name CLK
 #@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "1.61"
-#@ variable report_folder "filter_unfolding_v3_shifted/clock_1_61"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "1.67"
-#@ variable report_folder "filter_unfolding_v3_shifted/clock_1_67"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
-
-source synth.tcl
-#@ # -- Starting source synth.tcl
-
-#@ #variables
-#@ variable top_entity "filter_opt"
-#@ variable top_entity_arch "STRUCTURAL"
-#@ variable period "1.54"
-#@ variable report_folder "filter_unfolding_v3_shifted/clock_1_54"
-#@ 
-#@ remove_design -designs
-#@ 
-#@ #analyze
-#@ analyze -f vhdl -lib WORK ../src/ADDER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/MULTIPLIER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/REGISTER_NBIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/SHIFT_REG_1bit.vhd
-#@ analyze -f vhdl -lib WORK ../src/FF.vhd
-#@ analyze -f vhdl -lib WORK ../src/SATURATION_UNIT.vhd
-#@ analyze -f vhdl -lib WORK ../src/$top_entity.vhd
-#@ 
-#@ set power_preserve_rtl_hier_names true
-#@ 
-#@ #elaborate
-#@ elaborate $top_entity -architecture $top_entity_arch  -library work
-#@ 
-#@ create_clock -name MYCLK -period $period CLK
-#@ 
-#@ #set dont touch and uncertaintly
-#@ set_dont_touch_network MYCLK
-#@ set_clock_uncertainty 0.07 [get_clocks MYCLK]
-#@ set_input_delay 0.5 -max -clock MYCLK [remove_from_collection [all_inputs] MYFIR_IN_CLK]
-#@ set_output_delay 0.5 -max -clock MYCLK [all_outputs]
-#@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
-#@ set_load $OLOAD [all_outputs]
-#@ 
-#@ #compile
-#@ compile 
-#@ 
-#@ #report
-#@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
-#@ report_area > ../report/$report_folder/area_report_${period}ns.txt
-#@ report_power > ../report/$report_folder/power_report_${period}ns.txt
-#@ 
-#@ #source verilog_gen.tcl
-#@ # -- End source synth.tcl
+#@ report_power > ../report/$folder/power_estimation.txt
+#@ # -- End source power_estimation.tcl
 

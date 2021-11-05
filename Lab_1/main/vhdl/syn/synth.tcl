@@ -1,8 +1,8 @@
 #variables
-variable top_entity "filter_opt"
+variable top_entity "filter"
 variable top_entity_arch "STRUCTURAL"
-variable period "2.25"
-variable report_folder "filter_unfolding_v1/clock_2_25"
+variable period "13.16"
+variable report_folder "filter_base/clock_13_16"
 
 remove_design -designs
 
@@ -38,4 +38,4 @@ report_timing > ../report/$report_folder/timing_report_${period}ns.txt
 report_area > ../report/$report_folder/area_report_${period}ns.txt
 report_power > ../report/$report_folder/power_report_${period}ns.txt
 
-#source verilog_gen.tcl
+source verilog_gen.tcl

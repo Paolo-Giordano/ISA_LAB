@@ -1,10 +1,7 @@
 -------------------------------------------------
--- Description: my FIR filter with unfoldig N=3
--- a pipeline level between mults & adds
--- a "vertical" pipeline level between add5/add6 &
--- pipe5/pipe 6, along all the 3 blocks 
+--Description: my FIR filter with unfoldig N=3
 -------------------------------------------------
-
+ 
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
@@ -95,23 +92,22 @@ architecture structural of filter_opt is
     end component;
 
     --shift the input DIN before the multiplier
-    constant shift_input_c      : integer := 0; --4
+    constant shift_input_c      : integer := 0; --4 
 
     --the postfix d means signal delayed by the input register
     --evaluated stands for output quantity at the input of an output register
     signal in_DIN1_d, evaluated_DOUT1, in_DIN2_d, evaluated_DOUT2, in_DIN3_d, evaluated_DOUT3     : std_logic_vector (8 downto 0);
     signal in_VIN_d, evaluated_VOUT                                                               : std_logic;
     signal VIN_outDL                                                                              : std_logic;
-
+    
     --filter coefficients are inserted in an array to manage them easily in generate loop
     type array_coeff is array (10 downto 0) of std_logic_vector (8 downto 0);
     signal b_coeff, b_coeff_d           : array_coeff;
 
     --array to connect the the registers of the delay lines
-    --ADD HERE number of rows equal to the vertical added pipeline (1 in this case in the middle)
-    type array_delay_line_3reg is array (4 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
+    type array_delay_line_3reg is array (3 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
     signal delay_line1, delay_line2                   : array_delay_line_3reg;
-    type array_delay_line_4reg is array (5 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
+    type array_delay_line_4reg is array (4 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
     signal delay_line3				                  : array_delay_line_4reg;
 
     --to apply unfolding hardware is tripled, the number at the end of the names indicates the first, second or third
@@ -122,15 +118,9 @@ architecture structural of filter_opt is
     --array with the outputs of the multipliers
     type array_products is array (10 downto 0) of std_logic_vector (16 - shift_input_c downto 0);
     signal product1,product2,product3   : array_products;
-    --array with products shifted to take only the 7 MSB as input of the adders
-    --the postfix d is to indicate the shifted products delay of one clock cycle by the pipe level
-    type array_products_shifted is array (10 downto 0) of std_logic_vector (6 downto 0);
-    signal shifted_product1_7bit,shifted_product2_7bit,shifted_product3_7bit        :array_products_shifted;
-    signal shifted_product1_7bit_d,shifted_product2_7bit_d,shifted_product3_7bit_d  :array_products_shifted;
     --array with the outputs of the adders plus at the index 0 one input of the first adder
     --to manage it easily inside generate loops
-	-- ADD HERE one row for each pipe add->add
-    type array_sums is array (11 downto 0) of std_logic_vector (7 downto 0);
+    type array_sums is array (10 downto 0) of std_logic_vector (7 downto 0);
     signal sum1, sum2, sum3             : array_sums;
     --array for the inputs of te adders that come from the multipliers, properly shifted and extended
     type array_addend_a is array (9 downto 0) of std_logic_vector (7 downto 0);
@@ -141,7 +131,7 @@ architecture structural of filter_opt is
 
     begin
 
-        --input registers for DIN, always enabled
+        --input registers for DIN, always enabled 
         i_regIN_DIN1 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
@@ -180,13 +170,11 @@ architecture structural of filter_opt is
                 REGISTER_IN_EN      => '1',
                 REGISTER_IN_D       => b_coeff(i),
                 REGISTER_OUT_Q      => b_coeff_d(i)
-            );
+            ); 
         end generate;
 
         --shift register for VIN
-        --incremented by one the dimension to consider also the pipe level mult->add
-        --another increment to consider pipe add5->add6
-        i_shift_reg: SHIFT_REG_1bit generic map(6) port map(
+        i_shift_reg: SHIFT_REG_1bit generic map(4) port map(
             SHIFT_REG_IN_CLK    => CLK,
             SHIFT_REG_IN_RST_N  => RST_n,
             SHIFT_REG_IN_EN     => in_VIN_d,
@@ -199,8 +187,7 @@ architecture structural of filter_opt is
         delay_line1 (0) <= in_DIN1_d( 8 downto shift_input_c);
         delay_line2 (0) <= in_DIN2_d( 8 downto shift_input_c);
         delay_line3 (0) <= in_DIN3_d( 8 downto shift_input_c);
-        --generate 1 pipe_delay more for the vertical pipe
-        g_delay_lines: for i in 0 to 3 generate
+        g_delay_lines: for i in 0 to 2 generate
         begin
             i_reg_DL1: REGISTER_NBIT generic map(N_g=> 9 - shift_input_c) port map(
                 REGISTER_IN_RST_N   => RST_n,
@@ -217,7 +204,7 @@ architecture structural of filter_opt is
                 REGISTER_OUT_Q      => delay_line2(i+1)
             );
         end generate;
-        g_delay_line3: for i in 0 to 4 generate
+        g_delay_line3: for i in 0 to 3 generate
         begin
             i_reg_DL3: REGISTER_NBIT generic map(N_g=> 9 - shift_input_c) port map(
                 REGISTER_IN_RST_N   => RST_n,
@@ -228,19 +215,18 @@ architecture structural of filter_opt is
             );
         end generate;
 
-        --from input_mult(6) delay_linex(2) not used, replaced with delay_linex(3)
-        --and scaling all the successive pipe_delay
+        --connections delay lines to multipliers
         input_mult1 (0) <= delay_line1 (0);
         input_mult1 (1) <= delay_line3 (1);
         input_mult1 (2) <= delay_line2 (1);
         input_mult1 (3) <= delay_line1 (1);
         input_mult1 (4) <= delay_line3 (2);
         input_mult1 (5) <= delay_line2 (2);
-        input_mult1 (6) <= delay_line1 (3);
-        input_mult1 (7) <= delay_line3 (4);
-        input_mult1 (8) <= delay_line2 (4);
-        input_mult1 (9) <= delay_line1 (4);
-        input_mult1 (10)<= delay_line3 (5);
+        input_mult1 (6) <= delay_line1 (2);
+        input_mult1 (7) <= delay_line3 (3);
+        input_mult1 (8) <= delay_line2 (3);
+        input_mult1 (9) <= delay_line1 (3);
+        input_mult1 (10)<= delay_line3 (4);
 
         input_mult2 (0) <= delay_line2 (0);
         input_mult2 (1) <= delay_line1 (0);
@@ -248,11 +234,11 @@ architecture structural of filter_opt is
         input_mult2 (3) <= delay_line2 (1);
         input_mult2 (4) <= delay_line1 (1);
         input_mult2 (5) <= delay_line3 (2);
-        input_mult2 (6) <= delay_line2 (3);
-        input_mult2 (7) <= delay_line1 (3);
-        input_mult2 (8) <= delay_line3 (4);
-        input_mult2 (9) <= delay_line2 (4);
-        input_mult2 (10)<= delay_line1 (4);
+        input_mult2 (6) <= delay_line2 (2);
+        input_mult2 (7) <= delay_line1 (2);
+        input_mult2 (8) <= delay_line3 (3);
+        input_mult2 (9) <= delay_line2 (3);
+        input_mult2 (10)<= delay_line1 (3);
 
         input_mult3 (0) <= delay_line3 (0);
         input_mult3 (1) <= delay_line2 (0);
@@ -260,11 +246,11 @@ architecture structural of filter_opt is
         input_mult3 (3) <= delay_line3 (1);
         input_mult3 (4) <= delay_line2 (1);
         input_mult3 (5) <= delay_line1 (1);
-        input_mult3 (6) <= delay_line3 (3);
-        input_mult3 (7) <= delay_line2 (3);
-        input_mult3 (8) <= delay_line1 (3);
-        input_mult3 (9) <= delay_line3 (4);
-        input_mult3 (10)<= delay_line2 (4);
+        input_mult3 (6) <= delay_line3 (2);
+        input_mult3 (7) <= delay_line2 (2);
+        input_mult3 (8) <= delay_line1 (2);
+        input_mult3 (9) <= delay_line3 (3);
+        input_mult3 (10)<= delay_line2 (3);
 
         g_multipliers: for i in 0 to 10 generate
         begin
@@ -287,57 +273,18 @@ architecture structural of filter_opt is
 
         --to get the input of the adders from the evaluated products only the 7 most
         --significant bits have to be considered
+        sum1 (0) <= product1(0)(16 - shift_input_c) & product1(0)(16 - shift_input_c downto 10 - shift_input_c);
+        sum2 (0) <= product2(0)(16 - shift_input_c) & product2(0)(16 - shift_input_c downto 10 - shift_input_c);
+        sum3 (0) <= product3(0)(16 - shift_input_c) & product3(0)(16 - shift_input_c downto 10 - shift_input_c);
         process(product1, product2, product3)
         begin
-            for i in 0 to 10 loop
-                shifted_product1_7bit(i)  <= product1(i)(16 - shift_input_c downto 10 - shift_input_c);
-                shifted_product2_7bit(i)  <= product2(i)(16 - shift_input_c downto 10 - shift_input_c);
-                shifted_product3_7bit(i)  <= product3(i)(16 - shift_input_c downto 10 - shift_input_c);
-            end loop;
-        end process;
-
-        --pipe level 1 mults -> adds
-        g_pipe_level1: for i in 0 to 10 generate
-        begin
-            i_reg_pipe1_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
-                REGISTER_IN_RST_N   => RST_n,
-                REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
-                REGISTER_IN_D       => shifted_product1_7bit(i),
-                REGISTER_OUT_Q      => shifted_product1_7bit_d(i)
-            );
-            i_reg_pipe2_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
-                REGISTER_IN_RST_N   => RST_n,
-                REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
-                REGISTER_IN_D       => shifted_product2_7bit(i),
-                REGISTER_OUT_Q      => shifted_product2_7bit_d(i)
-            );
-            i_reg_pipe3_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
-                REGISTER_IN_RST_N   => RST_n,
-                REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
-                REGISTER_IN_D       => shifted_product3_7bit(i),
-                REGISTER_OUT_Q      => shifted_product3_7bit_d(i)
-            );
-        end generate;
-
-        --sign extension to get adders' input on 8 bits and proper assignment of products to adders' inputs
-        sum1 (0) <= shifted_product1_7bit_d(0)(6) & shifted_product1_7bit_d(0);
-        sum2 (0) <= shifted_product2_7bit_d(0)(6) & shifted_product2_7bit_d(0);
-        sum3 (0) <= shifted_product3_7bit_d(0)(6) & shifted_product3_7bit_d(0);
-        process(shifted_product1_7bit_d,shifted_product2_7bit_d,shifted_product3_7bit_d)
-        begin
             for i in 0 to 9 loop
-                from_multiplier_to_adder1(i)  <= shifted_product1_7bit_d(i+1)(6) & shifted_product1_7bit_d(i+1);
-                from_multiplier_to_adder2(i)  <= shifted_product2_7bit_d(i+1)(6) & shifted_product2_7bit_d(i+1);
-                from_multiplier_to_adder3(i)  <= shifted_product3_7bit_d(i+1)(6) & shifted_product3_7bit_d(i+1);
+                from_multiplier_to_adder1(i)  <= product1(i+1)(16 - shift_input_c) & product1(i+1)(16 - shift_input_c downto 10 - shift_input_c);
+                from_multiplier_to_adder2(i)  <= product2(i+1)(16 - shift_input_c) & product2(i+1)(16 - shift_input_c downto 10 - shift_input_c);
+                from_multiplier_to_adder3(i)  <= product3(i+1)(16 - shift_input_c) & product3(i+1)(16 - shift_input_c downto 10 - shift_input_c);
             end loop;
         end process;
-
-        --split in 2 the generation of adders from 0 to 4, from 5 to 9,
-        --adder0 take as input sumx(0) where ther is already the shifter value with sign extension
-        g_adders1: for i in 0 to 4 generate
+        g_adders: for i in 0 to 9 generate
         begin
             i_add1: ADDER_NBIT generic map (N_g=> 8) port map(
                     ADDER_IN_A         => from_multiplier_to_adder1(i),
@@ -355,62 +302,18 @@ architecture structural of filter_opt is
                     ADDER_OUT_SUM      => sum3(i+1)
                 );
         end generate;
-        --add the pipe stage between adder
-        i_adder1_5_reg: REGISTER_NBIT generic map(N_g=> 8) port map(
-            REGISTER_IN_RST_N   => RST_n,
-            REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => in_VIN_d,
-            REGISTER_IN_D       => sum1(5),
-            REGISTER_OUT_Q      => sum1(6)
-        );
-        i_adder2_5_reg: REGISTER_NBIT generic map(N_g=> 8) port map(
-            REGISTER_IN_RST_N   => RST_n,
-            REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => in_VIN_d,
-            REGISTER_IN_D       => sum2(5),
-            REGISTER_OUT_Q      => sum2(6)
-        );
-        i_adder3_5_reg: REGISTER_NBIT generic map(N_g=> 8) port map(
-            REGISTER_IN_RST_N   => RST_n,
-            REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => in_VIN_d,
-            REGISTER_IN_D       => sum3(5),
-            REGISTER_OUT_Q      => sum3(6)
-        );
-	
-        --the adder 5 take as input the previous sum delayed
-		--variable 1 is incremented by 1
-        g_adders2: for i in 5 to 9 generate
-        begin
-            i_add1: ADDER_NBIT generic map (N_g=> 8) port map(
-                    ADDER_IN_A         => from_multiplier_to_adder1(i),
-                    ADDER_IN_B         => sum1(i+1),
-                    ADDER_OUT_SUM      => sum1(i+2)
-                );
-            i_add2: ADDER_NBIT generic map (N_g=> 8) port map(
-                    ADDER_IN_A         => from_multiplier_to_adder2(i),
-                    ADDER_IN_B         => sum2(i+1),
-                    ADDER_OUT_SUM      => sum2(i+2)
-                );
-            i_add3: ADDER_NBIT generic map (N_g=> 8) port map(
-                    ADDER_IN_A         => from_multiplier_to_adder3(i),
-                    ADDER_IN_B         => sum3(i+1),
-                    ADDER_OUT_SUM      => sum3(i+2)
-                );
-        end generate;
         
-		-- update the final sum for sat unit
-        in_su1 <= sum1(11) & "00";
+        in_su1 <= sum1(10) & "00";
         i_su1: SATURATION_UNIT port map(
             SU_IN_DATA  => in_su1,
             SU_OUT_DATA => evaluated_DOUT1
         );
-        in_su2 <= sum2(11) & "00";
+        in_su2 <= sum2(10) & "00";
         i_su2: SATURATION_UNIT port map(
             SU_IN_DATA  => in_su2,
             SU_OUT_DATA => evaluated_DOUT2
         );
-        in_su3 <= sum3(11) & "00";
+        in_su3 <= sum3(10) & "00";
         i_su3: SATURATION_UNIT port map(
             SU_IN_DATA  => in_su3,
             SU_OUT_DATA => evaluated_DOUT3
@@ -449,7 +352,7 @@ architecture structural of filter_opt is
             FF_OUT_Q      => VOUT
         );
 
-        b_coeff(10)<= b10;
+        b_coeff(10)<= b10; 
         b_coeff(9) <= b9;
         b_coeff(8) <= b8;
         b_coeff(7) <= b7;

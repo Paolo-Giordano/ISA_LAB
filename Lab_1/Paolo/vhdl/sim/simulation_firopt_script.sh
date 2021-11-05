@@ -3,9 +3,7 @@
 rm -rf ./work
 rm results.txt
 
-
 source /software/scripts/init_msim6.2g
-
 
 vsim -c -do simulation_firopt.do
 

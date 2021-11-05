@@ -10,7 +10,7 @@ source /software/scripts/init_synopsys_64.18
 #start synopsys
 design_vision 
 
-echo "source compile_script.tlc" | design_vision
+#echo "source compile_script.tlc" | design_vision
 
 #compile design
 #design_vision>source synth.tcl

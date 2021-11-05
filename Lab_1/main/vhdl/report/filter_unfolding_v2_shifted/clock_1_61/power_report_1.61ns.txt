@@ -1,3 +1,4 @@
+Loading db file '/software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db'
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 Warning: Design has unannotated primary inputs. (PWR-414)
 Warning: Design has unannotated sequential cell outputs. (PWR-415)
@@ -7,7 +8,7 @@ Report : power
         -analysis_effort low
 Design : filter_opt
 Version: O-2018.06-SP4
-Date   : Thu Nov  4 22:47:16 2021
+Date   : Fri Nov  5 11:19:57 2021
 ****************************************
 
 

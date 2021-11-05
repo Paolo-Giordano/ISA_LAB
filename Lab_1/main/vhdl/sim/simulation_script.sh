@@ -5,8 +5,7 @@ rm results.txt
 
 source /software/scripts/init_msim6.2g
 
-
-vsim -c -do simulation.do
+vsim -c -do simulation.do 
 
 ../../c/check_result.sh 0
 rm -rf ./work
