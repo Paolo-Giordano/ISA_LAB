@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06-SP4 for linux64 -- Nov 27, 2018
-#@ # Date:   Fri Nov  5 21:28:27 2021
+#@ # Date:   Sat Nov  6 20:18:03 2021
 #@ # Run by: isa03_2021_2022@localhost.localdomain
 #@ 
 
@@ -6628,15 +6628,15 @@ source /software/synopsys/syn_current_64.18/admin/setup/.synopsys_dc.setup
 
 #@ # -- End source /software/synopsys/syn_current_64.18/admin/setup/.synopsys_dc.setup
 
-source /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/vhdl/syn/.synopsys_dc.setup
-#@ # -- Starting source /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/vhdl/syn/.synopsys_dc.setup
+source /home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/syn/.synopsys_dc.setup
+#@ # -- Starting source /home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/syn/.synopsys_dc.setup
 
 #@ define_design_lib WORK -path ./work
 #@ set search_path [list . /software/synopsys/syn_current_64.18/libraries/syn /software/dk/nangate45/synopsys ]
 #@ set link_library [list "*" "NangateOpenCellLibrary_typical_ecsm_nowlm.db" "dw_foundation.sldb" ]
 #@ set target_library [list "NangateOpenCellLibrary_typical_ecsm_nowlm.db" ]
 #@ set synthetic_library [list "dw_foundation.sldb" ]
-#@ # -- End source /home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/vhdl/syn/.synopsys_dc.setup
+#@ # -- End source /home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/syn/.synopsys_dc.setup
 
 gui_start
 #@ # -- Starting source /software/synopsys/syn_current_64.18/auxx/tcllib/lib/itk4.0.1/itk.tcl
@@ -43002,7 +43002,7 @@ gui_start
 source power_estimation.tcl
 #@ # -- Starting source power_estimation.tcl
 
-#@ variable folder "filter_base/clock_13_16"
+#@ variable folder "filter_base_inputshifted/clock_11.56"
 #@ variable top_entity "filter"
 #@ 
 #@ #read back the netlist

@@ -13,5 +13,5 @@ write_sdf ../netlist/$top_entity.sdf
 #save netlist in verilog
 write -f verilog -hierarchy -output ../netlist/$top_entity.v
 
-#write constarint ofin/out in standard format
+#write constraint of in/out in standard format
 write_sdc ../netlist/$top_entity.sdc

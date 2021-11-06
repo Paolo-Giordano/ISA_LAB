@@ -1,4 +1,4 @@
-variable folder "filter_base/clock_13_16"
+variable folder "filter_base_inputshifted/clock_11.56"
 variable top_entity "filter"
 
 #read back the netlist

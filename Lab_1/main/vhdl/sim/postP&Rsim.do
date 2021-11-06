@@ -1,4 +1,4 @@
-set folder based
+set folder base_inputshifted
 set top_entity filter
 
 vlib work
@@ -19,6 +19,6 @@ vcd file ../vcd/${top_entity}_innovus.vcd
 
 #monitor all the signal inside the UUT
 vcd add /tb_fir/UUT/*
-run 4 us
+run 6 us
 quit -sim
 

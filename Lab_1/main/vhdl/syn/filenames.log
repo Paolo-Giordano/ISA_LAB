@@ -262,11 +262,11 @@
 /software/synopsys/syn_current_64.18/auxx/gui/dv/dv_path_cat_view.tcl
 /software/synopsys/syn_current_64.18/auxx/gui/common/table/table.tcl
 /software/synopsys/syn_current_64.18/auxx/gui/common/table/table_internal.tcl
-/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/vhdl/syn/power_estimation.tcl
+/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/syn/power_estimation.tcl
 /software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db
 /software/synopsys/syn_current_64.18/libraries/syn/dw_foundation.sldb
 /software/synopsys/syn_current_64.18/libraries/syn/gtech.db
 /software/synopsys/syn_current_64.18/libraries/syn/standard.sldb
-/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/vhdl/netlist/filter.v
-/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/vhdl/netlist/filter.v
-/home/isa03_2021_2022/Lab_ISA/Lab_1/Paolo/vhdl/saif/filter_syn.saif
+/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/netlist/filter.v
+/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/netlist/filter.v
+/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/saif/filter_syn.saif

@@ -1,3 +1,4 @@
+Loading db file '/software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db'
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 Warning: There is no defined clock in the design. (PWR-80)
 Warning: Design has unannotated primary inputs. (PWR-414)
@@ -8,7 +9,7 @@ Report : power
         -analysis_effort low
 Design : filter
 Version: O-2018.06-SP4
-Date   : Sun Oct 24 00:51:42 2021
+Date   : Sat Nov  6 20:05:48 2021
 ****************************************
 
 
@@ -34,12 +35,12 @@ Power-specific unit information :
     Leakage Power Units = 1nW
 
 
-  Cell Internal Power  =  75.8723 uW   (84%)
-  Net Switching Power  =  14.4852 uW   (16%)
+  Cell Internal Power  =  75.6839 uW   (85%)
+  Net Switching Power  =  12.9510 uW   (15%)
                          ---------
-Total Dynamic Power    =  90.3575 uW  (100%)
+Total Dynamic Power    =  88.6348 uW  (100%)
 
-Cell Leakage Power     =  87.5786 uW
+Cell Leakage Power     =  88.3473 uW
 
 
                  Internal         Switching           Leakage            Total
@@ -49,9 +50,9 @@ io_pad             0.0000            0.0000            0.0000            0.0000 
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register          42.3836        7.2412e-02        1.4336e+04           56.7918  (  31.92%)
+register          42.4035        7.6075e-02        1.4408e+04           56.8872  (  32.14%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational     33.4888           14.4128        7.3243e+04          121.1444  (  68.08%)
+combinational     33.2805           12.8749        7.3940e+04          120.0950  (  67.86%)
 --------------------------------------------------------------------------------------------------
-Total             75.8724 uW        14.4853 uW     8.7579e+04 nW       177.9362 uW
+Total             75.6839 uW        12.9510 uW     8.8347e+04 nW       176.9822 uW
 1
