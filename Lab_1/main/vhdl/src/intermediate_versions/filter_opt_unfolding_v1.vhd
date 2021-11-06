@@ -1,6 +1,7 @@
 -------------------------------------------------
 --Description: my FIR filter with unfoldig N=3
 --and a pipeline level
+--version 1 
 -------------------------------------------------
  
 library IEEE;

@@ -67,7 +67,7 @@ vin = zeros(1,length(xq));
 %unfolding with N=3
 for i = 1:3:length(xq)
     if r1(i) > 0.97
-        vin = 1;
+        vin = 0;
     else
         vin = 1;
     end 

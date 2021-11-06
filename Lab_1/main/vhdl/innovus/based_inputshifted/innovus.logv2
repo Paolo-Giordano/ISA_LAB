@@ -1,0 +1,13 @@
+[11/05 13:07:53      0s] 
+[11/05 13:07:53      0s] Cadence Innovus(TM) Implementation System.
+[11/05 13:07:53      0s] Copyright 2017 Cadence Design Systems, Inc. All rights reserved worldwide.
+[11/05 13:07:53      0s] 
+[11/05 13:07:53      0s] Version:	v17.11-s080_1, built Fri Aug 4 11:13:11 PDT 2017
+[11/05 13:07:53      0s] Options:	innovus.cmd 
+[11/05 13:07:53      0s] Date:		Fri Nov  5 13:07:53 2021
+[11/05 13:07:53      0s] Host:		localhost.localdomain (x86_64 w/Linux 3.10.0-957.5.1.el7.x86_64) (1core*2cpus*Westmere E56xx/L56xx/X56xx (Nehalem-C) 4096KB)
+[11/05 13:07:53      0s] OS:		CentOS Linux release 7.6.1810 (Core) 
+[11/05 13:07:53      0s] 
+[11/05 13:07:53      0s] License:
+[11/05 13:07:53      0s] **ERROR: (IMPLIC-68):	Unknown argument: innovus.cmd.
+	Run "innovus -help" for valid option/argument.
