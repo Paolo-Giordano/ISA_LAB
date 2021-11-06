@@ -1,5 +1,4 @@
-%% Total harmonic distorsion and error
-%the execution makes sense only if VIN is set always equal to 1
+%% Total harmonic distorsion and error  
 clear all
 close all
 
@@ -39,13 +38,15 @@ end
 
 %%relative error = |approx - exact| / Nbit 
 for i = 1:1:length(samples_c)
-    error(i) = abs(mat_out_valid(i) - samples_c(i)) / 2^(nb-1);
+    if mat_out_valid(i) ~= 0
+        error(i) = abs(mat_out_valid(i) - samples_c(i)) / 2^(nb-1);
+    end
 end
 max_error = max(error)
 
-plot( 1:1:length(samples_c), samples_c , 'r')
+plot( [1:1:length(samples_c)], samples_c , 'r')
 hold on
-plot( 1:1:length(mat_out_valid), mat_out_valid , 'b--')
+plot( [1:1:length(mat_out_valid)], mat_out_valid , 'b--')
 legend('C', 'm');
 
 

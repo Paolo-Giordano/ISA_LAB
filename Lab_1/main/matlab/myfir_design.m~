@@ -28,4 +28,3 @@ grid on;
 xlabel('Normalized frequency');
 ylabel('dB');
 legend ('ideal filter','digital filter');
-title('Frequency response');

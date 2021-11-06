@@ -35,7 +35,8 @@ hold on
 plot(tt,x2,'r--s');
 plot(tt,x, 'g--+');
 plot(tt, y, 'c--o');
-
+ylabel('time [s]');
+xlabel('amplitude');
 legend('x1', 'x2', 'x', 'y')
 
 %% quantize input and output

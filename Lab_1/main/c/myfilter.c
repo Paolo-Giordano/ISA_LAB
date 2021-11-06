@@ -5,8 +5,8 @@
 
 #define NT 11 /// number of coeffs
 #define NB 9 /// number of bits
-#define N_added_shift 2 /// number of added shift with respect to NB-1 after multiplication
-#define N_input_shift 0 ///number of shift of the data in
+#define N_product_shift 6 /// number of shifts after multiplication
+#define N_input_shift 4 ///number of shifts of the data in
 
 //valid samples is used to count if in the shift registers all the positions
 //are occupied by valid samples or not, at the beginning is not true
@@ -35,14 +35,14 @@ int myfilter(int x, int VIN, int* VOUT_fp)
     }
 
 
-    /// shift and insert new sample in x shift register
+    /// shift and insert new sample x in the shift register
     ///the input sample is loaded into the shift register inly if vin=1
     for (i = NT - 1; i > 0; i--)
         if (VIN == 1) {
             sx[i] = sx[i - 1];
         }
     if (VIN == 1) {
-        sx[0] = x >> N_input_shift;
+        sx[0] = (x >> N_input_shift); //shift on th input to work internally with less bits
         valid_samples++;
     }
 
@@ -50,14 +50,14 @@ int myfilter(int x, int VIN, int* VOUT_fp)
     /// Moving average part
     y = 0;
     for (i = 0; i < NT; i++) {
-        y += (sx[i] * b[i]) >> ((NB - 1)+(N_added_shift - N_input_shift));
-        //y += tmp >> (N_added_shift - N_input_shift);
+        y += (sx[i] * b[i]) >> N_product_shift; 
+		//get rid of the N_product_shift least significant bits of the product
     }
 
-    /// extension of the result again on NB bits
-    y = y << N_added_shift;
-    //saturation
+    /// extension to have the result again on NB bits
+    y = y << N_product_shift+N_input_shift+1-NB;
 
+    //saturation
     if (y > pow(2, NB - 1) - 1) {
         y = pow(2, NB - 1) - 1;
     }
@@ -65,13 +65,11 @@ int myfilter(int x, int VIN, int* VOUT_fp)
         y = -pow(2, NB - 1);
     }
 
-
-
-  //VOUT evaluation
-  if ((valid_samples >= 11) && (VIN == 1))
-      *(VOUT_fp) = 1;
-  else
-      *(VOUT_fp) = 0;
+	//VOUT evaluation
+	if ((valid_samples >= 11) && (VIN == 1))
+	  *(VOUT_fp) = 1;
+	else
+	  *(VOUT_fp) = 0;
 
   return y;
 }
