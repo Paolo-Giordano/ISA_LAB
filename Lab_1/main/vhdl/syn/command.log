@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06-SP4 for linux64 -- Nov 27, 2018
-#@ # Date:   Sat Nov  6 20:18:03 2021
+#@ # Date:   Sat Nov  6 22:57:46 2021
 #@ # Run by: isa03_2021_2022@localhost.localdomain
 #@ 
 
@@ -43002,8 +43002,8 @@ gui_start
 source power_estimation.tcl
 #@ # -- Starting source power_estimation.tcl
 
-#@ variable folder "filter_base_inputshifted/clock_11.56"
-#@ variable top_entity "filter"
+#@ variable folder "filter_unfolding_v3_inputshifted/clock_5_28"
+#@ variable top_entity "filter_opt"
 #@ 
 #@ #read back the netlist
 #@ read_verilog -netlist ../netlist/$top_entity.v

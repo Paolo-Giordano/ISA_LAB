@@ -1,0 +1,78 @@
+Information: Updating design information... (UID-85)
+Warning: There are infeasible paths detected in your design that were ignored during optimization. Please run 'report_timing -attributes' and/or 'create_qor_snapshot/query_qor_snapshot -infeasible_paths' to identify these paths.  (OPT-1721)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : filter_opt
+Version: O-2018.06-SP4
+Date   : Sat Nov  6 22:37:36 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: i_reg_DL2_0/REGISTER_OUT_Q_reg[3]
+              (rising edge-triggered flip-flop clocked by MYCLK)
+  Endpoint: i_reg_pipe2_lev1_3/REGISTER_OUT_Q_reg[5]
+            (rising edge-triggered flip-flop clocked by MYCLK)
+  Path Group: MYCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  filter_opt         5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MYCLK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  i_reg_DL2_0/REGISTER_OUT_Q_reg[3]/CK (DFFR_X1)          0.00       0.00 r
+  i_reg_DL2_0/REGISTER_OUT_Q_reg[3]/Q (DFFR_X1)           0.20       0.20 r
+  i_reg_DL2_0/REGISTER_OUT_Q[3] (REGISTER_NBIT_N_g5_15)
+                                                          0.00       0.20 r
+  i_mult2_3/MULTIPLIER_IN_A[3] (MULTIPLIER_NBIT_N1_g5_N2_g9_23)
+                                                          0.00       0.20 r
+  i_mult2_3/mult_30/a[3] (MULTIPLIER_NBIT_N1_g5_N2_g9_23_DW_mult_tc_1)
+                                                          0.00       0.20 r
+  i_mult2_3/mult_30/U313/ZN (INV_X1)                      0.05       0.25 f
+  i_mult2_3/mult_30/U284/ZN (INV_X1)                      0.12       0.37 r
+  i_mult2_3/mult_30/U290/Z (XOR2_X1)                      0.10       0.47 r
+  i_mult2_3/mult_30/U222/ZN (NAND2_X1)                    0.05       0.52 f
+  i_mult2_3/mult_30/U372/ZN (OAI22_X1)                    0.06       0.57 r
+  i_mult2_3/mult_30/U104/S (HA_X1)                        0.08       0.66 r
+  i_mult2_3/mult_30/U103/S (FA_X1)                        0.12       0.77 f
+  i_mult2_3/mult_30/U270/ZN (NOR2_X1)                     0.06       0.84 r
+  i_mult2_3/mult_30/U322/ZN (NOR2_X1)                     0.03       0.86 f
+  i_mult2_3/mult_30/U229/ZN (NAND2_X1)                    0.03       0.89 r
+  i_mult2_3/mult_30/U209/ZN (AND2_X1)                     0.05       0.95 r
+  i_mult2_3/mult_30/U363/ZN (OAI21_X1)                    0.03       0.98 f
+  i_mult2_3/mult_30/U301/ZN (XNOR2_X1)                    0.05       1.03 f
+  i_mult2_3/mult_30/product[11] (MULTIPLIER_NBIT_N1_g5_N2_g9_23_DW_mult_tc_1)
+                                                          0.00       1.03 f
+  i_mult2_3/MULTIPLIER_OUT_PRODUCT[11] (MULTIPLIER_NBIT_N1_g5_N2_g9_23)
+                                                          0.00       1.03 f
+  i_reg_pipe2_lev1_3/REGISTER_IN_D[5] (REGISTER_NBIT_N_g7_23)
+                                                          0.00       1.03 f
+  i_reg_pipe2_lev1_3/U7/Z (MUX2_X1)                       0.06       1.10 f
+  i_reg_pipe2_lev1_3/REGISTER_OUT_Q_reg[5]/D (DFFR_X1)
+                                                          0.01       1.11 f
+  data arrival time                                                  1.11
+
+  clock MYCLK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clock uncertainty                                      -0.07      -0.07
+  i_reg_pipe2_lev1_3/REGISTER_OUT_Q_reg[5]/CK (DFFR_X1)
+                                                          0.00      -0.07 r
+  library setup time                                     -0.04      -0.11
+  data required time                                                -0.11
+  --------------------------------------------------------------------------
+  data required time                                                -0.11
+  data arrival time                                                 -1.11
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.22
+
+
+1

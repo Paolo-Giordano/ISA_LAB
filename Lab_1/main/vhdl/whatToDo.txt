@@ -1,5 +1,3 @@
-Until now we have finish the filter based and the shifted version with p&r. P&R for unfolding_v2 and unfolding_v3 (which is the shifted version) have to be done. To do that we can start from synthesis to generate report of FM/4 and all that comes after. In Backannotation it miss the .do for the filter_opt version where you compile the data_maker_new_firopt and the other file connected to firopt. I notice that if you try to compile all with * can give error because we have all the tb file togheter and some entity name are the same (create issues in work folder).
-
 This passages are valid for normal version and optimized version. BE CAREFUL that we work with 2 top entity: filter (base and base_inputshifted version) and filter_opt (all the opt versions) which have to be updated in several scripts. This means that, if, for example, you perform all the passages for unfolding and then for unfolding_v1, all the generated files like verilog, vcd ecc.. are overwritten from the unfolding_v1. Don't mix passages with different versions or you will obtain inconsistent files.
 
 Simulation:
@@ -16,7 +14,8 @@ Synthesis:
 Backannotation (do it on FM/4 syn!!!): 
 	Set the clock period in /tb/clk_gen.vhd equal to the one used in synopsys
 	Go in sim and ./sim_SW.sh  or sim_SW_firopt.sh
-	then go in syn and ./vcd2saif.sh, finally open design vision and source power_estimation.tcl (edit before with folder name and top_entity)
+	then go in syn, modify and execute ./vcd2saif.sh
+	finally open design vision and source power_estimation.tcl (edit before with folder name and top_entity)
 Innovus:
 	inside folder Innovus create a folder for your version (base, base_inputshifted, firopt, firopt_inputshifte).
 	Copy-paste in each folder the files design_global, mmmm_design_tcl, innovus.cmd, pow_consum.cmd, script.sh
@@ -24,7 +23,7 @@ Innovus:
 	then source design.globals and source innovus.cmd
 	check in folder timingReports that the .slk files contain all positive slacks
 
-	move in sim, modify the parameters in postP&Rsim.do and ./sim_post_p&r.sh to create the filter_innovus.vcd file (or filter_opt_innovus.vcd)
+	move in sim, modify the parameters in postP&Rsim.do and ./sim_post_p&r.sh (or firopt version) to create the filter_innovus.vcd file (or filter_opt_innovus.vcd)
 
 	Finally come back to innovus, reopen it if necessary and source pow_consum.cmd (if not present copy paste from shifted_based and check the 		first row the correct path for the .enc [I don't known how to set variale in .cmd]).
 	Lots of folder/files are generated, what we need are the starting file, the power.txt, the filter_main.htm in summaryReport. 

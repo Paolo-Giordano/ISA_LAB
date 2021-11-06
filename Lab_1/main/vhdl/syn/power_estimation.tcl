@@ -1,5 +1,5 @@
-variable folder "filter_base_inputshifted/clock_11.56"
-variable top_entity "filter"
+variable folder "filter_unfolding_v3_inputshifted/clock_5_28"
+variable top_entity "filter_opt"
 
 #read back the netlist
 read_verilog -netlist ../netlist/$top_entity.v

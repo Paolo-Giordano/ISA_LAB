@@ -267,6 +267,6 @@
 /software/synopsys/syn_current_64.18/libraries/syn/dw_foundation.sldb
 /software/synopsys/syn_current_64.18/libraries/syn/gtech.db
 /software/synopsys/syn_current_64.18/libraries/syn/standard.sldb
-/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/netlist/filter.v
-/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/netlist/filter.v
-/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/saif/filter_syn.saif
+/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/netlist/filter_opt.v
+/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/netlist/filter_opt.v
+/home/isa03_2021_2022/Lab_ISA/Lab_1/main/vhdl/saif/filter_opt_syn.saif

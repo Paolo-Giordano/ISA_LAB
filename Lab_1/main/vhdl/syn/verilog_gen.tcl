@@ -1,5 +1,5 @@
 #backannotation
-variable top_entity "filter"
+variable top_entity "filter_opt"
 
 #ungrup the cell to flatten the hierarchy
 ungroup -all -flatten
