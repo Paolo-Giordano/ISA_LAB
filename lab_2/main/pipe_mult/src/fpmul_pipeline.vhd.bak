@@ -169,8 +169,8 @@ BEGIN
    -- Instance port mappings.
    I1 : FPmul_stage1
       PORT MAP (
-         FP_A            => fp_a_d,
-         FP_B            => fp_b_d,
+         FP_A            => fpa_a_d,
+         FP_B            => fpa_b_d,
          clk             => clk,
          A_EXP           => A_EXP,
          A_SIG           => A_SIG,
