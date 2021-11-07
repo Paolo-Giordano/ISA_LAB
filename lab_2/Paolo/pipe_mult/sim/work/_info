@@ -1,0 +1,447 @@
+m255
+K3
+13
+cModel Technology
+dC:\Users\Paolo\Desktop
+Eclk_gen
+Z0 w1636223146
+Z1 DPx4 ieee 18 std_logic_unsigned 0 22 hEMVMlaNCR^<OOoVNV;m90
+Z2 DPx4 ieee 15 std_logic_arith 0 22 GJbAT?7@hRQU9IQ702DT]2
+Z3 DPx4 ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+Z4 dC:\Users\Paolo\Desktop\ISA\Lab_ISA\lab_2\Paolo\pipe_mult\sim
+Z5 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/tb/clk_gen.vhd
+Z6 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/tb/clk_gen.vhd
+l0
+L6
+VEB@dALRY=oO9e3ML0Y2bL3
+Z7 OV;C;6.6d;45
+32
+Z8 o-work work -2002 -explicit -O0
+Z9 tExplicit 1
+!s100 olnPEY;Z<aB``<BXeZ>4?3
+Abeh
+R1
+R2
+R3
+DEx4 work 7 clk_gen 0 22 EB@dALRY=oO9e3ML0Y2bL3
+l20
+L14
+V;Bad=c[SEPh^egTQdaSOZ3
+R7
+32
+Z10 Mx3 4 ieee 14 std_logic_1164
+Z11 Mx2 4 ieee 15 std_logic_arith
+Z12 Mx1 4 ieee 18 std_logic_unsigned
+R8
+R9
+!s100 bHa8EV0X8JeUI;S4M;IP33
+Edata_maker
+Z13 w1636223033
+Z14 DPx3 std 6 textio 0 22 m2KQDRRhmF833<<DjYdL70
+Z15 DPx4 ieee 16 std_logic_textio 0 22 8ONYdGiICLK<GeVc1o<IF0
+R1
+R2
+R3
+R4
+Z16 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/tb/data_maker.vhd
+Z17 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/tb/data_maker.vhd
+l0
+L10
+V1U`;Y4Ihm:e=c:DLA`?5k0
+R7
+32
+R8
+R9
+!s100 zk=h<d856^Xb44JIKEIOL0
+Abeh
+R14
+R15
+R1
+R2
+R3
+DEx4 work 10 data_maker 0 22 1U`;Y4Ihm:e=c:DLA`?5k0
+l22
+L19
+V?ZEkU;I^c=jDYm5[8CNY@3
+R7
+32
+Z18 Mx5 4 ieee 14 std_logic_1164
+Z19 Mx4 4 ieee 15 std_logic_arith
+Z20 Mx3 4 ieee 18 std_logic_unsigned
+Z21 Mx2 4 ieee 16 std_logic_textio
+Z22 Mx1 3 std 6 textio
+R8
+R9
+!s100 2UQAJ6V^UkI3_aX6g?U0a0
+Edata_sink
+Z23 w1636225050
+R14
+R15
+R1
+R2
+R3
+R4
+Z24 8C:\Users\Paolo\Desktop\ISA\Lab_ISA\lab_2\Paolo\pipe_mult\tb\data_sink.vhd
+Z25 FC:\Users\Paolo\Desktop\ISA\Lab_ISA\lab_2\Paolo\pipe_mult\tb\data_sink.vhd
+l0
+L10
+VF]IZnhURAhNDjTQZ0C3Ck0
+R7
+32
+R8
+R9
+!s100 EFf17DkflbI0]I?N7WP392
+Abeh
+R14
+R15
+R1
+R2
+R3
+DEx4 work 9 data_sink 0 22 F]IZnhURAhNDjTQZ0C3Ck0
+l20
+L18
+V22C_TL74]S@`QC0Tcl5^a2
+R7
+32
+R18
+R19
+R20
+R21
+R22
+R8
+R9
+!s100 Bd4n5gn25kXWmb;?;ERU`2
+Efpmul
+Z26 w1254925958
+R2
+R3
+R4
+Z27 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_single_cycle.vhd
+Z28 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_single_cycle.vhd
+l0
+L16
+V?b>1UYHkf6dYP<kUhg[^e3
+R7
+32
+R8
+R9
+!s100 Sz<anOjWJPnYnPclm[g1Q0
+Asingle_cycle
+Z29 DEx4 work 8 unpackfp 0 22 EMiWeMIRBPWICmZiggzAh3
+Z30 DEx4 work 6 packfp 0 22 fJ;c=?aVfR7HEO6YnGO8F1
+Z31 DEx4 work 7 fpround 0 22 Z3aFZaW;T?7;k`FRGN26`0
+R1
+Z32 DEx4 work 11 fpnormalize 0 22 AAJKVFK2@Ni5DN@o;=B2C3
+Z33 DEx4 work 5 fpmul 0 22 ?b>1UYHkf6dYP<kUhg[^e3
+R2
+R3
+l142
+L45
+V4@9B@eH2Xg^nHIe2kME2h2
+R7
+32
+R10
+R11
+R12
+R8
+R9
+!s100 8^AReLRo6[?`jjz;?PVnR1
+Apipeline
+Z34 DEx4 work 12 fpmul_stage4 0 22 Nmj=JBU9KJ6?IoIzYzFGO1
+Z35 DEx4 work 12 fpmul_stage3 0 22 BKh:zU6[o3G41nU?EET_k1
+Z36 DEx4 work 12 fpmul_stage2 0 22 ^h[IM>il[UVWZ`eCbGOSC2
+Z37 DEx4 work 12 fpmul_stage1 0 22 ^0=lo3knng`iZYm^n5AUe2
+R33
+R2
+R3
+l158
+L45
+VLMzYP;hWS:k9e8RaDXRhg0
+R7
+32
+Z38 Mx2 4 ieee 14 std_logic_1164
+Z39 Mx1 4 ieee 15 std_logic_arith
+R8
+R9
+FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_pipeline.vhd
+8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_pipeline.vhd
+!s100 QfQ`X8e=EP_3hVH1OR?MD0
+Efpmul_stage1
+R26
+R2
+R3
+R4
+Z40 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_stage1_struct.vhd
+Z41 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_stage1_struct.vhd
+l0
+L16
+V^0=lo3knng`iZYm^n5AUe2
+R7
+32
+R8
+R9
+!s100 26Ne8J]]cEHIRKV]6`02G1
+Astruct
+R29
+R37
+R2
+R3
+l99
+L53
+VNaZSg><em<O>KG>XKN9Ri1
+R7
+32
+R38
+R39
+R8
+R9
+!s100 o;A?S51?GJaBb_aD_7N?A2
+Efpmul_stage2
+R26
+R2
+R3
+R4
+Z42 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_stage2_struct.vhd
+Z43 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_stage2_struct.vhd
+l0
+L16
+V^h[IM>il[UVWZ`eCbGOSC2
+R7
+32
+R8
+R9
+!s100 PTG47Hkh;L?0=RGBU0Rm]3
+Astruct
+R36
+R2
+R3
+l74
+L59
+V=@zlW_TVi5`:E70QiF7HV3
+R7
+32
+R38
+R39
+R8
+R9
+!s100 P6]`L3N]@>:LSlY<<U]JV2
+Efpmul_stage3
+R26
+R2
+R3
+R4
+Z44 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_stage3_struct.vhd
+Z45 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_stage3_struct.vhd
+l0
+L16
+VBKh:zU6[o3G41nU?EET_k1
+R7
+32
+R8
+R9
+!s100 <2^iaFQmhiPMVo;jTcgn`3
+Astruct
+R31
+R1
+R32
+R35
+R2
+R3
+l100
+L58
+VTOe4LM[LMflm17XI4g0D13
+R7
+32
+R10
+R11
+R12
+R8
+R9
+!s100 bdEFUJGJ^YOFlciJEAa2g2
+Efpmul_stage4
+R26
+R2
+R3
+R4
+Z46 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_stage4_struct.vhd
+Z47 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpmul_stage4_struct.vhd
+l0
+L16
+VNmj=JBU9KJ6?IoIzYzFGO1
+R7
+32
+R8
+R9
+!s100 TERL_JjjQAdjR6[_4eZ]51
+Astruct
+R30
+R1
+R32
+R34
+R2
+R3
+l96
+L51
+VP6em<WfSl:okbToACmA>:2
+R7
+32
+R10
+R11
+R12
+R8
+R9
+!s100 9V`4:S;>3^:e``=3QAba<0
+Efpnormalize
+R26
+R1
+R2
+R3
+R4
+Z48 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpnormalize_fpnormalize.vhd
+Z49 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpnormalize_fpnormalize.vhd
+l0
+L17
+VAAJKVFK2@Ni5DN@o;=B2C3
+R7
+32
+R8
+R9
+!s100 az3XS5FV5ENA[gLK[=ili0
+Afpnormalize
+R1
+R2
+R3
+R32
+l35
+L34
+VOiAd`=9o1M2>n9;>ca4Bg1
+R7
+32
+R10
+R11
+R12
+R8
+R9
+!s100 [XFejc6n`QV=ZjNCBQ?4a3
+Efpround
+R26
+R1
+R2
+R3
+R4
+Z50 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpround_fpround.vhd
+Z51 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/fpround_fpround.vhd
+l0
+L17
+VZ3aFZaW;T?7;k`FRGN26`0
+R7
+32
+R8
+R9
+!s100 SSlz`[dP6n:Y@[L[d8YJ?1
+Afpround
+R1
+R2
+R3
+R31
+l35
+L34
+VAa:WF85[FKDc>in=B?QZ:2
+R7
+32
+R10
+R11
+R12
+R8
+R9
+!s100 R9NR2O=i[^:I3YID`zkQ50
+Epackfp
+R26
+R2
+R3
+R4
+Z52 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/packfp_packfp.vhd
+Z53 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/packfp_packfp.vhd
+l0
+L16
+VfJ;c=?aVfR7HEO6YnGO8F1
+R7
+32
+R8
+R9
+!s100 iAO3jSC8mBRQgJaQ4AF^B2
+Apackfp
+R2
+R3
+R30
+l34
+L33
+VAacl?`dQFhn8i5nM:f0nf2
+R7
+32
+R38
+R39
+R8
+R9
+!s100 >5n>V?5i[2TmBnJ7DOUln1
+Etb_fir
+Z54 w1636225184
+R1
+R2
+R3
+R4
+Z55 8C:\Users\Paolo\Desktop\ISA\Lab_ISA\lab_2\Paolo\pipe_mult\tb\tb_mult.vhd
+Z56 FC:\Users\Paolo\Desktop\ISA\Lab_ISA\lab_2\Paolo\pipe_mult\tb\tb_mult.vhd
+l0
+L6
+Va5F^R3E>g1i7;ib5K@0AQ2
+!s100 6SNCP0JHLEOD4KeFF[?7C0
+R7
+32
+R8
+R9
+Atb
+R1
+R2
+R3
+Z57 DEx4 work 6 tb_fir 0 22 a5F^R3E>g1i7;ib5K@0AQ2
+l48
+L9
+VPb0CUkalLXU[aa8G=3zjl2
+!s100 VcP]5<RkPJMN;>92E;HZY0
+R7
+32
+R10
+R11
+R12
+R8
+R9
+Eunpackfp
+R26
+R2
+R3
+R4
+Z58 8C:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/unpackfp_unpackfp.vhd
+Z59 FC:/Users/Paolo/Desktop/ISA/Lab_ISA/lab_2/Paolo/pipe_mult/src/unpackfp_unpackfp.vhd
+l0
+L15
+VEMiWeMIRBPWICmZiggzAh3
+R7
+32
+R8
+R9
+!s100 Mf9]L>L6`IH77GiDbJ[zE3
+Aunpackfp
+R2
+R3
+R29
+l37
+L33
+V=TGZUHal_eA_NC89Lj1JC1
+R7
+32
+R38
+R39
+R8
+R9
+!s100 bPZ]R5U<2AiaP]f7E9^E_2
