@@ -6,7 +6,6 @@ set SIM_TIME 4
 set SIM_UNIT us
 set TOP_ENTITY tb_fir_opt
 
-
 vcom -93 -work ./work ../src/*
 vcom -93 -work ./work ../tb/data_maker_new_firopt.vhd
 vcom -93 -work ./work ../tb/clk_gen.vhd
@@ -15,10 +14,6 @@ vlog -work ./work ../tb/$TOP_ENTITY.v
 
 #simulation -- resolution
 vsim -t $RES $SIM_FILE
-
-# toggle leaf name <-> full name
-#config wave -signalnamewidth 1
-
 
 # run simulation
 run $SIM_TIME $SIM_UNIT

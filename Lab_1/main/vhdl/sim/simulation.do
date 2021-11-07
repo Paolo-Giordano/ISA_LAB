@@ -15,10 +15,6 @@ vlog -work ./work ../tb/$TOP_ENTITY.v
 #simulation -- resolution
 vsim -t $RES $SIM_FILE
 
-# toggle leaf name <-> full name
-#config wave -signalnamewidth 1
-
-
 # run simulation
 run $SIM_TIME $SIM_UNIT
 
