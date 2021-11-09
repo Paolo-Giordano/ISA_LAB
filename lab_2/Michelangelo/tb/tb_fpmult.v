@@ -3,11 +3,13 @@
 module tb_fpmult ();
 
    wire CLK_i;
+   wire END_SIM_i;
    wire [31:0] DIN_i;
    wire [31:0] DOUT_i;
    wire END_SIM_i;
 
-   clk_gen CG(.CLK(CLK_i));
+   clk_gen CG(.END_SIM(END_SIM_i)
+     .CLK(CLK_i));
 
    data_maker SM(.CLK(CLK_i),
 		 .DATA(DIN_i));
