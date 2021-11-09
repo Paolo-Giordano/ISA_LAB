@@ -1,6 +1,6 @@
 //`timescale 1ns
 
-module tb_fir ();
+module tb_fpmult ();
 
    wire CLK_i;
    wire [31:0] DIN_i;

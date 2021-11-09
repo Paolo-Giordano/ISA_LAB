@@ -1,10 +1,10 @@
 vlib work
 
 set RES ps
-set SIM_FILE work.tb_mult
+set SIM_FILE work.tb_fpmult
 set SIM_TIME 500
 set SIM_UNIT ns
-set TOP_ENTITY tb_mult
+set TOP_ENTITY tb_fpmult
 
 #compile in order cause every stage and final pipeline choose an architecture from work folder
 vcom -93 -work ./work ../src/*pack*.vhd
