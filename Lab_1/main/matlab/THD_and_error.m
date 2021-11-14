@@ -18,6 +18,7 @@ samples_c = fscanf(fp2, formatspec);
 vin = fscanf(fp3, '%*d %d\n');
 
 %%calculate total harmonic distortion
+thd_m=thd(samples_m);
 thd_res=thd(samples_c);
 
 %% error
