@@ -23,7 +23,6 @@ int myfilter(int x, int VIN, int* VOUT_fp)
     static int first_run = 0; /// for cleaning shift registers
     int i; /// index
     int y; /// output sample
-    int tmp; ///intermediate result
 
 
     /// clean the buffers
@@ -55,7 +54,7 @@ int myfilter(int x, int VIN, int* VOUT_fp)
     }
 
     /// extension to have the result again on NB bits
-    y = y << N_product_shift+N_input_shift+1-NB;
+    y = y << (N_product_shift + N_input_shift + 1 - NB);
 
     //saturation
     if (y > pow(2, NB - 1) - 1) {
@@ -100,6 +99,11 @@ int main (int argc, char **argv)
     exit(2);
   }
   fp_out = fopen(argv[2], "w");
+  if (fp_out == NULL)
+  {
+    printf("Error: cannot open %s\n", argv[2]);
+    exit(3);
+  }
 
   /// get samples and apply filter
   fscanf(fp_in, "%d %d", &x, &vin);

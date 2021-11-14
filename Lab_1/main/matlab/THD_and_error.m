@@ -20,6 +20,7 @@ vin = fscanf(fp3, '%*d %d\n');
 %%calculate total harmonic distortion
 thd_m=thd(samples_m);
 thd_res=thd(samples_c);
+thd_m=thd(samples_m)
 
 %% error
 valid_samples = 0;      %after the first 10 samples we have valid out
