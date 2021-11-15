@@ -62,7 +62,7 @@ def checkOutput(model_filename,dut_filename):
     
     total_err_cnt = 0
     
-    
+    dut_file.readline()
     for dut_line,model_line in zip(dut_file,model_file):
               
 
