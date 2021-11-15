@@ -1,7 +1,0 @@
-#!/bin/bash
-
-gcc -c myfilter.c
-gcc myfilter.o -o myfilter
-./myfilter ../../matlab/samples.txt results.txt 1 ../../lab1_vhdl/sim/output_c.txt 2> error.txt 1> check_result.txt
-cat error.txt
-cat check_result.txt

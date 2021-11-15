@@ -1,7 +1,0 @@
-variable period_str "12_68"
-
-read_verilog -netlist ../netlist/filter.v
-read_saif -input ../saif/filter_syn.saif -instance tb_fir/UUT -unit ns -scale 1
-create_clock -name clk CLK
-
-report_power > ../report/report_power${period_str}.txt
