@@ -1,0 +1,1 @@
+Aggiungere i vcom di tutti i sottocomponenti nel .do
