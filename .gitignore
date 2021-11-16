@@ -1,6 +1,6 @@
 #from vcd
-!*.vhd
-!*.txt
-!*.v
+!/*.vhd
+!/*.txt
+!/*.v
 
 
