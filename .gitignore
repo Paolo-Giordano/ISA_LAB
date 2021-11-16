@@ -1,31 +1,6 @@
 #from vcd
-*.vcd
-
-#from syn
-/vhdl/syn/*.log
-/vhdl/syn/*.svf
-/vhdl/syn/*.tcl*
-/vhdl/syn/*.sh*
-/vhdl/syn/*.setup
-
-#from sim
-/vhdl/sim/*.do
-/vhdl/sim/*.sh*
-
-#from saif
-/vhdl/saif/*.saif
-
-#from netlist
-/vhdl/netlist/*.sdc
-/vhdl/netlist/*.sdf
-/vhdl/netlist/*.v
-
-#from innvus
-*.db
-*.globals
-*enc
-/vhdl/innovus/*.v
-*.cmd
-/vhdl/innovus/*.sh
+!*.vhd
+!*.txt
+!*.v
 
 
