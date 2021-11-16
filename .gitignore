@@ -27,6 +27,7 @@
 /vhdl/innovus/base/*.v
 /vhdl/innovus/base/*.cmd
 /vhdl/innovus/base/*.sh
+/vhdl/innovus/base/*.tcl
 
 /vhdl/innovus/base_inputshifted/*.db
 /vhdl/innovus/base_inputshifted/*.globals
@@ -34,6 +35,7 @@
 /vhdl/innovus/base_inputshifted/*.v
 /vhdl/innovus/base_inputshifted/*.cmd
 /vhdl/innovus/base_inputshifted/*.sh
+/vhdl/innovus/base_inputshifted/*.tcl
 
 /vhdl/innovus/firopt/*.db
 /vhdl/innovus/firopt/*.globals
@@ -41,6 +43,7 @@
 /vhdl/innovus/firopt/*.v
 /vhdl/innovus/firopt/*.cmd
 /vhdl/innovus/firopt/*.sh
+/vhdl/innovus/firopt/*tcl
 
 /vhdl/innovus/firopt_inputshifted/*.db
 /vhdl/innovus/firopt_inputshifted/*.globals
@@ -48,6 +51,7 @@
 /vhdl/innovus/firopt_inputshifted/*.v
 /vhdl/innovus/firopt_inputshifted/*.cmd
 /vhdl/innovus/firopt_inputshifted/*.sh
+/vhdl/innovus/firopt_inputshifted/*.tcl
 
 
 
