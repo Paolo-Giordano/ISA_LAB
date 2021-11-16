@@ -21,11 +21,11 @@
 /vhdl/netlist/*.v
 
 #from innvus
-/*.db
-/*.globals
-/*enc
+*.db
+*.globals
+*enc
 /vhdl/innovus/*.v
-/.cmd
+*.cmd
 /vhdl/innovus/*.sh
 
 
