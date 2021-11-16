@@ -9,8 +9,8 @@
 ./vhdl/syn/*.setup
 
 #from sim
-./vhdl/sim/*.do
-./vhdl/sim/*.sh*
+/vhdl/sim/*.do
+/vhdl/sim/*.sh*
 
 #from saif
 ./vhdl/saif/*.saif
