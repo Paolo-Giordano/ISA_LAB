@@ -21,11 +21,33 @@
 /vhdl/netlist/*.v
 
 #from innvus
-/vhdl/innovus/*.db
-/vhdl/innovus/*.globals
-/vhdl/innovus/*enc
-/vhdl/innovus/*.v
-/vhdl/innovus/*.cmd
-/vhdl/innovus/*.sh
+/vhdl/innovus/base/*.db
+/vhdl/innovus/base/*.globals
+/vhdl/innovus/base/*enc
+/vhdl/innovus/base/*.v
+/vhdl/innovus/base/*.cmd
+/vhdl/innovus/base/*.sh
+
+/vhdl/innovus/base_inputshifted/*.db
+/vhdl/innovus/base_inputshifted/*.globals
+/vhdl/innovus/base_inputshifted/*enc
+/vhdl/innovus/base_inputshifted/*.v
+/vhdl/innovus/base_inputshifted/*.cmd
+/vhdl/innovus/base_inputshifted/*.sh
+
+/vhdl/innovus/firopt/*.db
+/vhdl/innovus/firopt/*.globals
+/vhdl/innovus/firopt/*enc
+/vhdl/innovus/firopt/*.v
+/vhdl/innovus/firopt/*.cmd
+/vhdl/innovus/firopt/*.sh
+
+/vhdl/innovus/firopt_inputshifted/*.db
+/vhdl/innovus/firopt_inputshifted/*.globals
+/vhdl/innovus/firopt_inputshifted/*enc
+/vhdl/innovus/firopt_inputshifted/*.v
+/vhdl/innovus/firopt_inputshifted/*.cmd
+/vhdl/innovus/firopt_inputshifted/*.sh
+
 
 
