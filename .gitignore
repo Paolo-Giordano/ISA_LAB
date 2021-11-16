@@ -1,7 +1,31 @@
-!/vhdl/sim/*
-!/vhdl/tb/*
-!/vhdl/report/*
-!/vhdl/innovus/*.txt
-!/matlab/*
-!/c/*
+#from vcd
+*.vcd
+
+#from syn
+./vhdl/syn/*.log
+./vhdl/syn/*.svf
+./vhdl/syn/*.tcl*
+./vhdl/syn/*.sh*
+./vhdl/syn/*.setup
+
+#from sim
+./vhdl/sim/*.do
+./vhdl/sim/*.sh*
+
+#from saif
+./vhdl/saif/*.saif
+
+#from netlist
+./vhdl/netlist/*.sdc
+./vhdl/netlist/*.sdf
+./vhdl/netlist/*.v
+
+#from innvus
+./vhdl/innovus/*.db
+./vhdl/innovus/*.globals
+./vhdl/innovus/*enc
+./vhdl/innovus/*.v
+./vhdl/innovus/*.cmd
+./vhdl/innovus/*.sh
+
 
