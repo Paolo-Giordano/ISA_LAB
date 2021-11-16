@@ -1,0 +1,88 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : filter_opt
+Version: O-2018.06-SP4
+Date   : Sat Nov  6 22:49:13 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: i_regIN_DIN1/REGISTER_OUT_Q_reg[4]
+              (rising edge-triggered flip-flop clocked by MYCLK)
+  Endpoint: i_reg_pipe3_lev1_2/REGISTER_OUT_Q_reg[6]
+            (rising edge-triggered flip-flop clocked by MYCLK)
+  Path Group: MYCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  filter_opt         5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MYCLK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  i_regIN_DIN1/REGISTER_OUT_Q_reg[4]/CK (DFFR_X1)         0.00       0.00 r
+  i_regIN_DIN1/REGISTER_OUT_Q_reg[4]/QN (DFFR_X1)         0.07       0.07 f
+  i_regIN_DIN1/U24/ZN (INV_X2)                            0.06       0.13 r
+  i_regIN_DIN1/REGISTER_OUT_Q[4] (REGISTER_NBIT_N_g9_0)
+                                                          0.00       0.13 r
+  i_mult3_2/MULTIPLIER_IN_A[0] (MULTIPLIER_NBIT_N1_g5_N2_g9_25)
+                                                          0.00       0.13 r
+  i_mult3_2/mult_30/a[0] (MULTIPLIER_NBIT_N1_g5_N2_g9_25_DW_mult_tc_0)
+                                                          0.00       0.13 r
+  i_mult3_2/mult_30/U156/ZN (AND2_X1)                     0.06       0.19 r
+  i_mult3_2/mult_30/U39/CO (HA_X1)                        0.06       0.25 r
+  i_mult3_2/mult_30/U37/S (FA_X1)                         0.11       0.36 f
+  i_mult3_2/mult_30/U173/ZN (INV_X1)                      0.03       0.39 r
+  i_mult3_2/mult_30/U197/ZN (OAI222_X1)                   0.05       0.45 f
+  i_mult3_2/mult_30/U157/ZN (NAND2_X1)                    0.04       0.49 r
+  i_mult3_2/mult_30/U101/ZN (AND3_X2)                     0.06       0.54 r
+  i_mult3_2/mult_30/U136/ZN (OAI222_X1)                   0.05       0.59 f
+  i_mult3_2/mult_30/U151/ZN (NAND2_X1)                    0.04       0.63 r
+  i_mult3_2/mult_30/U154/ZN (NAND3_X1)                    0.04       0.67 f
+  i_mult3_2/mult_30/U144/ZN (NAND2_X1)                    0.04       0.70 r
+  i_mult3_2/mult_30/U107/ZN (NAND3_X1)                    0.04       0.75 f
+  i_mult3_2/mult_30/U111/ZN (NAND2_X1)                    0.04       0.78 r
+  i_mult3_2/mult_30/U105/ZN (NAND3_X1)                    0.04       0.82 f
+  i_mult3_2/mult_30/U117/ZN (NAND2_X1)                    0.04       0.86 r
+  i_mult3_2/mult_30/U108/ZN (NAND3_X1)                    0.04       0.90 f
+  i_mult3_2/mult_30/U130/ZN (NAND2_X1)                    0.04       0.94 r
+  i_mult3_2/mult_30/U103/ZN (NAND3_X1)                    0.04       0.98 f
+  i_mult3_2/mult_30/U124/ZN (NAND2_X1)                    0.03       1.01 r
+  i_mult3_2/mult_30/U127/ZN (NAND3_X1)                    0.03       1.04 f
+  i_mult3_2/mult_30/U178/ZN (XNOR2_X1)                    0.06       1.10 f
+  i_mult3_2/mult_30/U147/ZN (XNOR2_X1)                    0.05       1.15 f
+  i_mult3_2/mult_30/product[12] (MULTIPLIER_NBIT_N1_g5_N2_g9_25_DW_mult_tc_0)
+                                                          0.00       1.15 f
+  i_mult3_2/MULTIPLIER_OUT_PRODUCT[12] (MULTIPLIER_NBIT_N1_g5_N2_g9_25)
+                                                          0.00       1.15 f
+  i_reg_pipe3_lev1_2/REGISTER_IN_D[6] (REGISTER_NBIT_N_g7_25)
+                                                          0.00       1.15 f
+  i_reg_pipe3_lev1_2/U18/ZN (NAND2_X1)                    0.03       1.18 r
+  i_reg_pipe3_lev1_2/U17/ZN (NAND2_X1)                    0.02       1.20 f
+  i_reg_pipe3_lev1_2/REGISTER_OUT_Q_reg[6]/D (DFFR_X1)
+                                                          0.01       1.21 f
+  data arrival time                                                  1.21
+
+  clock MYCLK (rise edge)                                 1.32       1.32
+  clock network delay (ideal)                             0.00       1.32
+  clock uncertainty                                      -0.07       1.25
+  i_reg_pipe3_lev1_2/REGISTER_OUT_Q_reg[6]/CK (DFFR_X1)
+                                                          0.00       1.25 r
+  library setup time                                     -0.04       1.21
+  data required time                                                 1.21
+  --------------------------------------------------------------------------
+  data required time                                                 1.21
+  data arrival time                                                 -1.21
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
