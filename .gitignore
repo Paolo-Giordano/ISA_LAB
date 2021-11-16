@@ -24,12 +24,12 @@
 /vhdl/innovus/*.db
 
 #double ** remove all the file also in the sub directory
-/vhdl/innovus/**.globals
-/vhdl/innovus/**enc
-/vhdl/innovus/**.v
-/vhdl/innovus/**.cmd
-/vhdl/innovus/**.sh
-/vhdl/innovus/**.tcl
+/vhdl/innovus/base/**.globals
+/vhdl/innovus/base/**enc
+/vhdl/innovus/base/**.v
+/vhdl/innovus/base/**.cmd
+/vhdl/innovus/base/**.sh
+/vhdl/innovus/base/**.tcl
 
 
 
