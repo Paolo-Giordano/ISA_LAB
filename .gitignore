@@ -1,1 +1,7 @@
-!*.vhd
+!/vhdl/sim/*
+!/vhdl/tb/*
+!/vhdl/report/*
+!/vhdl/innovus/*.txt
+!/matlab/*
+!/c/*
+
