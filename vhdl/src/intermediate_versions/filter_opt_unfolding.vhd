@@ -92,6 +92,8 @@ architecture structural of filter_opt is
     end component;
 
     --shift the input DIN before the multiplier
+	--for the basic version set this value to 0, to perform only the shift after multiplication
+	--set this value to 4 to express the input data with 5 bits and reduce the amount of shift after multiplication
     constant shift_input_c      : integer := 4; --4 
 
     --the postfix d means signal delayed by the input register
@@ -104,7 +106,7 @@ architecture structural of filter_opt is
     type array_coeff is array (10 downto 0) of std_logic_vector (8 downto 0);
     signal b_coeff, b_coeff_d           : array_coeff;
 
-    --array to connect the the registers of the delay lines
+    --array to connect the registers of the delay lines
     type array_delay_line_3reg is array (3 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
     signal delay_line1, delay_line2                   : array_delay_line_3reg;
     type array_delay_line_4reg is array (4 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
@@ -322,21 +324,21 @@ architecture structural of filter_opt is
         evaluated_VOUT <= in_VIN_d and VIN_outDL;
 
         --output registers for DOUT, enabled only if VOUT='1'
-        i_regIN_DOUT1 : REGISTER_NBIT generic map(N_g=> 9) port map(
+        i_regOUT_DOUT1 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
             REGISTER_IN_EN      => evaluated_VOUT,
             REGISTER_IN_D       => evaluated_DOUT1,
             REGISTER_OUT_Q      => DOUT1
         );
-        i_regIN_DOUT2 : REGISTER_NBIT generic map(N_g=> 9) port map(
+        i_regOUT_DOUT2 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
             REGISTER_IN_EN      => evaluated_VOUT,
             REGISTER_IN_D       => evaluated_DOUT2,
             REGISTER_OUT_Q      => DOUT2
         );
-        i_regIN_DOUT3 : REGISTER_NBIT generic map(N_g=> 9) port map(
+        i_regOUT_DOUT3 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
             REGISTER_IN_EN      => evaluated_VOUT,
@@ -344,7 +346,7 @@ architecture structural of filter_opt is
             REGISTER_OUT_Q      => DOUT3
         );
         -- output FF for VOUT, always enabled
-        i_ffIN_VOUT : FF port map(
+        i_ffOUT_VOUT : FF port map(
             FF_IN_RST_N   => RST_n,
             FF_IN_CLK     => CLK,
             FF_IN_EN      => '1',

@@ -89,10 +89,12 @@ architecture structural of filter is
     end component;
 
     --shift the input DIN before the multiplier
+    --the value of the constant has to be set to 0 for the basic version with shifts only after the multipliers
+    --the value has to be set to 4 for the shifted input version
     constant shift_input_c      : integer := 4;
 
     --the postfix d means signal delayed by the input register
-    --evaluated stands for output qauntity at the input of an output register
+    --evaluated stands for output quantity at the input of an output register
     signal in_DIN_d, evaluated_DOUT     : std_logic_vector (8 downto 0);
     signal in_VIN_d, evaluated_VOUT     : std_logic;
     signal VIN_outDL                    : std_logic;
@@ -107,11 +109,11 @@ architecture structural of filter is
     --array with the outputs of the multipliers
     type array_products is array (10 downto 0) of std_logic_vector (16 - shift_input_c downto 0);
     signal product                      : array_products;
-    --array with the outputs of the adders plus at the index 0 one input of the first adder
+    --array with the outputs of the adders plus, at the index 0, one input of the first adder
     --to manage it easily inside generate loops
     type array_sums is array (10 downto 0) of std_logic_vector (7 downto 0);
     signal sum                          : array_sums;
-    --array for the inputs of te adders that come from the multipliers, properly shifted and extended
+    --array for the inputs of the adders that come from the multipliers, properly shifted and extended
     type array_addend_a is array (9 downto 0) of std_logic_vector (7 downto 0);
     signal from_multiplier_to_adder     : array_sums;
 

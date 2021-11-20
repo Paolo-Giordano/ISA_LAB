@@ -1,9 +1,9 @@
 -------------------------------------------------
 --Description: my FIR filter with unfoldig N=3
 --and a pipeline level
---version 1 
+--version 1
 -------------------------------------------------
- 
+
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
@@ -94,19 +94,21 @@ architecture structural of filter_opt is
     end component;
 
     --shift the input DIN before the multiplier
-    constant shift_input_c      : integer := 0; --4 
+	--for the basic version set this value to 0, to perform only the shift after multiplication
+	--set this value to 4 to express the input data with 5 bits and reduce the amount of shift after multiplication
+    constant shift_input_c      : integer := 4;
 
     --the postfix d means signal delayed by the input register
     --evaluated stands for output quantity at the input of an output register
     signal in_DIN1_d, evaluated_DOUT1, in_DIN2_d, evaluated_DOUT2, in_DIN3_d, evaluated_DOUT3     : std_logic_vector (8 downto 0);
-    signal in_VIN_d, evaluated_VOUT                                                               : std_logic;
+    signal in_VIN_d, evaluated_VOUT, evaluated_VOUT_d                                             : std_logic;
     signal VIN_outDL                                                                              : std_logic;
-    
+
     --filter coefficients are inserted in an array to manage them easily in generate loop
     type array_coeff is array (10 downto 0) of std_logic_vector (8 downto 0);
     signal b_coeff, b_coeff_d           : array_coeff;
 
-    --array to connect the the registers of the delay lines
+    --array to connect the registers of the delay lines
     type array_delay_line_3reg is array (3 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
     signal delay_line1, delay_line2                   : array_delay_line_3reg;
     type array_delay_line_4reg is array (4 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
@@ -138,7 +140,7 @@ architecture structural of filter_opt is
 
     begin
 
-        --input registers for DIN, always enabled 
+        --input registers for DIN, always enabled
         i_regIN_DIN1 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
@@ -177,12 +179,11 @@ architecture structural of filter_opt is
                 REGISTER_IN_EN      => '1',
                 REGISTER_IN_D       => b_coeff(i),
                 REGISTER_OUT_Q      => b_coeff_d(i)
-            ); 
+            );
         end generate;
 
         --shift register for VIN
-        --incremented by one the dimension to consider also the pipe level
-        i_shift_reg: SHIFT_REG_1bit generic map(5) port map(
+        i_shift_reg: SHIFT_REG_1bit generic map(4) port map(
             SHIFT_REG_IN_CLK    => CLK,
             SHIFT_REG_IN_RST_N  => RST_n,
             SHIFT_REG_IN_EN     => in_VIN_d,
@@ -290,27 +291,27 @@ architecture structural of filter_opt is
             end loop;
         end process;
 
-        --pipe level 1
+        --pipe level 1, always enabled
         g_pipe_level1: for i in 0 to 10 generate
         begin
             i_reg_pipe1_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
                 REGISTER_IN_RST_N   => RST_n,
                 REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_EN      => '1',
                 REGISTER_IN_D       => shifted_product1_7bit(i),
                 REGISTER_OUT_Q      => shifted_product1_7bit_d(i)
             );
             i_reg_pipe2_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
                 REGISTER_IN_RST_N   => RST_n,
                 REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_EN      => '1',
                 REGISTER_IN_D       => shifted_product2_7bit(i),
                 REGISTER_OUT_Q      => shifted_product2_7bit_d(i)
             );
             i_reg_pipe3_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
                 REGISTER_IN_RST_N   => RST_n,
                 REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_EN      => '1',
                 REGISTER_IN_D       => shifted_product3_7bit(i),
                 REGISTER_OUT_Q      => shifted_product3_7bit_d(i)
             );
@@ -347,7 +348,7 @@ architecture structural of filter_opt is
                     ADDER_OUT_SUM      => sum3(i+1)
                 );
         end generate;
-        
+
         in_su1 <= sum1(10) & "00";
         i_su1: SATURATION_UNIT port map(
             SU_IN_DATA  => in_su1,
@@ -366,25 +367,34 @@ architecture structural of filter_opt is
 
         evaluated_VOUT <= in_VIN_d and VIN_outDL;
 
+		-- shift register to delay the final vout considering the pipe level
+		i_shift_reg_vout: SHIFT_REG_1bit generic map(1) port map(
+            SHIFT_REG_IN_CLK    => CLK,
+            SHIFT_REG_IN_RST_N  => RST_n,
+            SHIFT_REG_IN_EN     => '1',
+            SHIFT_REG_IN        => evaluated_VOUT,
+            SHIFT_REG_OUT       => evaluated_VOUT_d
+        );
+
         --output registers for DOUT, enabled only if VOUT='1'
         i_regIN_DOUT1 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => evaluated_VOUT,
+            REGISTER_IN_EN      => evaluated_VOUT_d,
             REGISTER_IN_D       => evaluated_DOUT1,
             REGISTER_OUT_Q      => DOUT1
         );
         i_regIN_DOUT2 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => evaluated_VOUT,
+            REGISTER_IN_EN      => evaluated_VOUT_d,
             REGISTER_IN_D       => evaluated_DOUT2,
             REGISTER_OUT_Q      => DOUT2
         );
         i_regIN_DOUT3 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => evaluated_VOUT,
+            REGISTER_IN_EN      => evaluated_VOUT_d,
             REGISTER_IN_D       => evaluated_DOUT3,
             REGISTER_OUT_Q      => DOUT3
         );
@@ -393,11 +403,11 @@ architecture structural of filter_opt is
             FF_IN_RST_N   => RST_n,
             FF_IN_CLK     => CLK,
             FF_IN_EN      => '1',
-            FF_IN_D       => evaluated_VOUT,
+            FF_IN_D       => evaluated_VOUT_d,
             FF_OUT_Q      => VOUT
         );
 
-        b_coeff(10)<= b10; 
+        b_coeff(10)<= b10;
         b_coeff(9) <= b9;
         b_coeff(8) <= b8;
         b_coeff(7) <= b7;

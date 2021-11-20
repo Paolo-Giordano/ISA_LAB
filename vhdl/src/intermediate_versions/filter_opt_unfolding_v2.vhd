@@ -2,7 +2,7 @@
 -- Description: my FIR filter with unfoldig N=3
 -- a pipeline level between mults & adds
 -- a "vertical" pipeline level between add5/add6 &
--- pipe5/pipe 6, along all the 3 blocks 
+-- pipe5/pipe 6, along all the 3 blocks
 -------------------------------------------------
 
 library IEEE;
@@ -95,12 +95,14 @@ architecture structural of filter_opt is
     end component;
 
     --shift the input DIN before the multiplier
-    constant shift_input_c      : integer := 4; --4
+	--for the basic version set this value to 0, to perform only the shift after multiplication
+	--set this value to 4 to express the input data with 5 bits and reduce the amount of shift after multiplication
+    constant shift_input_c      : integer := 4; 
 
     --the postfix d means signal delayed by the input register
     --evaluated stands for output quantity at the input of an output register
     signal in_DIN1_d, evaluated_DOUT1, in_DIN2_d, evaluated_DOUT2, in_DIN3_d, evaluated_DOUT3     : std_logic_vector (8 downto 0);
-    signal in_VIN_d, evaluated_VOUT                                                               : std_logic;
+    signal in_VIN_d, in_VIN_2d, evaluated_VOUT, evaluated_VOUT_d                                  : std_logic;
     signal VIN_outDL                                                                              : std_logic;
 
     --filter coefficients are inserted in an array to manage them easily in generate loop
@@ -111,8 +113,10 @@ architecture structural of filter_opt is
     --ADD HERE number of rows equal to the vertical added pipeline (1 in this case in the middle)
     type array_delay_line_3reg is array (4 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
     signal delay_line1, delay_line2                   : array_delay_line_3reg;
+	  signal en_delay_line1, en_delay_line2			        : std_logic_vector(0 to 3);
     type array_delay_line_4reg is array (5 downto 0) of std_logic_vector (8 - shift_input_c downto 0);
-    signal delay_line3				                  : array_delay_line_4reg;
+    signal delay_line3				                        : array_delay_line_4reg;
+	  signal en_delay_line3							                : std_logic_vector(0 to 4);
 
     --to apply unfolding hardware is tripled, the number at the end of the names indicates the first, second or third
     --instantiation of the same HW
@@ -132,8 +136,6 @@ architecture structural of filter_opt is
 	-- ADD HERE one row for each pipe add->add
     type array_sums is array (11 downto 0) of std_logic_vector (7 downto 0);
     signal sum1, sum2, sum3             : array_sums;
-    --delay the out sum form adder 5 due to the pipe add->add
-    signal sum1_5_d, sum2_5_d, sum3_5_d : std_logic_vector(7 downto 0);
     --array for the inputs of te adders that come from the multipliers, properly shifted and extended
     type array_addend_a is array (9 downto 0) of std_logic_vector (7 downto 0);
     signal from_multiplier_to_adder1,from_multiplier_to_adder2,from_multiplier_to_adder3     : array_sums;
@@ -173,6 +175,14 @@ architecture structural of filter_opt is
             FF_IN_D       => VIN,
             FF_OUT_Q      => in_VIN_d
         );
+        -- input FF for VIN delayed (pipe), always enabled
+        i_ffIN_VIN_d : FF port map(
+            FF_IN_RST_N   => RST_n,
+            FF_IN_CLK     => CLK,
+            FF_IN_EN      => '1',
+            FF_IN_D       => in_VIN_d,
+            FF_OUT_Q      => in_VIN_2d
+        );
         --input reg for the coefficients, always enabled
         g_reg_coeff: for i in 0 to 10 generate
         begin
@@ -186,9 +196,7 @@ architecture structural of filter_opt is
         end generate;
 
         --shift register for VIN
-        --incremented by one the dimension to consider also the pipe level mult->add
-        --another increment to consider pipe add5->add6
-        i_shift_reg: SHIFT_REG_1bit generic map(6) port map(
+        i_shift_reg: SHIFT_REG_1bit generic map(4) port map(
             SHIFT_REG_IN_CLK    => CLK,
             SHIFT_REG_IN_RST_N  => RST_n,
             SHIFT_REG_IN_EN     => in_VIN_d,
@@ -196,6 +204,10 @@ architecture structural of filter_opt is
             SHIFT_REG_OUT       => VIN_outDL
         );
 
+		    --enable for the delay line, considering that the pipe register is always enabled.
+		    en_delay_line1 <= in_VIN_d & in_VIN_d & '1' & in_VIN_2d;
+		    en_delay_line2 <= in_VIN_d & in_VIN_d & '1' & in_VIN_2d;
+		    en_delay_line3 <= in_VIN_d & in_VIN_d & '1' & in_VIN_2d & in_VIN_2d;
 
         --delay lines for DIN shifted, enabled by the sampled VIN
         delay_line1 (0) <= in_DIN1_d( 8 downto shift_input_c);
@@ -207,14 +219,14 @@ architecture structural of filter_opt is
             i_reg_DL1: REGISTER_NBIT generic map(N_g=> 9 - shift_input_c) port map(
                 REGISTER_IN_RST_N   => RST_n,
                 REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_EN      => en_delay_line1(i),
                 REGISTER_IN_D       => delay_line1(i),
                 REGISTER_OUT_Q      => delay_line1(i+1)
             );
             i_reg_DL2: REGISTER_NBIT generic map(N_g=> 9 - shift_input_c) port map(
                 REGISTER_IN_RST_N   => RST_n,
                 REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_EN      => en_delay_line2(i),
                 REGISTER_IN_D       => delay_line2(i),
                 REGISTER_OUT_Q      => delay_line2(i+1)
             );
@@ -224,21 +236,13 @@ architecture structural of filter_opt is
             i_reg_DL3: REGISTER_NBIT generic map(N_g=> 9 - shift_input_c) port map(
                 REGISTER_IN_RST_N   => RST_n,
                 REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_EN      => en_delay_line3(i),
                 REGISTER_IN_D       => delay_line3(i),
                 REGISTER_OUT_Q      => delay_line3(i+1)
             );
         end generate;
 
         --connections delay lines to multipliers
-        --with 1 vertical pipe line, delay_linex(2) go to the added delay_linex(3),
-        --which will be connected to input_multx(6)
-        --delay_line1(2) <= delay_line1(3);
-        --delay_line2(2) <= delay_line2(3);
-        --delay_line3(2) <= delay_line3(3);
-
-        --from input_mult(6) delay_linex(2) not used, replaced with delay_linex(3)
-        --and scaling all the successive pipe_delay
         input_mult1 (0) <= delay_line1 (0);
         input_mult1 (1) <= delay_line3 (1);
         input_mult1 (2) <= delay_line2 (1);
@@ -311,21 +315,21 @@ architecture structural of filter_opt is
             i_reg_pipe1_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
                 REGISTER_IN_RST_N   => RST_n,
                 REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_EN      => '1',
                 REGISTER_IN_D       => shifted_product1_7bit(i),
                 REGISTER_OUT_Q      => shifted_product1_7bit_d(i)
             );
             i_reg_pipe2_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
                 REGISTER_IN_RST_N   => RST_n,
                 REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_EN      => '1',
                 REGISTER_IN_D       => shifted_product2_7bit(i),
                 REGISTER_OUT_Q      => shifted_product2_7bit_d(i)
             );
             i_reg_pipe3_lev1: REGISTER_NBIT generic map(N_g=> 7) port map(
                 REGISTER_IN_RST_N   => RST_n,
                 REGISTER_IN_CLK     => CLK,
-                REGISTER_IN_EN      => in_VIN_d,
+                REGISTER_IN_EN      => '1',
                 REGISTER_IN_D       => shifted_product3_7bit(i),
                 REGISTER_OUT_Q      => shifted_product3_7bit_d(i)
             );
@@ -365,33 +369,30 @@ architecture structural of filter_opt is
                 );
         end generate;
         --add the pipe stage between adder
+        --the delayed sums are placed at the index 6 of the array sum
         i_adder1_5_reg: REGISTER_NBIT generic map(N_g=> 8) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => in_VIN_d,
+            REGISTER_IN_EN      => '1',
             REGISTER_IN_D       => sum1(5),
             REGISTER_OUT_Q      => sum1(6)
         );
         i_adder2_5_reg: REGISTER_NBIT generic map(N_g=> 8) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => in_VIN_d,
+            REGISTER_IN_EN      => '1',
             REGISTER_IN_D       => sum2(5),
             REGISTER_OUT_Q      => sum2(6)
         );
         i_adder3_5_reg: REGISTER_NBIT generic map(N_g=> 8) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => in_VIN_d,
+            REGISTER_IN_EN      => '1',
             REGISTER_IN_D       => sum3(5),
             REGISTER_OUT_Q      => sum3(6)
         );
-		--add to the sum array the delayed sum 
-		--sum1 (6) <= sum1_5_d;
-        --sum2 (6) <= sum2_5_d;
-        --sum3 (6) <= sum3_5_d;
-        --the adder 5 take as input the previous sum delayed
-		--variable 1 is incremented by 1
+
+        --the adder 5 takes as input the previous sum delayed
         g_adders2: for i in 5 to 9 generate
         begin
             i_add1: ADDER_NBIT generic map (N_g=> 8) port map(
@@ -410,7 +411,7 @@ architecture structural of filter_opt is
                     ADDER_OUT_SUM      => sum3(i+2)
                 );
         end generate;
-        
+
 		-- update the final sum for sat unit
         in_su1 <= sum1(11) & "00";
         i_su1: SATURATION_UNIT port map(
@@ -430,25 +431,34 @@ architecture structural of filter_opt is
 
         evaluated_VOUT <= in_VIN_d and VIN_outDL;
 
+		    -- shift register to delay the final vout considering the pipe levels
+		    i_shift_reg_vout: SHIFT_REG_1bit generic map(2) port map(
+            SHIFT_REG_IN_CLK    => CLK,
+            SHIFT_REG_IN_RST_N  => RST_n,
+            SHIFT_REG_IN_EN     => '1',
+            SHIFT_REG_IN        => evaluated_VOUT,
+            SHIFT_REG_OUT       => evaluated_VOUT_d
+        );
+
         --output registers for DOUT, enabled only if VOUT='1'
         i_regIN_DOUT1 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => evaluated_VOUT,
+            REGISTER_IN_EN      => evaluated_VOUT_d,
             REGISTER_IN_D       => evaluated_DOUT1,
             REGISTER_OUT_Q      => DOUT1
         );
         i_regIN_DOUT2 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => evaluated_VOUT,
+            REGISTER_IN_EN      => evaluated_VOUT_d,
             REGISTER_IN_D       => evaluated_DOUT2,
             REGISTER_OUT_Q      => DOUT2
         );
         i_regIN_DOUT3 : REGISTER_NBIT generic map(N_g=> 9) port map(
             REGISTER_IN_RST_N   => RST_n,
             REGISTER_IN_CLK     => CLK,
-            REGISTER_IN_EN      => evaluated_VOUT,
+            REGISTER_IN_EN      => evaluated_VOUT_d,
             REGISTER_IN_D       => evaluated_DOUT3,
             REGISTER_OUT_Q      => DOUT3
         );
@@ -457,7 +467,7 @@ architecture structural of filter_opt is
             FF_IN_RST_N   => RST_n,
             FF_IN_CLK     => CLK,
             FF_IN_EN      => '1',
-            FF_IN_D       => evaluated_VOUT,
+            FF_IN_D       => evaluated_VOUT_d,
             FF_OUT_Q      => VOUT
         );
 
