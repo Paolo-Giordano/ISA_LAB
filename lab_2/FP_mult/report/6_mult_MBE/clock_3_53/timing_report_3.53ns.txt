@@ -1,0 +1,149 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : FPmul
+Version: O-2018.06-SP4
+Date   : Fri Dec  3 15:52:56 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: I1/B_SIG_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: I2/SIG_in_reg[27]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FPmul              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  I1/B_SIG_reg[1]/CK (DFF_X1)                             0.00       0.00 r
+  I1/B_SIG_reg[1]/QN (DFF_X1)                             0.08       0.08 r
+  U5316/ZN (NOR2_X1)                                      0.03       0.11 f
+  U3232/ZN (AOI22_X1)                                     0.06       0.18 r
+  U5343/ZN (NAND2_X1)                                     0.04       0.21 f
+  U5317/ZN (AND2_X1)                                      0.04       0.26 f
+  U3199/ZN (AOI221_X1)                                    0.09       0.35 r
+  U5369/ZN (XNOR2_X1)                                     0.04       0.39 f
+  I2/MBE_mult/i_adder/add_24/A[2] (FPmul_DW01_add_2)      0.00       0.39 f
+  I2/MBE_mult/i_adder/add_24/U338/ZN (OAI21_X1)           0.05       0.44 r
+  I2/MBE_mult/i_adder/add_24/U47/ZN (OAI22_X1)            0.04       0.47 f
+  I2/MBE_mult/i_adder/add_24/U31/ZN (OAI21_X1)            0.04       0.52 r
+  I2/MBE_mult/i_adder/add_24/U38/ZN (OAI21_X1)            0.04       0.56 f
+  I2/MBE_mult/i_adder/add_24/U30/ZN (OAI21_X1)            0.04       0.60 r
+  I2/MBE_mult/i_adder/add_24/U41/ZN (OAI21_X1)            0.04       0.64 f
+  I2/MBE_mult/i_adder/add_24/U36/ZN (OAI21_X1)            0.04       0.68 r
+  I2/MBE_mult/i_adder/add_24/U44/ZN (OAI21_X1)            0.04       0.72 f
+  I2/MBE_mult/i_adder/add_24/U21/ZN (OAI21_X1)            0.04       0.76 r
+  I2/MBE_mult/i_adder/add_24/U19/ZN (OAI21_X1)            0.04       0.80 f
+  I2/MBE_mult/i_adder/add_24/U129/ZN (OAI21_X1)           0.04       0.85 r
+  I2/MBE_mult/i_adder/add_24/U132/ZN (NAND2_X1)           0.03       0.88 f
+  I2/MBE_mult/i_adder/add_24/U335/ZN (OAI21_X1)           0.04       0.92 r
+  I2/MBE_mult/i_adder/add_24/U168/ZN (NAND2_X1)           0.03       0.94 f
+  I2/MBE_mult/i_adder/add_24/U334/ZN (OAI21_X1)           0.04       0.98 r
+  I2/MBE_mult/i_adder/add_24/U15/ZN (OAI21_X1)            0.04       1.02 f
+  I2/MBE_mult/i_adder/add_24/U32/ZN (OAI21_X1)            0.04       1.06 r
+  I2/MBE_mult/i_adder/add_24/U323/ZN (OAI21_X1)           0.04       1.11 f
+  I2/MBE_mult/i_adder/add_24/U333/ZN (OAI21_X1)           0.04       1.15 r
+  I2/MBE_mult/i_adder/add_24/U3/ZN (AND2_X1)              0.04       1.19 r
+  I2/MBE_mult/i_adder/add_24/U317/ZN (AOI21_X1)           0.03       1.22 f
+  I2/MBE_mult/i_adder/add_24/U332/ZN (AOI21_X1)           0.05       1.27 r
+  I2/MBE_mult/i_adder/add_24/U33/ZN (AOI21_X1)            0.03       1.30 f
+  I2/MBE_mult/i_adder/add_24/U35/ZN (INV_X1)              0.03       1.33 r
+  I2/MBE_mult/i_adder/add_24/U192/ZN (OAI21_X1)           0.03       1.36 f
+  I2/MBE_mult/i_adder/add_24/U331/ZN (OAI21_X1)           0.04       1.40 r
+  I2/MBE_mult/i_adder/add_24/U54/ZN (AND2_X1)             0.04       1.44 r
+  I2/MBE_mult/i_adder/add_24/U241/ZN (AOI21_X1)           0.03       1.47 f
+  I2/MBE_mult/i_adder/add_24/U330/ZN (AOI21_X1)           0.05       1.52 r
+  I2/MBE_mult/i_adder/add_24/U26/ZN (AOI21_X1)            0.03       1.55 f
+  I2/MBE_mult/i_adder/add_24/U13/ZN (AOI21_X1)            0.05       1.61 r
+  I2/MBE_mult/i_adder/add_24/U16/ZN (AOI21_X1)            0.03       1.64 f
+  I2/MBE_mult/i_adder/add_24/U12/ZN (AOI21_X1)            0.06       1.70 r
+  I2/MBE_mult/i_adder/add_24/U22/ZN (AOI21_X1)            0.03       1.73 f
+  I2/MBE_mult/i_adder/add_24/U25/ZN (INV_X1)              0.03       1.75 r
+  I2/MBE_mult/i_adder/add_24/U131/ZN (NAND2_X1)           0.03       1.78 f
+  I2/MBE_mult/i_adder/add_24/U329/ZN (OAI21_X1)           0.04       1.82 r
+  I2/MBE_mult/i_adder/add_24/U328/ZN (OAI21_X1)           0.04       1.86 f
+  I2/MBE_mult/i_adder/add_24/U107/ZN (OAI21_X1)           0.04       1.91 r
+  I2/MBE_mult/i_adder/add_24/U120/ZN (NAND2_X1)           0.03       1.93 f
+  I2/MBE_mult/i_adder/add_24/U326/ZN (OAI21_X1)           0.04       1.97 r
+  I2/MBE_mult/i_adder/add_24/U172/ZN (NAND2_X1)           0.04       2.01 f
+  I2/MBE_mult/i_adder/add_24/U237/ZN (NAND2_X1)           0.04       2.05 r
+  I2/MBE_mult/i_adder/add_24/U165/ZN (NAND3_X1)           0.04       2.09 f
+  I2/MBE_mult/i_adder/add_24/U78/ZN (NAND2_X1)            0.03       2.13 r
+  I2/MBE_mult/i_adder/add_24/U103/ZN (NAND3_X1)           0.04       2.16 f
+  I2/MBE_mult/i_adder/add_24/U203/ZN (NAND2_X1)           0.03       2.19 r
+  I2/MBE_mult/i_adder/add_24/U204/ZN (NAND3_X1)           0.03       2.22 f
+  I2/MBE_mult/i_adder/add_24/U1_25/CO (FA_X1)             0.10       2.32 f
+  I2/MBE_mult/i_adder/add_24/U278/ZN (NAND2_X1)           0.04       2.36 r
+  I2/MBE_mult/i_adder/add_24/U280/ZN (NAND3_X1)           0.04       2.40 f
+  I2/MBE_mult/i_adder/add_24/U284/ZN (NAND2_X1)           0.04       2.44 r
+  I2/MBE_mult/i_adder/add_24/U286/ZN (NAND3_X1)           0.04       2.47 f
+  I2/MBE_mult/i_adder/add_24/U208/ZN (NAND2_X1)           0.04       2.51 r
+  I2/MBE_mult/i_adder/add_24/U210/ZN (NAND3_X1)           0.04       2.55 f
+  I2/MBE_mult/i_adder/add_24/U214/ZN (NAND2_X1)           0.04       2.58 r
+  I2/MBE_mult/i_adder/add_24/U216/ZN (NAND3_X1)           0.04       2.62 f
+  I2/MBE_mult/i_adder/add_24/U188/ZN (NAND2_X1)           0.04       2.66 r
+  I2/MBE_mult/i_adder/add_24/U111/ZN (NAND3_X1)           0.04       2.70 f
+  I2/MBE_mult/i_adder/add_24/U150/ZN (NAND2_X1)           0.04       2.73 r
+  I2/MBE_mult/i_adder/add_24/U152/ZN (NAND3_X1)           0.04       2.77 f
+  I2/MBE_mult/i_adder/add_24/U290/ZN (NAND2_X1)           0.04       2.81 r
+  I2/MBE_mult/i_adder/add_24/U274/ZN (NAND3_X1)           0.04       2.85 f
+  I2/MBE_mult/i_adder/add_24/U295/ZN (NAND2_X1)           0.04       2.88 r
+  I2/MBE_mult/i_adder/add_24/U221/ZN (NAND3_X1)           0.04       2.92 f
+  I2/MBE_mult/i_adder/add_24/U226/ZN (NAND2_X1)           0.04       2.95 r
+  I2/MBE_mult/i_adder/add_24/U228/ZN (NAND3_X1)           0.04       2.99 f
+  I2/MBE_mult/i_adder/add_24/U233/ZN (NAND2_X1)           0.04       3.03 r
+  I2/MBE_mult/i_adder/add_24/U234/ZN (NAND3_X1)           0.04       3.07 f
+  I2/MBE_mult/i_adder/add_24/U156/ZN (NAND2_X1)           0.04       3.10 r
+  I2/MBE_mult/i_adder/add_24/U158/ZN (NAND3_X1)           0.04       3.14 f
+  I2/MBE_mult/i_adder/add_24/U263/ZN (NAND2_X1)           0.04       3.18 r
+  I2/MBE_mult/i_adder/add_24/U265/ZN (NAND3_X1)           0.04       3.22 f
+  I2/MBE_mult/i_adder/add_24/U270/ZN (NAND2_X1)           0.04       3.25 r
+  I2/MBE_mult/i_adder/add_24/U159/ZN (NAND3_X1)           0.04       3.29 f
+  I2/MBE_mult/i_adder/add_24/U178/ZN (NAND2_X1)           0.04       3.33 r
+  I2/MBE_mult/i_adder/add_24/U181/ZN (NAND3_X1)           0.04       3.36 f
+  I2/MBE_mult/i_adder/add_24/U144/ZN (NAND2_X1)           0.04       3.40 r
+  I2/MBE_mult/i_adder/add_24/U146/ZN (NAND3_X1)           0.04       3.44 f
+  I2/MBE_mult/i_adder/add_24/U251/ZN (NAND2_X1)           0.04       3.47 r
+  I2/MBE_mult/i_adder/add_24/U245/ZN (NAND3_X1)           0.04       3.51 f
+  I2/MBE_mult/i_adder/add_24/U256/ZN (NAND2_X1)           0.03       3.54 r
+  I2/MBE_mult/i_adder/add_24/U258/ZN (NAND3_X1)           0.04       3.58 f
+  I2/MBE_mult/i_adder/add_24/U300/ZN (NAND2_X1)           0.04       3.62 r
+  I2/MBE_mult/i_adder/add_24/U302/ZN (NAND3_X1)           0.04       3.66 f
+  I2/MBE_mult/i_adder/add_24/U307/ZN (NAND2_X1)           0.04       3.69 r
+  I2/MBE_mult/i_adder/add_24/U272/ZN (NAND3_X1)           0.04       3.73 f
+  I2/MBE_mult/i_adder/add_24/U313/ZN (NAND2_X1)           0.04       3.77 r
+  I2/MBE_mult/i_adder/add_24/U315/ZN (NAND3_X1)           0.04       3.80 f
+  I2/MBE_mult/i_adder/add_24/U138/ZN (NAND2_X1)           0.03       3.83 r
+  I2/MBE_mult/i_adder/add_24/U140/ZN (NAND3_X1)           0.03       3.87 f
+  I2/MBE_mult/i_adder/add_24/U174/ZN (XNOR2_X1)           0.05       3.92 f
+  I2/MBE_mult/i_adder/add_24/SUM[47] (FPmul_DW01_add_2)
+                                                          0.00       3.92 f
+  I2/SIG_in_reg[27]/D (DFF_X1)                            0.01       3.93 f
+  data arrival time                                                  3.93
+
+  clock clk (rise edge)                                   3.53       3.53
+  clock network delay (ideal)                             0.00       3.53
+  clock uncertainty                                      -0.07       3.46
+  I2/SIG_in_reg[27]/CK (DFF_X1)                           0.00       3.46 r
+  library setup time                                     -0.04       3.42
+  data required time                                                 3.42
+  --------------------------------------------------------------------------
+  data required time                                                 3.42
+  data arrival time                                                 -3.93
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.51
+
+
+1
