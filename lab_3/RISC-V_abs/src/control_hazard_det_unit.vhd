@@ -10,9 +10,9 @@ entity control_hazard_det_unit is
   port (
   --input
   CHDU_CLK       : in std_logic;
-  CHDU_IN_JUMP   : in std_logic;  
+  CHDU_IN_JUMP   : in std_logic;
   --output
-  DHDU_OUT_FLUSH : out std_logic  --control multiplexer selector
+  CHDU_OUT_FLUSH : out std_logic  --control multiplexer selector
   );
 end entity;
 
@@ -33,7 +33,7 @@ begin
     end process;
 
   --flush the pipe for 3 subsequent clock cycles (put controls to 0)
-  DHDU_OUT_FLUSH <= CHDU_IN_JUMP or flush_d1 or flush_d2;
+  CHDU_OUT_FLUSH <= CHDU_IN_JUMP or flush_d1 or flush_d2;
 
 
 end architecture;

@@ -1,3 +1,9 @@
+---------------------------------------------
+--Description: generation of the immediate
+--value - the behaviour depend on the
+--instruction opcode
+---------------------------------------------
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;

@@ -80,7 +80,7 @@ architecture structural of EXECUTION_STAGE is
       CHDU_CLK       : in std_logic;
       CHDU_IN_JUMP   : in std_logic;
       --output
-      DHDU_OUT_FLUSH : out std_logic
+      CHDU_OUT_FLUSH : out std_logic
       );
     end component;
 
@@ -187,7 +187,7 @@ architecture structural of EXECUTION_STAGE is
           CHDU_CLK        => EXEC_STAGE_IN_CLK,
           CHDU_IN_JUMP    => EXEC_STAGE_IN_FLUSH   ,
           --output
-          DHDU_OUT_FLUSH  => ctrl_mux_sel
+          CHDU_OUT_FLUSH  => ctrl_mux_sel
           );
 
         ctrl_from_ID_EX <= EXEC_STAGE_IN_BRANCHPRED & EXEC_STAGE_IN_MEMREAD & EXEC_STAGE_IN_MEMWRITE & EXEC_STAGE_IN_MEMTOREG & EXEC_STAGE_IN_BRANCH & EXEC_STAGE_IN_JAL & EXEC_STAGE_IN_REGWRITE;
@@ -251,8 +251,8 @@ architecture structural of EXECUTION_STAGE is
 
         --mux to evaluate then the value of PC in case of wrong branch prediction
         --if i had not to take the branch the next PC has to be PC+4, if i had to jump
-        --the next value of the pc has to be PC+IMM*2 
-        i_mux_pc_adder:MUX2TO1 
+        --the next value of the pc has to be PC+IMM*2
+        i_mux_pc_adder:MUX2TO1
             generic map(N_g=> 32)
             port map(
                 MUX_IN_D0   => immediate_value_x2,

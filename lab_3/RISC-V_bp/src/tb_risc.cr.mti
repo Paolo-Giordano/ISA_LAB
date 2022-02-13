@@ -1,0 +1,224 @@
+C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/REGISTER_PC.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/REGISTER_PC.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Compiling entity register_pc
+-- Compiling architecture behavioral of register_pc
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/DECODE_STAGE.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/DECODE_STAGE.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity decode_stage
+-- Compiling architecture rtl of decode_stage
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/execution_stage.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/execution_stage.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity execution_stage
+-- Compiling architecture structural of execution_stage
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/adder.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/adder.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity adder
+-- Compiling architecture behavioral of adder
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/CU.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/CU.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity cu
+-- Compiling architecture beh of cu
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/REGISTER_NBIT.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/REGISTER_NBIT.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Compiling entity register_nbit
+-- Compiling architecture behavioral of register_nbit
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/arith_right_shifter.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/arith_right_shifter.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity arith_right_shifter
+-- Compiling architecture behavioral of arith_right_shifter
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/ALUcontrol.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/ALUcontrol.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity alucontrol
+-- Compiling architecture behavioral of alucontrol
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/tb/tb_RISV_V.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/tb/tb_RISV_V.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity tb_risc_v
+-- Compiling architecture behavioural of tb_risc_v
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/forwardig_unit.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/forwardig_unit.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity forwarding_unit
+-- Compiling architecture behavioural of forwarding_unit
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/control_hazard_det_unit.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/control_hazard_det_unit.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity control_hazard_det_unit
+-- Compiling architecture behavioural of control_hazard_det_unit
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/RISC_V.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/RISC_V.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Compiling entity risc_v
+-- Compiling architecture structural of risc_v
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/data_hazard_det_unit.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/data_hazard_det_unit.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity data_hazard_det_unit
+-- Compiling architecture behavioural of data_hazard_det_unit
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/brach_prediction_table.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/brach_prediction_table.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity branch_prediction_table
+-- Compiling architecture beh of branch_prediction_table
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/tb/INSTRUCTION_MEMORY.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/tb/INSTRUCTION_MEMORY.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Loading package textio
+-- Loading package std_logic_textio
+-- Compiling entity instr_mem
+-- Compiling architecture behavioural of instr_mem
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/tb/DATA_MEMORY.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/tb/DATA_MEMORY.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Loading package textio
+-- Loading package std_logic_textio
+-- Compiling entity data_mem
+-- Compiling architecture behavioural of data_mem
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/RF.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/RF.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity rf
+-- Compiling architecture beh of rf
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/mux2to1.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/mux2to1.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Compiling entity mux2to1
+-- Compiling architecture behavioral of mux2to1
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/adder_subtractor.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/adder_subtractor.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity adder_subtractor
+-- Compiling architecture behavioral of adder_subtractor
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/tb/clk_gen.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/tb/clk_gen.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package std_logic_unsigned
+-- Compiling entity clk_gen
+-- Compiling architecture beh of clk_gen
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/xor.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/xor.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity bitwise_xor
+-- Compiling architecture behavioral of bitwise_xor
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/mux4to1.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/mux4to1.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Compiling entity mux4to1
+-- Compiling architecture behavioral of mux4to1
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/ALU.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/ALU.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity alu
+-- Compiling architecture behavioral of alu
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/and.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/and.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity bitwise_and
+-- Compiling architecture behavioral of bitwise_and
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/memory_stage.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/memory_stage.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity memory_stage
+-- Compiling architecture structural of memory_stage
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/instr_fetch_stage.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/instr_fetch_stage.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity instr_fetch
+-- Compiling architecture structural of instr_fetch
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/IMM_GEN.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/IMM_GEN.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Loading package numeric_std
+-- Compiling entity imm_gen
+-- Compiling architecture beh of imm_gen
+
+} {} {}} C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/mux8to1.vhd {1 {vcom -work work -2002 -explicit C:/Users/Paolo/Desktop/ISA/Lab_ISA/Lab_3/RISC-V_bp/src/mux8to1.vhd
+Model Technology ModelSim ALTERA vcom 6.6d Compiler 2010.11 Nov  2 2010
+-- Loading package standard
+-- Loading package std_logic_1164
+-- Compiling entity mux8to1
+-- Compiling architecture behavioral of mux8to1
+
+} {} {}}

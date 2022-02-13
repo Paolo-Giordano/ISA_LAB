@@ -1,6 +1,6 @@
 ---------------------------------------------
 -- DESCRIPTION: unit able to detect load-use
--- hazard and stall the pipe
+-- hazard and eventually stall the pipe
 --------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;

@@ -1,3 +1,12 @@
+---------------------------------------------
+--Description: register file with parametric
+-- data width and depth.
+-- it has 2 read port and a write port with
+-- the possibility of a bypass between input
+-- data and output datas to ensure trasparency
+---------------------------------------------
+
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -25,7 +34,7 @@ entity RF is
   architecture beh of RF is
 
     type registerFile  is array (0 to 2**ADDR_WIDTH_g-1) of std_logic_vector (DATA_WIDTH_g-1 downto 0);
-     signal registers : registerFile;-- := (others => (others => '0'));
+     signal registers : registerFile;
 
     begin
 
@@ -48,7 +57,6 @@ entity RF is
       begin
         --read port 1
         --comparator for register trasparency
-        --second condition(to_integer(unsigned(RF_WriteAdd)) /= 0) is really necessary?
         if (RF_ReadAdd1 = RF_WriteAdd and to_integer(unsigned(RF_ReadAdd1)) /= 0 and RF_RegWrite = '1') then
           RF_ReadData1 <= RF_WriteData;
         elsif (to_integer(unsigned(RF_ReadAdd1)) = 0) then
