@@ -1,0 +1,41 @@
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : RISC_V
+Version: O-2018.06-SP4
+Date   : Tue Jan 11 14:54:03 2022
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db)
+
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+RISC_V                 5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+RISC_V                                   26.773 1.09e+03 2.38e+05 1.35e+03 100.0
+  i_decode_stage/i_RF_id (RF_ADDR_WIDTH_g5_DATA_WIDTH_g32)
+                                          7.825  652.173 1.45e+05  805.201  59.5
+1

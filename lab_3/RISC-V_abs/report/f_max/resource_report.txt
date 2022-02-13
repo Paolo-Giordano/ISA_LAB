@@ -1,0 +1,13 @@
+ 
+****************************************
+Report : resources
+Design : RISC_V
+Version: O-2018.06-SP4
+Date   : Sun Jan 16 12:51:38 2022
+****************************************
+
+
+No resource sharing information to report.
+
+No implementations to report
+1

@@ -1,0 +1,210 @@
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | O-2018.06-DWBB_201806.4 |     *     |
+| Licensed DW Building Blocks        | O-2018.06-DWBB_201806.4 |     *     |
+============================================================================
+
+
+Information: There are 643 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'MUX2TO1_N_g32_0'
+  Processing 'REGISTER_NBIT_N_g71'
+  Processing 'memory_stage'
+  Processing 'REGISTER_NBIT_N_g141'
+  Processing 'ADDER_N_g32_0'
+  Processing 'MUX8TO1_N_g32'
+  Processing 'ARITH_RIGHT_SHIFTER_N_g5'
+  Processing 'BITWISE_XOR_N_g32'
+  Processing 'BITWISE_AND_N_g32'
+  Processing 'ADDER_SUBTRACTOR_N_g32'
+  Processing 'ALU'
+  Processing 'MUX4TO1_N_g32_0'
+  Processing 'MUX2TO1_N_g7'
+  Processing 'control_hazard_det_unit'
+  Processing 'forwarding_unit'
+Information: Added key list 'DesignWare' to design 'forwarding_unit'. (DDB-72)
+  Processing 'ALUcontrol'
+  Processing 'EXECUTION_STAGE'
+  Processing 'REGISTER_NBIT_N_g160'
+  Processing 'CU'
+  Processing 'MUX2TO1_N_g12'
+  Processing 'data_hazard_det_unit'
+Information: Added key list 'DesignWare' to design 'data_hazard_det_unit'. (DDB-72)
+  Processing 'IMM_GEN'
+  Processing 'RF_ADDR_WIDTH_g5_DATA_WIDTH_g32'
+Information: Added key list 'DesignWare' to design 'RF_ADDR_WIDTH_g5_DATA_WIDTH_g32'. (DDB-72)
+  Processing 'DECODE_STAGE'
+  Processing 'REGISTER_NBIT_N_g65'
+  Processing 'branch_prediction_table_DATA_WIDTH_g33'
+  Processing 'REGISTER_PC_N_g32'
+  Processing 'instr_fetch'
+  Processing 'RISC_V'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'ADDER_N_g32_1_DW01_add_0'
+  Processing 'ADDER_SUBTRACTOR_N_g32_DW01_sub_0'
+  Processing 'ADDER_SUBTRACTOR_N_g32_DW01_add_0'
+  Processing 'ADDER_N_g32_0_DW01_add_0'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:02:50   19879.0      0.85       5.8       4.5                          
+    0:02:51   19880.3      0.85       5.7       4.5                          
+    0:02:51   19880.3      0.85       5.7       4.5                          
+    0:02:51   19879.5      0.85       5.7       4.5                          
+    0:02:52   19879.5      0.85       5.7       4.5                          
+    0:03:22   16029.2      0.81       4.5       0.0                          
+    0:03:26   16030.5      0.79       4.4       0.0                          
+    0:03:35   16033.4      0.79       4.4       0.0                          
+    0:03:36   16034.5      0.73       4.3       0.0                          
+    0:03:37   16034.5      0.73       4.3       0.0                          
+    0:03:37   16034.5      0.73       4.3       0.0                          
+    0:03:37   16034.5      0.73       4.3       0.0                          
+    0:03:38   16034.5      0.73       4.3       0.0                          
+    0:03:38   16034.5      0.73       4.3       0.0                          
+    0:03:38   16034.5      0.73       4.3       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:03:38   16034.5      0.73       4.3       0.0                          
+    0:03:39   16056.8      0.65       3.9       0.0 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:40   16100.7      0.58       3.3      48.4 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:42   16131.8      0.51       2.8      48.4 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:43   16145.4      0.49       2.6      48.4 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:44   16155.2      0.47       2.5      48.4 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:45   16161.1      0.46       2.4      48.4 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:47   16163.2      0.45       2.3      48.4 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:48   16165.6      0.44       2.2      48.4 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:50   16179.2      0.43       2.1      58.3 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:51   16180.0      0.43       2.1      58.3 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:52   16199.4      0.37       1.8      58.3 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:54   16203.4      0.35       1.8      58.3 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:57   16203.4      0.35       1.7      58.3 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:03:59   16214.8      0.34       1.7      82.5 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:00   16220.4      0.33       1.6      82.5 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:01   16220.4      0.33       1.6      82.5 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:02   16223.6      0.32       1.5      82.5 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:04   16226.3      0.31       1.5      82.5 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:07   16230.3      0.30       1.4      83.3 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:09   16234.0      0.29       1.4      83.3 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:11   16233.7      0.29       1.4      89.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:12   16243.3      0.29       1.3      89.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:14   16254.5      0.28       1.3     113.9 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:15   16255.5      0.28       1.3     113.9 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:16   16258.2      0.27       1.3     113.9 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:19   16258.5      0.26       1.2     113.9 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:21   16258.7      0.25       1.1     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:24   16260.0      0.25       1.1     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:26   16259.8      0.25       1.1     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:28   16260.8      0.25       1.1     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:29   16261.9      0.25       1.1     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:31   16264.6      0.24       1.1     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:33   16271.2      0.23       1.0     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:33   16286.4      0.22       0.9     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:34   16291.4      0.21       0.8     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:34   16296.2      0.20       0.8     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:35   16304.5      0.18       0.7     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:36   16307.1      0.17       0.6     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:37   16313.0      0.15       0.6     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:38   16313.0      0.15       0.6     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:40   16315.1      0.15       0.6     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:41   16326.3      0.13       0.5     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:43   16346.5      0.11       0.4     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:44   16357.9      0.10       0.3     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:45   16364.6      0.08       0.3     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:46   16375.2      0.07       0.3     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:47   16375.2      0.07       0.2     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:04:48   16376.0      0.07       0.3     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[100]/D
+    0:04:49   16377.6      0.07       0.3     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[100]/D
+    0:04:58   16378.2      0.07       0.3     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:05:01   16380.3      0.06       0.3     114.7 i_reg_EX_MEM/REGISTER_OUT_Q_reg[69]/D
+    0:05:08   16386.9      0.06       0.2     114.7                          
+    0:05:10   16387.7      0.06       0.2     114.7                          
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:05:10   16387.7      0.06       0.2     114.7                          
+    0:05:13   16357.7      0.06       0.2       0.0 i_reg_EX_MEM/REGISTER_OUT_Q_reg[100]/D
+    0:05:14   16357.4      0.05       0.2       0.0 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:05:15   16357.4      0.05       0.2       0.0 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:05:16   16357.4      0.05       0.1       0.0 i_reg_EX_MEM/REGISTER_OUT_Q_reg[100]/D
+    0:05:18   16356.6      0.05       0.1       0.0                          
+    0:05:19   16356.6      0.05       0.1       0.0                          
+    0:05:21   16367.0      0.05       0.1       0.0                          
+    0:05:22   16369.4      0.05       0.1       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:05:22   16369.4      0.05       0.1       0.0                          
+    0:05:23   16369.4      0.05       0.1       0.0                          
+    0:05:35   16338.3      0.05       0.1       0.0                          
+    0:05:36   16334.8      0.04       0.1       0.0                          
+    0:05:36   16334.8      0.04       0.1       0.0                          
+    0:05:36   16334.8      0.04       0.1       0.0                          
+    0:05:36   16334.8      0.04       0.1       0.0                          
+    0:05:37   16334.8      0.04       0.1       0.0                          
+    0:05:39   16298.1      0.06       0.1       0.0                          
+    0:05:39   16294.9      0.06       0.1       0.0                          
+    0:05:39   16294.9      0.06       0.1       0.0                          
+    0:05:39   16294.9      0.06       0.1       0.0                          
+    0:05:39   16294.9      0.06       0.1       0.0                          
+    0:05:39   16294.9      0.06       0.1       0.0                          
+    0:05:39   16294.9      0.06       0.1       0.0                          
+    0:05:41   16295.2      0.06       0.1       0.0 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:05:46   16298.4      0.05       0.1       0.0 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:05:50   16312.2      0.03       0.0       0.0 i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D
+    0:05:57   16311.4      0.03       0.0       0.0                          
+    0:05:59   16309.8      0.03       0.0       0.0                          
+    0:06:02   16310.9      0.03       0.0       0.0                          
+    0:06:03   16317.2      0.02       0.0       0.0                          
+    0:06:04   16318.3      0.02       0.0       0.0                          
+    0:06:05   16323.1      0.01       0.0       0.0                          
+    0:06:06   16326.3      0.00       0.0       0.0                          
+    0:06:08   16328.1      0.00       0.0       0.0                          
+Loading db file '/software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'RISC_V' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'i_execution_stage/i_CHDU_id/CHDU_CLK': 1627 load(s), 1 driver(s)
+1

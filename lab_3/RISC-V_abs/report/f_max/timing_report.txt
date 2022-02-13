@@ -1,0 +1,238 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'RISC_V' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : RISC_V
+Version: O-2018.06-SP4
+Date   : Sun Jan 16 12:51:24 2022
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: i_reg_MEM_WB/REGISTER_OUT_Q_reg[3]
+              (rising edge-triggered flip-flop clocked by MYCLK)
+  Endpoint: i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]
+            (rising edge-triggered flip-flop clocked by MYCLK)
+  Path Group: MYCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RISC_V             5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MYCLK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  i_reg_MEM_WB/REGISTER_OUT_Q_reg[3]/CK (DFFR_X1)         0.00 #     0.00 r
+  i_reg_MEM_WB/REGISTER_OUT_Q_reg[3]/Q (DFFR_X1)          0.12       0.12 r
+  i_reg_MEM_WB/REGISTER_OUT_Q[3] (REGISTER_NBIT_N_g71)
+                                                          0.00       0.12 r
+  i_execution_stage/EXEC_STAGE_IN_RD_MEM_WB[3] (EXECUTION_STAGE)
+                                                          0.00       0.12 r
+  i_execution_stage/i_forwarding_unit/FORW_IN_RD_MEM_WB[3] (forwarding_unit)
+                                                          0.00       0.12 r
+  i_execution_stage/i_forwarding_unit/U8/ZN (XNOR2_X1)
+                                                          0.06       0.18 r
+  i_execution_stage/i_forwarding_unit/U37/ZN (NAND4_X1)
+                                                          0.04       0.22 f
+  i_execution_stage/i_forwarding_unit/U4/ZN (OR3_X1)      0.07       0.30 f
+  i_execution_stage/i_forwarding_unit/U34/ZN (NOR2_X1)
+                                                          0.04       0.34 r
+  i_execution_stage/i_forwarding_unit/FORW_OUT_CTRL_MUX1[1] (forwarding_unit)
+                                                          0.00       0.34 r
+  i_execution_stage/i_mux_forwarding_A/MUX_IN_SEL[1] (MUX4TO1_N_g32_0)
+                                                          0.00       0.34 r
+  i_execution_stage/i_mux_forwarding_A/U113/ZN (INV_X1)
+                                                          0.03       0.37 f
+  i_execution_stage/i_mux_forwarding_A/U3/ZN (AND2_X2)
+                                                          0.04       0.41 f
+  i_execution_stage/i_mux_forwarding_A/U111/ZN (AOI22_X1)
+                                                          0.05       0.46 r
+  i_execution_stage/i_mux_forwarding_A/U100/ZN (NAND2_X1)
+                                                          0.03       0.49 f
+  i_execution_stage/i_mux_forwarding_A/MUX_OUT[0] (MUX4TO1_N_g32_0)
+                                                          0.00       0.49 f
+  i_execution_stage/i_ALU_src1/MUX_IN_D0[0] (MUX2TO1_N_g32_3)
+                                                          0.00       0.49 f
+  i_execution_stage/i_ALU_src1/U77/ZN (AOI22_X1)          0.04       0.54 r
+  i_execution_stage/i_ALU_src1/U78/ZN (INV_X1)            0.04       0.58 f
+  i_execution_stage/i_ALU_src1/MUX_OUT[0] (MUX2TO1_N_g32_3)
+                                                          0.00       0.58 f
+  i_execution_stage/i_ALU/ALU_IN_A[0] (ALU)               0.00       0.58 f
+  i_execution_stage/i_ALU/i_add_sub/ADD_SUB_IN_A[0] (ADDER_SUBTRACTOR_N_g32)
+                                                          0.00       0.58 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/A[0] (ADDER_SUBTRACTOR_N_g32_DW01_sub_0)
+                                                          0.00       0.58 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U124/ZN (INV_X1)
+                                                          0.03       0.61 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U125/ZN (NAND2_X1)
+                                                          0.03       0.64 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U15/ZN (NAND2_X1)
+                                                          0.03       0.67 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U247/ZN (NAND3_X1)
+                                                          0.04       0.71 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U121/ZN (NAND2_X1)
+                                                          0.04       0.75 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U123/ZN (NAND3_X1)
+                                                          0.04       0.78 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U106/ZN (NAND2_X1)
+                                                          0.03       0.81 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U65/ZN (NAND3_X1)
+                                                          0.04       0.86 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U112/ZN (NAND2_X1)
+                                                          0.03       0.89 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U114/ZN (NAND3_X1)
+                                                          0.05       0.94 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U10/ZN (NAND2_X1)
+                                                          0.04       0.97 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U12/ZN (NAND3_X1)
+                                                          0.04       1.01 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U151/ZN (NAND2_X1)
+                                                          0.04       1.05 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U35/ZN (NAND3_X1)
+                                                          0.04       1.09 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U48/ZN (NAND2_X1)
+                                                          0.04       1.13 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U51/ZN (NAND3_X1)
+                                                          0.04       1.17 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U183/ZN (NAND2_X1)
+                                                          0.03       1.20 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U45/ZN (NAND3_X1)
+                                                          0.04       1.24 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U194/ZN (NAND2_X1)
+                                                          0.04       1.28 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U197/ZN (NAND3_X1)
+                                                          0.04       1.31 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U89/ZN (NAND2_X1)
+                                                          0.03       1.35 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U91/ZN (NAND3_X1)
+                                                          0.04       1.39 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U207/ZN (NAND2_X1)
+                                                          0.04       1.43 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U209/ZN (NAND3_X1)
+                                                          0.04       1.46 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U233/ZN (NAND2_X1)
+                                                          0.04       1.50 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U235/ZN (NAND3_X1)
+                                                          0.04       1.54 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U239/ZN (NAND2_X1)
+                                                          0.04       1.57 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U28/ZN (NAND3_X1)
+                                                          0.04       1.61 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U175/ZN (NAND2_X1)
+                                                          0.04       1.64 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U178/ZN (NAND3_X1)
+                                                          0.04       1.68 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U162/ZN (NAND2_X1)
+                                                          0.03       1.71 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U165/ZN (NAND3_X1)
+                                                          0.04       1.76 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U4/ZN (NAND2_X1)
+                                                          0.04       1.79 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U6/ZN (NAND3_X1)
+                                                          0.04       1.84 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U128/ZN (NAND2_X1)
+                                                          0.04       1.88 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U67/ZN (NAND3_X1)
+                                                          0.04       1.92 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U94/ZN (NAND2_X1)
+                                                          0.03       1.95 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U97/ZN (NAND3_X1)
+                                                          0.04       1.99 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U169/ZN (NAND2_X1)
+                                                          0.04       2.03 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U171/ZN (NAND3_X1)
+                                                          0.04       2.06 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U30/ZN (NAND2_X1)
+                                                          0.04       2.10 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U42/ZN (NAND3_X1)
+                                                          0.04       2.14 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U200/ZN (NAND2_X1)
+                                                          0.03       2.17 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U191/ZN (NAND3_X1)
+                                                          0.04       2.21 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U213/ZN (NAND2_X1)
+                                                          0.04       2.25 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U74/ZN (NAND3_X1)
+                                                          0.04       2.29 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U221/ZN (NAND2_X1)
+                                                          0.04       2.33 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U223/ZN (NAND3_X1)
+                                                          0.04       2.37 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U227/ZN (NAND2_X1)
+                                                          0.03       2.40 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U66/ZN (NAND3_X1)
+                                                          0.04       2.44 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U156/ZN (NAND2_X1)
+                                                          0.04       2.48 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U27/ZN (NAND3_X1)
+                                                          0.04       2.51 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U80/ZN (NAND2_X1)
+                                                          0.04       2.55 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U34/ZN (NAND3_X1)
+                                                          0.04       2.59 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U54/ZN (NAND2_X1)
+                                                          0.04       2.62 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U33/ZN (NAND3_X1)
+                                                          0.04       2.66 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U144/ZN (NAND2_X1)
+                                                          0.04       2.70 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U147/ZN (NAND3_X1)
+                                                          0.04       2.74 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U133/ZN (NAND2_X1)
+                                                          0.04       2.77 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U98/ZN (NAND3_X1)
+                                                          0.04       2.81 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U140/ZN (NAND2_X1)
+                                                          0.03       2.84 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U132/ZN (AND3_X1)
+                                                          0.05       2.90 r
+  i_execution_stage/i_ALU/i_add_sub/sub_34/U76/ZN (XNOR2_X1)
+                                                          0.03       2.93 f
+  i_execution_stage/i_ALU/i_add_sub/sub_34/DIFF[31] (ADDER_SUBTRACTOR_N_g32_DW01_sub_0)
+                                                          0.00       2.93 f
+  i_execution_stage/i_ALU/i_add_sub/U75/ZN (AOI22_X1)     0.06       2.98 r
+  i_execution_stage/i_ALU/i_add_sub/U76/ZN (INV_X1)       0.03       3.01 f
+  i_execution_stage/i_ALU/i_add_sub/ADD_SUB_OUT_RES[31] (ADDER_SUBTRACTOR_N_g32)
+                                                          0.00       3.01 f
+  i_execution_stage/i_ALU/i_mux/MUX_IN_D2[31] (MUX8TO1_N_g32)
+                                                          0.00       3.01 f
+  i_execution_stage/i_ALU/i_mux/U198/ZN (AOI22_X1)        0.04       3.05 r
+  i_execution_stage/i_ALU/i_mux/U4/ZN (NAND2_X1)          0.03       3.08 f
+  i_execution_stage/i_ALU/i_mux/MUX_OUT[31] (MUX8TO1_N_g32)
+                                                          0.00       3.08 f
+  i_execution_stage/i_ALU/U19/ZN (NOR2_X1)                0.04       3.12 r
+  i_execution_stage/i_ALU/U17/ZN (NAND2_X1)               0.03       3.15 f
+  i_execution_stage/i_ALU/U35/ZN (NOR2_X1)                0.03       3.18 r
+  i_execution_stage/i_ALU/ALU_OUT_ZERO_FLAG (ALU)         0.00       3.18 r
+  i_execution_stage/EXEC_STAGE_OUT_ZERO_FLAG (EXECUTION_STAGE)
+                                                          0.00       3.18 r
+  i_reg_EX_MEM/REGISTER_IN_D[106] (REGISTER_NBIT_N_g141)
+                                                          0.00       3.18 r
+  i_reg_EX_MEM/U286/ZN (NAND2_X1)                         0.03       3.21 f
+  i_reg_EX_MEM/U3/ZN (NAND2_X1)                           0.02       3.23 r
+  i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D (DFFR_X2)        0.01       3.24 r
+  data arrival time                                                  3.24
+
+  clock MYCLK (rise edge)                                 3.35       3.35
+  clock network delay (ideal)                             0.00       3.35
+  clock uncertainty                                      -0.07       3.28
+  i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/CK (DFFR_X2)       0.00       3.28 r
+  library setup time                                     -0.03       3.25
+  data required time                                                 3.25
+  --------------------------------------------------------------------------
+  data required time                                                 3.25
+  data arrival time                                                 -3.24
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1

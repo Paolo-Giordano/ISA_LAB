@@ -1,0 +1,204 @@
+Loading db file '/software/synopsys/syn_current_64.18/libraries/syn/gtech.db'
+Loading db file '/software/synopsys/syn_current_64.18/libraries/syn/standard.sldb'
+  Loading link library 'NangateOpenCellLibrary'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'RISC_V'.
+Information: Building the design 'instr_fetch'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'REGISTER_NBIT' instantiated from design 'RISC_V' with
+	the parameters "N_g=65". (HDL-193)
+
+Inferred memory devices in process
+	in routine REGISTER_NBIT_N_g65 line 24 in file
+		'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/REGISTER_NBIT.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| REGISTER_OUT_Q_reg  | Flip-flop |  65   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'DECODE_STAGE'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'REGISTER_NBIT' instantiated from design 'RISC_V' with
+	the parameters "N_g=160". (HDL-193)
+
+Inferred memory devices in process
+	in routine REGISTER_NBIT_N_g160 line 24 in file
+		'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/REGISTER_NBIT.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| REGISTER_OUT_Q_reg  | Flip-flop |  160  |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'EXECUTION_STAGE'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'REGISTER_NBIT' instantiated from design 'RISC_V' with
+	the parameters "N_g=141". (HDL-193)
+
+Inferred memory devices in process
+	in routine REGISTER_NBIT_N_g141 line 24 in file
+		'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/REGISTER_NBIT.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| REGISTER_OUT_Q_reg  | Flip-flop |  141  |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'memory_stage'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'REGISTER_NBIT' instantiated from design 'RISC_V' with
+	the parameters "N_g=71". (HDL-193)
+
+Inferred memory devices in process
+	in routine REGISTER_NBIT_N_g71 line 24 in file
+		'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/REGISTER_NBIT.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| REGISTER_OUT_Q_reg  | Flip-flop |  71   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'MUX2TO1' instantiated from design 'RISC_V' with
+	the parameters "N_g=32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'REGISTER_PC' instantiated from design 'instr_fetch' with
+	the parameters "N_g=32". (HDL-193)
+
+Inferred memory devices in process
+	in routine REGISTER_PC_N_g32 line 26 in file
+		'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/REGISTER_PC.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| REGISTER_OUT_Q_reg  | Flip-flop |  31   |  Y  | N  | Y  | N  | N  | N  | N  |
+| REGISTER_OUT_Q_reg  | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'ADDER' instantiated from design 'instr_fetch' with
+	the parameters "N_g=32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'branch_prediction_table' instantiated from design 'instr_fetch' with
+	the parameters "DATA_WIDTH_g=33". (HDL-193)
+
+Inferred memory devices in process
+	in routine branch_prediction_table_DATA_WIDTH_g33 line 49 in file
+		'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/brach_prediction_table.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    BP_table_reg     | Flip-flop |  132  |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===============================================================================
+|             block name/line               | Inputs | Outputs | # sel inputs |
+===============================================================================
+| branch_prediction_table_DATA_WIDTH_g33/47 |   4    |   33    |      2       |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'RF' instantiated from design 'DECODE_STAGE' with
+	the parameters "ADDR_WIDTH_g=5,DATA_WIDTH_g=32". (HDL-193)
+
+Inferred memory devices in process
+	in routine RF_ADDR_WIDTH_g5_DATA_WIDTH_g32 line 33 in file
+		'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/RF.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    registers_reg    | Flip-flop | 1024  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+========================================================================
+|          block name/line           | Inputs | Outputs | # sel inputs |
+========================================================================
+| RF_ADDR_WIDTH_g5_DATA_WIDTH_g32/57 |   32   |   32    |      5       |
+| RF_ADDR_WIDTH_g5_DATA_WIDTH_g32/67 |   32   |   32    |      5       |
+========================================================================
+Presto compilation completed successfully.
+Information: Building the design 'IMM_GEN'. (HDL-193)
+
+Statistics for case statements in always block at line 29 in file
+	'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/IMM_GEN.vhd'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            33            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'data_hazard_det_unit'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'MUX2TO1' instantiated from design 'DECODE_STAGE' with
+	the parameters "N_g=12". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'CU'. (HDL-193)
+
+Statistics for case statements in always block at line 30 in file
+	'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/CU.vhd'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            45            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'ALUcontrol'. (HDL-193)
+
+Statistics for case statements in always block at line 24 in file
+	'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/ALUcontrol.vhd'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            26            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'forwarding_unit'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'MUX4TO1' instantiated from design 'EXECUTION_STAGE' with
+	the parameters "N_g=32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'control_hazard_det_unit'. (HDL-193)
+
+Inferred memory devices in process
+	in routine control_hazard_det_unit line 27 in file
+		'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/control_hazard_det_unit.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    flush_d1_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|    flush_d2_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'MUX2TO1' instantiated from design 'EXECUTION_STAGE' with
+	the parameters "N_g=7". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'ALU'. (HDL-193)
+
+Statistics for case statements in always block at line 183 in file
+	'/home/isa03_2021_2022/Lab_ISA/Lab_3/RISC-V_abs/src/ALU.vhd'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           185            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'ADDER_SUBTRACTOR' instantiated from design 'ALU' with
+	the parameters "N_g=32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'BITWISE_AND' instantiated from design 'ALU' with
+	the parameters "N_g=32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'BITWISE_XOR' instantiated from design 'ALU' with
+	the parameters "N_g=32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'ARITH_RIGHT_SHIFTER' instantiated from design 'ALU' with
+	the parameters "N_g=5". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'ABS_UNIT' instantiated from design 'ALU' with
+	the parameters "N_g=32". (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'MUX8TO1' instantiated from design 'ALU' with
+	the parameters "N_g=32". (HDL-193)
+Presto compilation completed successfully.
+1

@@ -1,0 +1,99 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'RISC_V' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : RISC_V
+Version: O-2018.06-SP4
+Date   : Tue Jan 11 14:11:34 2022
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: i_reg_MEM_WB/REGISTER_OUT_Q_reg[0]
+              (rising edge-triggered flip-flop clocked by MYCLK)
+  Endpoint: i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]
+            (rising edge-triggered flip-flop clocked by MYCLK)
+  Path Group: MYCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RISC_V             5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MYCLK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  i_reg_MEM_WB/REGISTER_OUT_Q_reg[0]/CK (DFFR_X1)         0.00 #     0.00 r
+  i_reg_MEM_WB/REGISTER_OUT_Q_reg[0]/Q (DFFR_X1)          0.11       0.11 f
+  U2063/ZN (AOI22_X1)                                     0.06       0.17 r
+  U2064/ZN (OAI221_X1)                                    0.05       0.22 f
+  U2065/ZN (AOI221_X1)                                    0.09       0.31 r
+  U2072/ZN (NAND4_X1)                                     0.05       0.36 f
+  U2073/ZN (NOR3_X1)                                      0.18       0.54 r
+  U2074/Z (CLKBUF_X1)                                     0.20       0.75 r
+  U2093/ZN (NAND2_X1)                                     0.05       0.80 f
+  U2094/ZN (OAI211_X1)                                    0.07       0.86 r
+  U2526/Z (XOR2_X1)                                       0.05       0.91 f
+  DP_OP_69J2_122_7659/U33/CO (FA_X1)                      0.10       1.01 f
+  DP_OP_69J2_122_7659/U32/CO (FA_X1)                      0.09       1.10 f
+  DP_OP_69J2_122_7659/U31/CO (FA_X1)                      0.09       1.19 f
+  DP_OP_69J2_122_7659/U30/CO (FA_X1)                      0.09       1.28 f
+  DP_OP_69J2_122_7659/U29/CO (FA_X1)                      0.09       1.37 f
+  DP_OP_69J2_122_7659/U28/CO (FA_X1)                      0.09       1.46 f
+  DP_OP_69J2_122_7659/U27/CO (FA_X1)                      0.09       1.55 f
+  DP_OP_69J2_122_7659/U26/CO (FA_X1)                      0.09       1.64 f
+  DP_OP_69J2_122_7659/U25/CO (FA_X1)                      0.09       1.73 f
+  DP_OP_69J2_122_7659/U24/CO (FA_X1)                      0.09       1.83 f
+  DP_OP_69J2_122_7659/U23/CO (FA_X1)                      0.09       1.92 f
+  DP_OP_69J2_122_7659/U22/CO (FA_X1)                      0.09       2.01 f
+  DP_OP_69J2_122_7659/U21/CO (FA_X1)                      0.09       2.10 f
+  DP_OP_69J2_122_7659/U20/CO (FA_X1)                      0.09       2.19 f
+  DP_OP_69J2_122_7659/U19/CO (FA_X1)                      0.09       2.28 f
+  DP_OP_69J2_122_7659/U18/CO (FA_X1)                      0.09       2.37 f
+  DP_OP_69J2_122_7659/U17/CO (FA_X1)                      0.09       2.46 f
+  DP_OP_69J2_122_7659/U16/CO (FA_X1)                      0.09       2.55 f
+  DP_OP_69J2_122_7659/U15/CO (FA_X1)                      0.09       2.64 f
+  DP_OP_69J2_122_7659/U14/CO (FA_X1)                      0.09       2.73 f
+  DP_OP_69J2_122_7659/U13/CO (FA_X1)                      0.09       2.82 f
+  DP_OP_69J2_122_7659/U12/CO (FA_X1)                      0.09       2.91 f
+  DP_OP_69J2_122_7659/U11/CO (FA_X1)                      0.09       3.00 f
+  DP_OP_69J2_122_7659/U10/CO (FA_X1)                      0.09       3.09 f
+  DP_OP_69J2_122_7659/U9/CO (FA_X1)                       0.09       3.18 f
+  DP_OP_69J2_122_7659/U8/CO (FA_X1)                       0.09       3.28 f
+  DP_OP_69J2_122_7659/U7/CO (FA_X1)                       0.09       3.37 f
+  DP_OP_69J2_122_7659/U6/CO (FA_X1)                       0.09       3.46 f
+  DP_OP_69J2_122_7659/U5/CO (FA_X1)                       0.09       3.55 f
+  DP_OP_69J2_122_7659/U4/CO (FA_X1)                       0.09       3.64 f
+  DP_OP_69J2_122_7659/U3/CO (FA_X1)                       0.09       3.73 f
+  U2373/Z (XOR2_X1)                                       0.07       3.80 f
+  U2794/ZN (NAND2_X1)                                     0.03       3.83 r
+  U2796/ZN (OAI211_X1)                                    0.04       3.87 f
+  U2884/ZN (NOR4_X1)                                      0.09       3.97 r
+  U2885/ZN (OAI221_X1)                                    0.05       4.02 f
+  U2889/ZN (OR4_X1)                                       0.09       4.11 f
+  U2890/ZN (NOR4_X1)                                      0.09       4.20 r
+  i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/D (DFFR_X1)        0.01       4.21 r
+  data arrival time                                                  4.21
+
+  clock MYCLK (rise edge)                                10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  clock uncertainty                                      -0.07       9.93
+  i_reg_EX_MEM/REGISTER_OUT_Q_reg[106]/CK (DFFR_X1)       0.00       9.93 r
+  library setup time                                     -0.04       9.89
+  data required time                                                 9.89
+  --------------------------------------------------------------------------
+  data required time                                                 9.89
+  data arrival time                                                 -4.21
+  --------------------------------------------------------------------------
+  slack (MET)                                                        5.68
+
+
+1

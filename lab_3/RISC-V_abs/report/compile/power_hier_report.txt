@@ -1,0 +1,96 @@
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : RISC_V
+Version: O-2018.06-SP4
+Date   : Wed Jan 12 12:45:24 2022
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db)
+
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+RISC_V                 5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+RISC_V                                   59.666 1.13e+03 3.46e+05 1.54e+03 100.0
+  i_final_mux (MUX2TO1_N_g32_0)           0.405    0.201 1.82e+03    2.422   0.2
+  i_reg_MEM_WB (REGISTER_NBIT_N_g71)      3.119   53.550 1.05e+04   67.160   4.4
+  i_memory_stage (memory_stage)        9.43e-03 5.21e-03   58.866 7.35e-02   0.0
+  i_reg_EX_MEM (REGISTER_NBIT_N_g141)     5.770  103.372 2.14e+04  130.541   8.5
+  i_execution_stage (EXECUTION_STAGE)     6.571    8.776 3.81e+04   53.487   3.5
+    i_PC_adder (ADDER_N_g32_1)            0.610    1.586 1.74e+03    3.934   0.3
+      add_24 (ADDER_N_g32_1_DW01_add_0)
+                                          0.610    1.586 1.74e+03    3.934   0.3
+    i_mux_pc_adder (MUX2TO1_N_g32_1)      0.976    0.649 1.81e+03    3.436   0.2
+    i_mux_ALU_res (MUX2TO1_N_g32_2)       0.253    0.247 1.82e+03    2.315   0.2
+    i_ALU (ALU)                           2.614    3.265 2.10e+04   26.919   1.7
+      i_mux (MUX8TO1_N_g32)               0.392    0.345 4.77e+03    5.502   0.4
+      i_abs_unit (ABS_UNIT_N_g32)         0.230    0.387 2.32e+03    2.938   0.2
+        add_37_aco (ABS_UNIT_N_g32_DW01_add_0)
+                                       6.20e-02    0.185 1.45e+03    1.697   0.1
+      i_shifter (ARITH_RIGHT_SHIFTER_N_g5)
+                                          0.860    0.375 5.92e+03    7.150   0.5
+      i_xor (BITWISE_XOR_N_g32)           0.112    0.392  850.426    1.354   0.1
+      i_and (BITWISE_AND_N_g32)        7.97e-03 1.77e-02  655.300    0.681   0.0
+      i_add_sub (ADDER_SUBTRACTOR_N_g32)
+                                          0.939    1.615 6.08e+03    8.637   0.6
+        add_30 (ADDER_SUBTRACTOR_N_g32_DW01_add_0)
+                                          0.133    0.359 1.56e+03    2.054   0.1
+        sub_32 (ADDER_SUBTRACTOR_N_g32_DW01_sub_0)
+                                          0.527    1.013 2.72e+03    4.256   0.3
+    i_ALU_src2 (MUX4TO1_N_g32_1)          0.706    0.263 2.68e+03    3.650   0.2
+    i_ALU_src1 (MUX2TO1_N_g32_3)          0.667    0.126 1.80e+03    2.597   0.2
+    i_CTRL_MUX_id (MUX2TO1_N_g7)       1.69e-02 1.08e-02  338.240    0.366   0.0
+    i_CHDU_id (control_hazard_det_unit)
+                                       8.35e-03    1.398  185.676    1.592   0.1
+    i_mux_forwarding_B (MUX4TO1_N_g32_2)
+                                          0.103    0.155 2.68e+03    2.940   0.2
+    i_mux_forwarding_A (MUX4TO1_N_g32_0)
+                                          0.103    0.145 2.68e+03    2.929   0.2
+    i_forwarding_unit (forwarding_unit)
+                                          0.424    0.834 1.09e+03    2.347   0.2
+    i_ALU_control (ALUcontrol)         9.14e-02 9.72e-02  271.198    0.460   0.0
+  i_reg_ID_EX (REGISTER_NBIT_N_g160)      6.672  115.061 2.43e+04  145.989   9.5
+  i_decode_stage (DECODE_STAGE)          25.479  682.979 2.05e+05  913.470  59.3
+    i_CU_id (CU)                          0.308    0.152  696.033    1.156   0.1
+    i_CTRL_MUX_id (MUX2TO1_N_g12)      2.92e-02 2.79e-02  649.361    0.706   0.0
+    i_DHDU_id (data_hazard_det_unit)      0.211    0.489  486.480    1.187   0.1
+    i_IMM_GEN_id (IMM_GEN)                1.459    1.299 2.55e+03    5.303   0.3
+    i_RF_id (RF_ADDR_WIDTH_g5_DATA_WIDTH_g32)
+                                         23.471  681.012 2.01e+05  905.118  58.8
+  i_reg_IF_ID (REGISTER_NBIT_N_g65)       4.429   49.267 9.81e+03   63.509   4.1
+  i_fetch_stage (INSTR_FETCH)             7.211  120.878 3.50e+04  163.074  10.6
+    i_BPtable (branch_prediction_table_DATA_WIDTH_g33)
+                                          4.660   95.609 2.47e+04  124.956   8.1
+    i_ADD (ADDER_N_g32_0)                 0.296    0.698 1.61e+03    2.604   0.2
+      add_24 (ADDER_N_g32_0_DW01_add_0)
+                                          0.296    0.698 1.61e+03    2.604   0.2
+    i_PC (REGISTER_PC_N_g32)              1.628   23.928 4.96e+03   30.518   2.0
+    i_mux_recovery_or_not (MUX2TO1_N_g32_4)
+                                          0.324    0.297 1.82e+03    2.440   0.2
+    i_mux_jump_or_not (MUX2TO1_N_g32_5)
+                                          0.278    0.265 1.81e+03    2.349   0.2
+1

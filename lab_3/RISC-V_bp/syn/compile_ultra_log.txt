@@ -1,0 +1,276 @@
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db"
+Library analysis succeeded.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | O-2018.06-DWBB_201806.4 |     *     |
+| Licensed DW Building Blocks        | O-2018.06-DWBB_201806.4 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 644 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+Information: Uniquified 6 instances of design 'MUX2TO1_N_g32'. (OPT-1056)
+Information: Uniquified 2 instances of design 'ADDER_N_g32'. (OPT-1056)
+Information: Uniquified 3 instances of design 'MUX4TO1_N_g32'. (OPT-1056)
+  Simplifying Design 'RISC_V'
+
+Loaded alib file './alib-52/NangateOpenCellLibrary_typical_ecsm_nowlm.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping hierarchy i_fetch_stage before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_reg_IF_ID before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_decode_stage before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_reg_ID_EX before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_reg_EX_MEM before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_memory_stage before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_reg_MEM_WB before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_final_mux before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_fetch_stage/i_PC before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_fetch_stage/i_ADD before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_fetch_stage/i_BPtable before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_decode_stage/i_IMM_GEN_id before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_decode_stage/i_DHDU_id before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_decode_stage/i_CTRL_MUX_id before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_decode_stage/i_CU_id before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_ALU_control before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_forwarding_unit before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_mux_forwarding_A before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_CHDU_id before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_CTRL_MUX_id before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_ALU before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_mux_pc_adder before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_mux_ALU_res before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_ALU_src1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_fetch_stage/i_mux_recovery_or_not before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_fetch_stage/i_mux_jump_or_not before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_PC_adder before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_ALU_src2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_mux_forwarding_B before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_ALU/i_add_sub before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_ALU/i_and before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_ALU/i_xor before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_ALU/i_shifter before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy i_execution_stage/i_ALU/i_mux before Pass 1 (OPT-776)
+Information: Ungrouping 35 of 37 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'RF_ADDR_WIDTH_g5_DATA_WIDTH_g32'
+Information: Added key list 'DesignWare' to design 'RF_ADDR_WIDTH_g5_DATA_WIDTH_g32'. (DDB-72)
+  Processing 'RISC_V'
+Information: Added key list 'DesignWare' to design 'RISC_V'. (DDB-72)
+ Implement Synthetic for 'RISC_V'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][14]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][16]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][17]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][18]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][19]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][20]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][21]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][22]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][23]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][24]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][25]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][26]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][27]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][28]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][29]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][30]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_decode_stage/i_RF_id/registers_reg[0][31]' is a constant and will be removed. (OPT-1206)
+Information: In design 'RISC_V', the register 'i_reg_EX_MEM/REGISTER_OUT_Q_reg[109]' is removed because it is merged to 'i_reg_EX_MEM/REGISTER_OUT_Q_reg[5]'. (OPT-1215)
+Information: In design 'RISC_V', the register 'i_reg_ID_EX/REGISTER_OUT_Q_reg[148]' is removed because it is merged to 'i_reg_ID_EX/REGISTER_OUT_Q_reg[141]'. (OPT-1215)
+Information: In design 'RISC_V', the register 'i_reg_ID_EX/REGISTER_OUT_Q_reg[146]' is removed because it is merged to 'i_reg_ID_EX/REGISTER_OUT_Q_reg[144]'. (OPT-1215)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: There is no timing violation in design RISC_V. Delay-based auto_ungroup will not be performed. (OPT-780)
+  Mapping Optimization (Phase 1)
+Information: The register 'i_fetch_stage/i_BPtable/BP_table_reg[1][0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_fetch_stage/i_BPtable/BP_table_reg[0][0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_fetch_stage/i_BPtable/BP_table_reg[2][0]' is a constant and will be removed. (OPT-1206)
+Information: In design 'RISC_V', the register 'i_reg_EX_MEM/REGISTER_OUT_Q_reg[101]' is removed because it is merged to 'i_reg_EX_MEM/REGISTER_OUT_Q_reg[103]'. (OPT-1215)
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:05:36   13824.8      0.00       0.0     188.7                           275415.1250
+    0:05:36   13824.8      0.00       0.0     188.7                           275415.1250
+    0:05:36   13824.8      0.00       0.0     188.7                           275415.1250
+    0:05:39   13824.3      0.00       0.0     188.7                           275398.9375
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:06:29   13729.1      0.00       0.0     179.6                           273025.2188
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:38   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:39   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:39   13699.3      0.00       0.0     179.4                           270830.8750
+    0:06:39   13699.3      0.00       0.0     179.4                           270830.8750
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:06:39   13699.3      0.00       0.0     179.4                           270830.8750
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+    0:06:41   13705.4      0.00       0.0       0.0                           271170.0312
+    0:06:41   13705.4      0.00       0.0       0.0                           271170.0312
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:06:41   13705.4      0.00       0.0       0.0                           271170.0312
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+    0:06:53   13745.8      0.00       0.0       0.0                           271801.9375
+    0:06:53   13745.8      0.00       0.0       0.0                           271801.9375
+    0:06:53   13745.8      0.00       0.0       0.0                           271801.9375
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+    0:06:59   13743.7      0.00       0.0       0.0                           271647.2812
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:07:03   13743.7      0.00       0.0       0.0                           271647.2812
+    0:07:08   13743.7      0.00       0.0       0.0                           271647.2812
+    0:07:09   13743.7      0.00       0.0       0.0                           271647.2812
+    0:07:09   13743.7      0.00       0.0       0.0                           271647.2812
+    0:07:15   13743.7      0.00       0.0       0.0                           271647.2812
+    0:07:30   13702.2      0.00       0.0       0.0                           271064.1562
+    0:07:30   13702.2      0.00       0.0       0.0                           271064.1562
+    0:07:30   13702.2      0.00       0.0       0.0                           271064.1562
+    0:07:30   13702.2      0.00       0.0       0.0                           271064.1562
+Loading db file '/software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'RISC_V' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'RISC_V_IN_CLK': 1588 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1

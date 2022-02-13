@@ -1,0 +1,3 @@
+Warning: Design 'RISC_V' inherited license information from design 'RF_ADDR_WIDTH_g5_DATA_WIDTH_g32'. (DDB-74)
+Information: Added key list 'DesignWare' to design 'RISC_V'. (DDB-72)
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character. 
